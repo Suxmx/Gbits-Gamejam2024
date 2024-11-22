@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <ResourceCollection>
+    <Resources>
+      <Resource Name="Config" FileSystem="GameData" LoadType="0" Packed="True" />
+      <Resource Name="DataTable" FileSystem="GameData" LoadType="0" Packed="True" />
+      <Resource Name="Scene" LoadType="0" Packed="True" />
+      <Resource Name="UI" LoadType="0" Packed="True" />
+    </Resources>
+    <Assets>
+      <Asset Guid="02a766aa7c3699b49a5f89d41b25ba71" ResourceName="UI" />
+      <Asset Guid="496e5973ae39dc845a6d7efa14c08122" ResourceName="Config" />
+      <Asset Guid="4e70bb9e5c5b57542aaeea3fabed0755" ResourceName="Scene" />
+      <Asset Guid="57dd1796e03ca4b459aca6c556e8048f" ResourceName="UI" />
+      <Asset Guid="5ad95a7ad683b4145a7f235639bdcf53" ResourceName="Scene" />
+      <Asset Guid="79e864125dd53e04b94a6a143aec0c9d" ResourceName="Scene" />
+      <Asset Guid="7d6f593f7c8250b4698f54e068254c99" ResourceName="UI" />
+      <Asset Guid="887b9722f6e18c8449774f91d8f20e4a" ResourceName="UI" />
+      <Asset Guid="8c9cfa26abfee488c85f1582747f6a02" ResourceName="Scene" />
+      <Asset Guid="9ed75641ed56b32409c98bfc5bf2a90e" ResourceName="Scene" />
+      <Asset Guid="a0c11bd6e0d857e45b39654482af2b97" ResourceName="UI" />
+      <Asset Guid="c76c9f3ab9368b4438c90defcaff22d7" ResourceName="DataTable" />
+      <Asset Guid="edf8e2302525c1547994bfd86b639559" ResourceName="Scene" />
+    </Assets>
+  </ResourceCollection>
+</UnityGameFramework>
