@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05f484ca36268440bf6ca1f6aedf5ef, type: 3}
   m_Name: JSAMSettings
   m_EditorClassIdentifier: 
-  establishSingletonDominance: 1
+  establishSingletonDominance: 0
   spatialSound: 1
   startingSoundChannels: 16
   startingMusicChannels: 3

@@ -2,6 +2,6 @@ namespace GameMain
 {
     public interface IUpdatable
     {
-        public void Update();
+        public void OnUpdate(float deltaTime);
     }
 }

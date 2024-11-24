@@ -3,6 +3,8 @@
 // 生成时间：2024/11/4 14:27:29
 //------------------------------------------------------------
 
+using UnityEngine;
+
 namespace GameMain
 {
     public partial class GameMainForm : UGuiForm

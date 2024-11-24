@@ -1,10 +1,12 @@
+using System.Threading.Tasks;
+
 namespace GameMain
 {
     public interface IManager
     {
         bool Inited { get; }
 
-        void OnEnter();
+        Task OnEnter();
         void OnExit();
         void OnInitEnd();
     }

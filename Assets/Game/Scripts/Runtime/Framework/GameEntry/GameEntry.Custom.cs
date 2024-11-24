@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using Game.Scripts.Runtime.Audio;
+using Game.Scripts.Runtime.Input;
 using JSAM;
 using UnityEngine;
 
@@ -20,10 +21,12 @@ namespace GameMain
         /// 获取声音组件。
         /// </summary>
         public static AudioComponent Audio { get; private set; }
+        public static InputComponent Input { get;private set; }
 
         private void InitCustomComponents()
         {
             Audio = UnityGameFramework.Runtime.GameEntry.GetComponent<AudioComponent>();
+            Input = UnityGameFramework.Runtime.GameEntry.GetComponent<InputComponent>();
         }
     }
 }

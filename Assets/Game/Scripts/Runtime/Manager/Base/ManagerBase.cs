@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace GameMain
@@ -10,7 +11,7 @@ namespace GameMain
             set;
         }
         
-        public abstract void OnEnter();
+        public abstract Task OnEnter();
 
         public abstract void OnExit();
         public virtual void OnInitEnd()

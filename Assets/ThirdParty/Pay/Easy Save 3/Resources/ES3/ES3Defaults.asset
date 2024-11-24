@@ -31,9 +31,11 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - Assembly-CSharp
-    - DOTween.Modules
-    - DOTweenPro.Scripts
     - EasySave3
+    - EPO
+    - EPOHDRP
+    - EPOURP
+    - EPOUtilities
     - Febucci.Attributes.Runtime
     - Febucci.TextAnimator.Demo.Runtime
     - Febucci.TextAnimator.Runtime
@@ -44,6 +46,8 @@ MonoBehaviour:
     - NodeCanvas
     - ParadoxNotion
     - ParticleImage
+    - SingularityGroup.HotReload.Runtime
+    - SingularityGroup.HotReload.Runtime.Public
     - UnityGameFramework.Runtime
     - UnityHFSM
     showAdvancedSettings: 0

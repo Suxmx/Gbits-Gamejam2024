@@ -46,5 +46,10 @@ namespace GameMain
         {
             return Utility.Text.Format("{0}/Fonts/{1}.asset", ResRootPath, assetName);
         }
+
+        public static string GetBuildItemPrefab(EBuildItem item)
+        {
+            return Utility.Text.Format("{0}/Prefabs/BuildItems/{1}.prefab", ResRootPath, item.ToString());
+        }
     }
 }
