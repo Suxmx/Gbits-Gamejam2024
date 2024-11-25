@@ -18,7 +18,7 @@ namespace GameMain
         private Rigidbody _rigidbody;
         private Outlinable _outliner;
         protected Collider[] _tmpColliders = new Collider[10];
-        protected LayerMask _cantBuildLayer => LayerMask.GetMask("SheepInteract", "SheepIgnore");
+        protected LayerMask _cantBuildLayer => LayerMask.GetMask("SheepInteract", "SheepIgnore","CantBuild");
         
         [SerializeField]protected bool _bIsStatic;
         public abstract void EnableLogic();

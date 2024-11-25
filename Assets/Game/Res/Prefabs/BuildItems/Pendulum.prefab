@@ -2047,7 +2047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6088583772575948860}
   - component: {fileID: 1156429822217799362}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: CantBuildArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

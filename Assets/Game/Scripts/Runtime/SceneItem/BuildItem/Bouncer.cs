@@ -54,7 +54,7 @@ namespace GameMain
         }
 
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (!_bEnableLogic) return;
             Sheep sheep = other.GetComponentInParent<Sheep>();
@@ -66,6 +66,7 @@ namespace GameMain
                 }
 
                 sheep.ChangeVelocityTo(_direction * 15);
+                Debug.Log("trigger");
             }
         }
     }

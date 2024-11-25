@@ -39,7 +39,7 @@ namespace GameMain
             }
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (_bSubscribeInitEvent)
             {
