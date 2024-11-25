@@ -67,9 +67,9 @@ namespace GameMain
             _rigidbody.linearVelocity = velocity;
         }
 
-        public void AddForce(Vector3 force)
+        public void AddForce(Vector3 force,ForceMode mode = ForceMode.Impulse)
         {
-            _rigidbody.AddForce(force, ForceMode.Impulse);
+            _rigidbody.AddForce(force,mode);
         }
 
         #endregion

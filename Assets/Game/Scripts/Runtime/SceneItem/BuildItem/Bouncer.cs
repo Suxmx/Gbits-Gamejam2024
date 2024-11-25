@@ -5,6 +5,8 @@ namespace GameMain
 {
     public class Bouncer : BuildItemBase
     {
+        [SerializeField] private Vector3 _boxSize;
+        [SerializeField] private Vector3 _offset;
         private Vector3 _direction => transform.rotation * Vector3.up;
         private bool _bdontChange => Mathf.Abs(_direction.x) < 1e-2f;
         private bool _bFacingRight => _direction.x > 0;
@@ -12,21 +14,45 @@ namespace GameMain
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawRay(transform.position, _direction * 3);
-        }
-
-        public override void DisableLogicWhenBuilding()
-        {
-            GetComponent<Rigidbody>().useGravity = false;
-            _bEnableLogic = false;
+            var boxSize = _boxSize;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero + _offset, boxSize);
         }
 
         public override void EnableLogic()
         {
+            Rigid.linearVelocity = Vector3.zero;
             if (!_bIsStatic)
-                GetComponent<Rigidbody>().useGravity = true;
+                Rigid.useGravity = true;
             _bEnableLogic = true;
         }
+
+        public override void DisableLogicWhenBuilding()
+        {
+            Rigid.useGravity = false;
+            _bEnableLogic = false;
+        }
+
+
+        public override bool DetectBuildable()
+        {
+            var boxSize = _boxSize;
+            boxSize.x *= transform.localScale.x;
+            boxSize.y *= transform.localScale.y;
+            boxSize.z *= transform.localScale.z;
+            var size = Physics.OverlapBoxNonAlloc(transform.position + _offset, boxSize / 2, _tmpColliders,
+                transform.rotation, _cantBuildLayer);
+            for (int i = 0; i < Mathf.Min(size, 10); i++)
+            {
+                if (_tmpColliders[i].transform != transform && !_tmpColliders[i].transform.IsChildOf(transform))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
 
         private void OnTriggerEnter(Collider other)
         {

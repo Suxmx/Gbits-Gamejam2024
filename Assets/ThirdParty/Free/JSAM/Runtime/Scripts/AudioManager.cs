@@ -197,11 +197,11 @@ namespace JSAM
 
                 if (success)
                 {
-                    DebugLog("AudioManager located an AudioListener successfully!");
+                    // DebugLog("AudioManager located an AudioListener successfully!");
                 }
                 else
                 {
-                    DebugWarning("Scene is missing an AudioListener!");
+                    // DebugWarning("Scene is missing an AudioListener!");
                 }
             }
         }

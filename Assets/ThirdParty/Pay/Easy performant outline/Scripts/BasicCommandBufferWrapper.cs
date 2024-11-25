@@ -27,7 +27,7 @@ namespace EPOOutline
 
         public override void Clear()
         {
-            buffer.Clear();
+            buffer?.Clear();
         }
 
         public override void SetGlobalInt(int hash, int value)

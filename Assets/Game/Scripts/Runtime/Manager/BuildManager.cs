@@ -8,6 +8,8 @@ namespace GameMain
     {
         Bouncer,
         Cube,
+        WindArea,
+        Pendulum,
     }
 
     public class BuildManager : ManagerBase, IUpdatable
@@ -62,9 +64,19 @@ namespace GameMain
             if (bIsBuilding)
             {
                 _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
+                if (_currentBuildItem.DetectBuildable())
+                {
+                    _currentBuildItem.SetOutlinerColor(new Color(0,160/255f,0));
+                }
+                else
+                {
+                    _currentBuildItem.SetOutlinerColor(Color.red);
+                    return;
+                }
                 if (Input.GetMouseButtonDown(0))
                 {
                     bIsBuilding = false;
+                    _currentBuildItem.SetOutliner(false);
                     _currentBuildItem.EnableLogic();
                     _currentBuildItem = null;
                 }
@@ -87,6 +99,7 @@ namespace GameMain
                 bIsBuilding = true;
                 _currentBuildItem  = Instantiate(prefab).GetComponent<BuildItemBase>();
                 _currentBuildItem.DisableLogicWhenBuilding();
+                _currentBuildItem.SetOutliner(true);
                 _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
             }
             else
