@@ -6,6 +6,7 @@ namespace GameMain
 {
     public class Sheep : GameEntityBase
     {
+        public Rigidbody Rigid => _rigidbody;
         [SerializeField] private float speed = 5;
 
         private Rigidbody _rigidbody;
@@ -34,13 +35,14 @@ namespace GameMain
         protected override void OnAfterInit()
         {
         }
+
         protected override void OnFixedUpdate()
         {
             var targetSpeed = _bFacingRight ? speed : -speed;
             float vxDelta = (targetSpeed - _rigidbody.linearVelocity.x);
             _rigidbody.AddForce(Vector3.right * (vxDelta * 5), ForceMode.Acceleration);
             //判断是否被卡住
-            if (CheckIfStuck() &&  !_dieTimer.IsRunning)
+            if (CheckIfStuck() && !_dieTimer.IsRunning)
             {
                 _dieTimer.Restart();
                 // Debug.Log("Stuck timer start");
@@ -49,14 +51,14 @@ namespace GameMain
             {
                 // Debug.Log("Stuck timer stop");
                 _dieTimer.Stop();
-                _stuck = false;
             }
         }
 
-        private float _lastChangeFacingTime = -1f; 
+        private float _lastChangeFacingTime = -1f;
+
         private void OnCollisionStay(Collision other)
         {
-            if (other.gameObject.CompareTag("Wall") && Time.fixedTime-_lastChangeFacingTime>0.04f)
+            if (other.gameObject.CompareTag("Wall") && Time.fixedTime - _lastChangeFacingTime > 0.04f)
             {
                 bool flag = false;
                 foreach (var contact in other.contacts)
@@ -133,7 +135,6 @@ namespace GameMain
 
         #endregion
 
-        bool _stuck = false;
         private bool CheckIfStuck()
         {
             float offset = 0.1f;
@@ -169,9 +170,8 @@ namespace GameMain
                 v.x = -v.x;
                 _rigidbody.linearVelocity = v;
             }
-            
+
             _bFacingRight = bRight;
-            
         }
 
         public void ChangeVelocityTo(Vector3 velocity)
@@ -179,7 +179,7 @@ namespace GameMain
             _rigidbody.linearVelocity = velocity;
         }
 
-        public void AddForce(Vector3 force, ForceMode mode = ForceMode.Impulse)
+        public void AddForce(Vector3 force, ForceMode mode)
         {
             _rigidbody.AddForce(force, mode);
         }

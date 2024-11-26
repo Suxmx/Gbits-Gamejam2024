@@ -10,6 +10,8 @@ namespace GameMain
         Cube,
         WindArea,
         Pendulum,
+        Dasher,
+        Portal
     }
 
     public enum EBuildState

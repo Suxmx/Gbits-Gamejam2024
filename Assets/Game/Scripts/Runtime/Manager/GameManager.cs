@@ -11,6 +11,7 @@ namespace GameMain
         Editor,
         Runtime
     }
+
     public class GameManager : MonoBehaviour
     {
         #region Static
@@ -30,7 +31,7 @@ namespace GameMain
             {
                 GameObject go = new GameObject("GameManager");
                 Instance = go.AddComponent<GameManager>();
-                Instance.OnEnter();
+                _ = Instance.OnEnter();
             }
         }
 
@@ -180,7 +181,7 @@ namespace GameMain
 
         public void ChangeGameState(EGameState state)
         {
-            if(state==GameState) return;
+            if (state == GameState) return;
             GameState = state;
             GameEntry.Event.Fire(this, OnGameStateChangeArgs.Create(state));
         }
