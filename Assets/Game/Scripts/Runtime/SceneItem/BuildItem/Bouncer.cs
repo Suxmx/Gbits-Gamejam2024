@@ -66,7 +66,7 @@ namespace GameMain
                 }
 
                 sheep.ChangeVelocityTo(_direction * 15);
-                Debug.Log("trigger");
+                // Debug.Log("trigger");
             }
         }
     }

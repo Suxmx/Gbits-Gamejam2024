@@ -43,7 +43,7 @@ namespace GameMain
             if (CheckIfStuck() &&  !_dieTimer.IsRunning)
             {
                 _dieTimer.Restart();
-                Debug.Log("Stuck timer start");
+                // Debug.Log("Stuck timer start");
             }
             else
             {

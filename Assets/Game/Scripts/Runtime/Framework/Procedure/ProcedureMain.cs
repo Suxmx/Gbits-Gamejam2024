@@ -14,8 +14,9 @@ namespace GameMain
     public class ProcedureMain : ProcedureBase
     {
         public float CurrentFps => _fpsCounter.CurrentFps;
-        
+
         private bool _returnMenu = false;
+        private bool _restart = false;
         private FpsCounter _fpsCounter;
 
         public override bool UseNativeDialog
@@ -28,8 +29,9 @@ namespace GameMain
         {
             base.OnEnter(procedureOwner);
             _returnMenu = false;
+            _restart = false;
             _fpsCounter = new FpsCounter(0.5f);
-            
+
             GameManager.Create();
         }
 
@@ -40,6 +42,11 @@ namespace GameMain
             if (_returnMenu)
             {
                 procedureOwner.SetData<VarString>("NextScene", AssetUtility.MenuSceneName);
+                ChangeState<ProcedureChangeScene>(procedureOwner);
+            }
+            else if (_restart)
+            {
+                procedureOwner.SetData<VarString>("NextScene", AssetUtility.MainSceneName);
                 ChangeState<ProcedureChangeScene>(procedureOwner);
             }
         }
@@ -53,6 +60,11 @@ namespace GameMain
         public void ReturnMenu()
         {
             _returnMenu = true;
+        }
+
+        public void Restart()
+        {
+            _restart = true;
         }
     }
 }

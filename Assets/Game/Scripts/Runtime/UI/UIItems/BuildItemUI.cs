@@ -7,11 +7,12 @@ namespace GameMain
     public class BuildItemUI : MonoBehaviour
     {
         private Button _btn;
-        [SerializeField]private EBuildItem _buildItem;
+        private EBuildItem _buildItem;
 
-        public void Init(EBuildItem buildItem)
+        public void Init(EBuildItem buildItem,Sprite icon)
         {
             _buildItem = buildItem;
+            transform.Find("Icon").GetComponent<Image>().sprite = icon;
         }
 
         private void Awake()

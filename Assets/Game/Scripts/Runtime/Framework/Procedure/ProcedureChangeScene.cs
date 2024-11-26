@@ -5,6 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Linq;
 using GameFramework.DataTable;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
@@ -16,13 +18,12 @@ namespace GameMain
     {
         private bool m_ChangeToMenu = false;
         private bool m_IsChangeSceneComplete = false;
+        private bool _pendingLoadScene;
+        private string _pendingLoadSceneName;
 
         public override bool UseNativeDialog
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
@@ -30,10 +31,12 @@ namespace GameMain
             base.OnEnter(procedureOwner);
 
             m_IsChangeSceneComplete = false;
+            _pendingLoadScene = false;
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Subscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
+            GameEntry.Event.Subscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
 
             // 停止所有声音
@@ -44,8 +47,8 @@ namespace GameMain
             GameEntry.Entity.HideAllLoadedEntities();
 
             // 卸载所有场景
-            string[] loadedSceneAssetNames = GameEntry.Scene.GetLoadedSceneAssetNames();
-            for (int i = 0; i < loadedSceneAssetNames.Length; i++)
+            List<string> loadedSceneAssetNames = GameEntry.Scene.GetLoadedSceneAssetNames().ToList();
+            for (int i = 0; i < loadedSceneAssetNames.Count; i++)
             {
                 GameEntry.Scene.UnloadScene(loadedSceneAssetNames[i]);
             }
@@ -53,10 +56,18 @@ namespace GameMain
             // 还原游戏速度
             GameEntry.Base.ResetNormalGameSpeed();
 
-            string sceneName  = procedureOwner.GetData<VarString>("NextScene");
+            string sceneName = procedureOwner.GetData<VarString>("NextScene");
             m_ChangeToMenu = sceneName == AssetUtility.MenuSceneName;
 
-            GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(sceneName), AssetPriority.SceneAsset, this);
+            if (loadedSceneAssetNames.FindIndex(x => x == AssetUtility.GetSceneAsset(sceneName)) < 0)
+            {
+                GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(sceneName), AssetPriority.SceneAsset, this);
+            }
+            else
+            {
+                _pendingLoadScene = true;
+                _pendingLoadSceneName = sceneName;
+            }
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -64,6 +75,7 @@ namespace GameMain
             GameEntry.Event.Unsubscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Unsubscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
+            GameEntry.Event.Unsubscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
 
             base.OnLeave(procedureOwner, isShutdown);
@@ -106,6 +118,16 @@ namespace GameMain
             m_IsChangeSceneComplete = true;
         }
 
+        private void OnUnLoadSceneSuccess(object sender, GameEventArgs e)
+        {
+            if (_pendingLoadScene)
+            {
+                _pendingLoadScene = false;
+                GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(_pendingLoadSceneName), AssetPriority.SceneAsset,
+                    this);
+            }
+        }
+
         private void OnLoadSceneFailure(object sender, GameEventArgs e)
         {
             LoadSceneFailureEventArgs ne = (LoadSceneFailureEventArgs)e;
@@ -136,7 +158,8 @@ namespace GameMain
                 return;
             }
 
-            Log.Info("Load scene '{0}' dependency asset '{1}', count '{2}/{3}'.", ne.SceneAssetName, ne.DependencyAssetName, ne.LoadedCount.ToString(), ne.TotalCount.ToString());
+            Log.Info("Load scene '{0}' dependency asset '{1}', count '{2}/{3}'.", ne.SceneAssetName,
+                ne.DependencyAssetName, ne.LoadedCount.ToString(), ne.TotalCount.ToString());
         }
     }
 }

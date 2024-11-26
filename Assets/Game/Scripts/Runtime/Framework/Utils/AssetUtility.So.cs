@@ -6,7 +6,7 @@ namespace GameMain
     {
         public static string GetScriptableObjectAsset(string assetName)
         {
-            return Utility.Text.Format("{0}/ScriptableObjects/{1}.asset", ResRootPath, assetName);
+            return Utility.Text.Format("{0}/SO/{1}.asset", ResRootPath, assetName);
         }
 
         public static string GetDialogue(string assetName)

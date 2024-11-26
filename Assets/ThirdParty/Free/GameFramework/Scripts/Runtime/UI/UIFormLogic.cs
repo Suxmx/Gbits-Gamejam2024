@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -12,7 +13,7 @@ namespace UnityGameFramework.Runtime
     /// <summary>
     /// 界面逻辑基类。
     /// </summary>
-    public abstract class UIFormLogic : MonoBehaviour
+    public abstract class UIFormLogic : SerializedMonoBehaviour
     {
         private bool m_Available = false;
         private bool m_Visible = false;

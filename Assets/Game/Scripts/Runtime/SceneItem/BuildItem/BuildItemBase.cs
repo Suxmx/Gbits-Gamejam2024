@@ -12,7 +12,7 @@ namespace GameMain
             {
                 if (_rigidbody is null)
                     _rigidbody = GetComponent<Rigidbody>();
-                return _rigidbody;
+                return _rigidbody; 
             }
         }
         private Rigidbody _rigidbody;
@@ -41,6 +41,11 @@ namespace GameMain
             if (_outliner is null)
                 _outliner = GetComponent<Outlinable>();
             _outliner.OutlineParameters.FillPass.SetColor("_PublicColor", color);
+        }
+
+        public void Remove()
+        {
+            Destroy(gameObject);
         }
     }
 }

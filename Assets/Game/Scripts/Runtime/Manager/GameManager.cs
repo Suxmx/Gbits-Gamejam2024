@@ -6,6 +6,11 @@ using UnityEngine;
 
 namespace GameMain
 {
+    public enum EGameState
+    {
+        Editor,
+        Runtime
+    }
     public class GameManager : MonoBehaviour
     {
         #region Static
@@ -29,8 +34,24 @@ namespace GameMain
             }
         }
 
-        public int ArriveSheepCount = 0;
+        public bool Pause
+        {
+            get => _pause;
+            set
+            {
+                if (_pause == value) return;
+                _pause = value;
+                GameEntry.Base.GameSpeed = _pause ? 0 : 1;
+                GameEntry.Event.Fire(this, OnPauseStateChangeArgs.Create(_pause));
+            }
+        }
 
+        public EGameState GameState { get; private set; }
+        public int Level = 1;
+        public int ArriveSheepCount = 0;
+        public LevelConfig LevelConfig;
+
+        private bool _pause = false;
         private List<IManager> _managers = new();
         private List<IUpdatable> _updatables = new();
         private List<IFixedUpdatable> _fixedUpdatables = new();
@@ -62,12 +83,15 @@ namespace GameMain
             return mgr;
         }
 
-        public void OnEnter()
+        public async Task OnEnter()
         {
             Build = CreateManager<BuildManager>("Build");
+            LevelConfig =
+                (await GameEntry.Resource.LoadAssetAsync<LevelConfigsSO>(
+                    AssetUtility.GetScriptableObjectAsset("LevelConfigs"))).LevelConfigs.Find(x => x.Index == Level);
             foreach (var mgr in _managers)
             {
-                mgr.OnEnter();
+                await mgr.OnEnter();
             }
         }
 
@@ -78,6 +102,7 @@ namespace GameMain
                 mgr.OnInitEnd();
             }
 
+            GameState = EGameState.Editor;
             //打开主界面
             _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
             GameEntry.Event.FireNow(this, OnGameManagerInitArg.Create());
@@ -142,7 +167,7 @@ namespace GameMain
 
         public static Vector3 MousePosToWorldPlanePos()
         {
-            Ray ray=Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (BuildPlane.Raycast(ray, out float distance))
             {
                 // 获取交点
@@ -151,6 +176,13 @@ namespace GameMain
             }
 
             return new Vector3(0, 0, 23.47f);
+        }
+
+        public void ChangeGameState(EGameState state)
+        {
+            if(state==GameState) return;
+            GameState = state;
+            GameEntry.Event.Fire(this, OnGameStateChangeArgs.Create(state));
         }
     }
 }

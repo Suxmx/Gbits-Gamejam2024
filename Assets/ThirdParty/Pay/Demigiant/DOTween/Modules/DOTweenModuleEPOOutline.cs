@@ -13,7 +13,7 @@ namespace DG.Tweening
     {
         public static int DOKill(this SerializedPass target, bool complete)
         {
-            return DOTween.Kill(target, complete);
+            return DOTween.Kill(target, complete); 
         }
 
         public static TweenerCore<float, float, FloatOptions> DOFloat(this SerializedPass target, string propertyName, float endValue, float duration)

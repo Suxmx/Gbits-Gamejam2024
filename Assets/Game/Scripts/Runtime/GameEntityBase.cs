@@ -41,11 +41,13 @@ namespace GameMain
 
         protected virtual void OnDestroy()
         {
+            if (!GameEntry.Event) return;
             if (_bSubscribeInitEvent)
             {
                 if (GameEntry.Event&&GameEntry.Event.Check(OnGameManagerInitArg.EventId, OnGameManagerInitEnd))
                     GameEntry.Event.Unsubscribe(OnGameManagerInitArg.EventId, OnGameManagerInitEnd);
             }
+            OnBeDestroyed();
         }
 
         private void Update()
@@ -103,6 +105,11 @@ namespace GameMain
         protected virtual void OnLateUpdate()
         {
         }
+
+        protected virtual void OnBeDestroyed()
+        {
+        }
+        
 
         #endregion
     }
