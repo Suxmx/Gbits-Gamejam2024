@@ -30,6 +30,10 @@ namespace GameMain
         private BuildItemBase _currentBuildItem;
         private BuildItemBase _preRemoveItem;
 
+        private bool _isBuildingPortal;
+        private Portal _portalA;
+        private Portal _portalB;
+
         public override async Task OnEnter()
         {
             await LoadBuildItemPrefabs();
@@ -90,12 +94,43 @@ namespace GameMain
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    bIsBuilding = false;
-                    _currentBuildItem.SetOutliner(false);
-                    _currentBuildItem.EnableLogic();
-                    //加入快速删除队列
-                    _buildItemQueue.Push(_currentBuildItem);
-                    _currentBuildItem = null;
+                    if (!_isBuildingPortal)
+                    {
+                        bIsBuilding = false;
+                        _currentBuildItem.SetOutliner(false);
+                        _currentBuildItem.EnableLogic();
+                        //加入快速删除队列
+                        _buildItemQueue.Push(_currentBuildItem);
+                        _currentBuildItem = null;
+                    }
+                    else
+                    {
+                        if (_portalB is null)
+                        {
+                            _portalA.SetOutliner(false);
+                            var prefab = _prefabMap[EBuildItem.Portal];
+                            _currentBuildItem = Instantiate(prefab).GetComponent<BuildItemBase>();
+                            _currentBuildItem.DisableLogicWhenBuilding();
+                            _currentBuildItem.SetOutliner(true);
+                            _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
+                            _portalB = _currentBuildItem as Portal;
+                        }
+                        else
+                        {
+                            _portalB.SetOutliner(false);
+                            _portalA.EnableLogic();
+                            _portalB.EnableLogic();
+                            _portalA.AttachToPortal(_portalB);
+                            _portalB.AttachToPortal(_portalA);
+
+                            _buildItemQueue.Push(_portalA);
+                            _buildItemQueue.Push(_portalB);
+                            _currentBuildItem = null;
+                            _portalA = null;
+                            _portalB = null;
+                            bIsBuilding = false;
+                        }
+                    }
                 }
             }
             else if (BuildState == EBuildState.Remove)
@@ -140,6 +175,7 @@ namespace GameMain
 
         public void StartBuild(EBuildItem item)
         {
+            _isBuildingPortal = false;
             if (bIsBuilding)
             {
                 if (_currentBuildItem)
@@ -158,6 +194,12 @@ namespace GameMain
                 _currentBuildItem.DisableLogicWhenBuilding();
                 _currentBuildItem.SetOutliner(true);
                 _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
+
+                if (item == EBuildItem.Portal)
+                {
+                    _isBuildingPortal = true;
+                    _portalA = _currentBuildItem as Portal;
+                }
             }
             else
             {
@@ -177,6 +219,10 @@ namespace GameMain
                 return;
             }
 
+            if (item is Portal portal)
+            {
+                portal.AttachedPortal.Remove();
+            }
             item.Remove();
         }
 
