@@ -741,10 +741,10 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
-  m_StopNaN: 0
+  m_StopNaN: 1
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_Version: 2
   m_TaaSettings:
     m_Quality: 3
-    m_FrameInfluence: 0.1
+    m_FrameInfluence: 0.100000024
     m_JitterScale: 1
     m_MipBias: 0
     m_VarianceClampScale: 0.9
@@ -775,12 +775,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipelineAsset: {fileID: 11400000, guid: ecbd363870e07455ea237f5753668d30, type: 2}
+<<<<<<< Updated upstream
 --- !u!114 &282840817
+=======
+--- !u!1 &320162589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320162591}
+  - component: {fileID: 320162590}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &320162590
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 282840810}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -800,6 +822,46 @@ MonoBehaviour:
   dilateQuality: 0
   blurIterations: 1
   blurType: 1
+=======
+  m_GameObject: {fileID: 320162589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: c093ab080b6c44424b2e4851c9011ba9, type: 2}
+--- !u!4 &320162591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320162589}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.183443, y: -26.210325, z: 37.396187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327077280
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346538916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &359208235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2654,7 @@ PrefabInstance:
     - target: {fileID: -2135445998859597101, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d69b3d02149e5ad4eaed89ad4822f3e2, type: 2}
+      objectReference: {fileID: 2100000, guid: 1cb5b530ba084584d92660faf1df2edc, type: 2}
     - target: {fileID: 919132149155446097, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_Name
       value: Sheep
@@ -2600,7 +2662,7 @@ PrefabInstance:
     - target: {fileID: 1646733720424155422, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d69b3d02149e5ad4eaed89ad4822f3e2, type: 2}
+      objectReference: {fileID: 2100000, guid: 1cb5b530ba084584d92660faf1df2edc, type: 2}
     - target: {fileID: 2803436535603912181, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2608,14 +2670,18 @@ PrefabInstance:
     - target: {fileID: 8151023354082563727, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d69b3d02149e5ad4eaed89ad4822f3e2, type: 2}
+      objectReference: {fileID: 2100000, guid: 1cb5b530ba084584d92660faf1df2edc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 1046831995}
+=======
+      addedObject: {fileID: 1842698099}
+>>>>>>> Stashed changes
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1346538927}
@@ -2627,10 +2693,17 @@ PrefabInstance:
       addedObject: {fileID: 1346538925}
     - targetCorrespondingSourceObject: {fileID: -6435399192587130656, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 422904024}
     - targetCorrespondingSourceObject: {fileID: -3181452503744645242, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 824084358}
+=======
+      addedObject: {fileID: 1768487935}
+    - targetCorrespondingSourceObject: {fileID: -3181452503744645242, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 327077280}
+>>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
 --- !u!1 &1346538914 stripped
 GameObject:
@@ -3381,6 +3454,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 954633364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1768487935
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346538918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1811088161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3451,6 +3536,102 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 22a45a6811b874ea5b8a8ef9244a0f17, type: 3}
   m_PrefabInstance: {fileID: 1811088161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1842698099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346538914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - CutoutMask: 8
+    renderer: {fileID: 1346538923}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1346538921}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1346538919}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1346538917}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  - CutoutMask: 8
+    renderer: {fileID: 1346538915}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 8, g: 7.372549, b: 0.1254902, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &1944853828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,3 +3957,4 @@ SceneRoots:
   - {fileID: 1523324646}
   - {fileID: 2110672022}
   - {fileID: 1346538913}
+  - {fileID: 320162591}
