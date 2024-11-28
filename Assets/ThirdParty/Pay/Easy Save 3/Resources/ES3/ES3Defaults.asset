@@ -31,6 +31,9 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - Assembly-CSharp
+    - Boxophobic.PolyverseSkies.Runtime
+    - Boxophobic.PolyverseSkies.Scripts
+    - Boxophobic.Utils.Scripts
     - DOTween.Modules
     - DOTweenPro.Scripts
     - EasySave3
