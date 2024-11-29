@@ -15,6 +15,7 @@ namespace GameMain
         protected override void OnInit()
         {
             GameEntry.Event.Subscribe(OnGameStateChangeArgs.EventId, OnGameStateChange);
+            GameManager.Instance.TotalSheepCount += _sheepCount;
         }
 
         protected override void OnBeDestroyed()

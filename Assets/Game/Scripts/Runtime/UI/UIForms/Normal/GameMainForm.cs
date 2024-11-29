@@ -60,9 +60,12 @@ namespace GameMain
             }
 
             ChangeBuildStateUI(GameManager.Build.BuildState);
+            //底部工具栏
             m_btn_Start.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
             m_btn_Undo.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
             m_btn_Remove.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
+            //现有羊数量
+            m_tmp_ArriveSheep.text = $"到达羊数量：{GameManager.Instance.ArriveSheepCount}/{GameManager.Instance.TotalSheepCount}";
         }
 
         #region Events
@@ -83,6 +86,7 @@ namespace GameMain
 
             GameEntry.Event.Subscribe(OnBuildStateChangeArgs.EventId, OnBuildStateChange);
             GameEntry.Event.Subscribe(OnGameStateChangeArgs.EventId, OnGameStateChange);
+            GameEntry.Event.Subscribe(SheepArriveArgs.EventId, OnSheepArrive);
         }
 
         private void RemoveEvents()
@@ -101,6 +105,7 @@ namespace GameMain
 
             GameEntry.Event.Unsubscribe(OnBuildStateChangeArgs.EventId, OnBuildStateChange);
             GameEntry.Event.Unsubscribe(OnGameStateChangeArgs.EventId, OnGameStateChange);
+            GameEntry.Event.Unsubscribe(SheepArriveArgs.EventId, OnSheepArrive);
         }
 
         private void OnClickPause()
@@ -164,6 +169,12 @@ namespace GameMain
                 m_btn_Undo.gameObject.SetActive(false);
                 m_btn_Remove.gameObject.SetActive(false);
             }
+        }
+
+        private void OnSheepArrive(object sender, GameEventArgs e)
+        {
+            var arg = (SheepArriveArgs)e;
+            m_tmp_ArriveSheep.text = $"到达羊数量：{arg.ArriveSheepCount}/{arg.TotalSheepCount}";
         }
 
         #endregion

@@ -159,6 +159,10 @@ namespace GameMain
                         buildItem.SetOutlinerColor(Color.red);
                         if (Input.GetMouseButtonDown(0))
                         {
+                            if(buildItem is Portal portal)
+                            {
+                                portal.AttachedPortal.Remove();
+                            }
                             buildItem.Remove();
                             _preRemoveItem = null;
                         }

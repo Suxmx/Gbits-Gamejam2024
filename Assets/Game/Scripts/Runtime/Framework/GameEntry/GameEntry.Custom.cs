@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using Game.Scripts.Runtime.Audio;
+using Game.Scripts.Runtime.Cutscene;
 using Game.Scripts.Runtime.Input;
 using JSAM;
 using UnityEngine;
@@ -22,11 +23,13 @@ namespace GameMain
         /// </summary>
         public static AudioComponent Audio { get; private set; }
         public static InputComponent Input { get;private set; }
+        public static CutsceneComponent Cutscene { get; private set; }
 
         private void InitCustomComponents()
         {
             Audio = UnityGameFramework.Runtime.GameEntry.GetComponent<AudioComponent>();
             Input = UnityGameFramework.Runtime.GameEntry.GetComponent<InputComponent>();
+            Cutscene = UnityGameFramework.Runtime.GameEntry.GetComponent<CutsceneComponent>();
         }
     }
 }

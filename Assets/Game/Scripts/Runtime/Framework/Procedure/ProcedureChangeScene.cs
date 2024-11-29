@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GameFramework.DataTable;
 using GameFramework.Event;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -19,7 +20,8 @@ namespace GameMain
         private bool m_ChangeToMenu = false;
         private bool m_IsChangeSceneComplete = false;
         private bool _pendingLoadScene;
-        private string _pendingLoadSceneName;
+        private string _loadSceneName;
+        private bool _hasCutscene = false;
 
         public override bool UseNativeDialog
         {
@@ -29,16 +31,36 @@ namespace GameMain
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
-
+            //初始化场景切换状态
             m_IsChangeSceneComplete = false;
             _pendingLoadScene = false;
+            _hasCutscene = procedureOwner.HasData("PlayCutscene") && procedureOwner.GetData<VarBoolean>("PlayCutscene");
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Subscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
             GameEntry.Event.Subscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
+            GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            
+            // 还原游戏速度
+            GameEntry.Base.ResetNormalGameSpeed();
 
+            string sceneName = procedureOwner.GetData<VarString>("NextScene");
+            _loadSceneName = sceneName;
+            if (!_hasCutscene)
+            {
+                DoChangeScene(sceneName);
+            }
+            else
+            {
+                Debug.Log("play cutscene");
+                GameEntry.Cutscene.PlayCutscene();
+            }
+        }
+
+        private void DoChangeScene(string sceneName)
+        {
             // 停止所有声音
             GameEntry.Audio.StopAllSounds();
 
@@ -53,10 +75,7 @@ namespace GameMain
                 GameEntry.Scene.UnloadScene(loadedSceneAssetNames[i]);
             }
 
-            // 还原游戏速度
-            GameEntry.Base.ResetNormalGameSpeed();
 
-            string sceneName = procedureOwner.GetData<VarString>("NextScene");
             m_ChangeToMenu = sceneName == AssetUtility.MenuSceneName;
 
             if (loadedSceneAssetNames.FindIndex(x => x == AssetUtility.GetSceneAsset(sceneName)) < 0)
@@ -66,17 +85,22 @@ namespace GameMain
             else
             {
                 _pendingLoadScene = true;
-                _pendingLoadSceneName = sceneName;
             }
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
+            if (_hasCutscene)
+            {
+                GameEntry.Cutscene.FadeCutscene();
+            }
+
             GameEntry.Event.Unsubscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Unsubscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
             GameEntry.Event.Unsubscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
+            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
 
             base.OnLeave(procedureOwner, isShutdown);
         }
@@ -89,6 +113,7 @@ namespace GameMain
             {
                 return;
             }
+
 
             if (m_ChangeToMenu)
             {
@@ -123,7 +148,7 @@ namespace GameMain
             if (_pendingLoadScene)
             {
                 _pendingLoadScene = false;
-                GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(_pendingLoadSceneName), AssetPriority.SceneAsset,
+                GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(_loadSceneName), AssetPriority.SceneAsset,
                     this);
             }
         }
@@ -160,6 +185,14 @@ namespace GameMain
 
             Log.Info("Load scene '{0}' dependency asset '{1}', count '{2}/{3}'.", ne.SceneAssetName,
                 ne.DependencyAssetName, ne.LoadedCount.ToString(), ne.TotalCount.ToString());
+        }
+
+        private void OnCutsceneEnter(object sender, GameEventArgs e)
+        {
+            if (!_hasCutscene) return;
+
+            Debug.Log("Cutscene enter");
+            DoChangeScene(_loadSceneName);
         }
     }
 }

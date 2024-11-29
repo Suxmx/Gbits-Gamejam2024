@@ -68,7 +68,7 @@ namespace UnityGameFramework.Runtime
         private string m_UIGroupHelperTypeName = "UnityGameFramework.Runtime.DefaultUIGroupHelper";
 
         [SerializeField]
-        private UIGroupHelperBase m_CustomUIGroupHelper = null;
+        private UIGroupHelperBase  m_CustomUIGroupHelper = null;
 
         [SerializeField]
         private UIGroup[] m_UIGroups = null;

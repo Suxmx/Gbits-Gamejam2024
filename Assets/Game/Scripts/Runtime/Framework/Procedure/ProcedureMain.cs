@@ -28,6 +28,11 @@ namespace GameMain
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
+            bool cutscene = false;
+            if (procedureOwner.HasData("PlayCutscene"))
+            {
+                cutscene=procedureOwner.GetData<VarBoolean>("PlayCutscene");
+            }
             _returnMenu = false;
             _restart = false;
             _fpsCounter = new FpsCounter(0.5f);

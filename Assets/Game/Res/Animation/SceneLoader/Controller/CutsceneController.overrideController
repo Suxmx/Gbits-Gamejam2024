@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CutsceneController
+  m_Controller: {fileID: 9100000, guid: 549b200b910277741bb0305dcf6d6c6e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3ae68624b2930c047941f16ff2a93024, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d825a766e91aa7e4685cfd5d2ef005e4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7312aba902058de45a5e258be3665f51, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1dedc42a9b9e7f54e9dacaf30e60961b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a758eda31684c96499b02e4ff2db6a22, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 826e8a25a13743a41a1f228b8b0ce1c0, type: 2}

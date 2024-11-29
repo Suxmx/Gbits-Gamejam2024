@@ -7,14 +7,16 @@ namespace GameMain
     public class Sheep : GameEntityBase
     {
         public Rigidbody Rigid => _rigidbody;
+        public bool Arrival = false;
         [SerializeField] private float speed = 5;
 
         private Rigidbody _rigidbody;
         private Transform _graphics;
 
         private bool _bFacingRight;
-        private CountdownTimer _dieTimer;
+        private CountdownTimer _dieTimer,_portalTimer;
         private CapsuleCollider _capsuleCollider;
+        private bool _canTeleport=true;
 
         protected override void OnDestroy()
         {
@@ -30,6 +32,9 @@ namespace GameMain
             _bFacingRight = true;
             _dieTimer = new CountdownTimer(1f, false);
             _dieTimer.OnCompleted += Die;
+            
+            _portalTimer = new CountdownTimer(0.5f, false);
+            _portalTimer.OnCompleted += () => _canTeleport = true;
         }
 
         protected override void OnAfterInit()
@@ -187,6 +192,14 @@ namespace GameMain
         public void Die()
         {
             Destroy(gameObject);
+        }
+
+        public void Teleport(Vector3 pos)
+        {
+            if (!_canTeleport) return;
+            _canTeleport = false;
+            _portalTimer.Restart();
+            transform.position = pos;
         }
 
         #endregion

@@ -8,8 +8,9 @@ namespace GameMain
         private void OnTriggerEnter(Collider other)
         {
             var sheep = other.GetComponentInParent<Sheep>();
-            if (sheep)
+            if (sheep && !sheep.Arrival)
             {
+                sheep.Arrival = true;
                 Destroy(sheep.gameObject);
                 GameManager.Instance.ArriveSheepCount++;
             }

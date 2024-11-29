@@ -28,7 +28,7 @@ namespace GameMain
 
         public abstract bool DetectBuildable();
 
-        public void SetOutliner(bool bEnable)
+        public virtual void SetOutliner(bool bEnable)
         {
             if (_outliner is null)
                 _outliner = GetComponent<Outlinable>();

@@ -49,7 +49,29 @@ namespace GameMain
 
         public EGameState GameState { get; private set; }
         public int Level = 1;
-        public int ArriveSheepCount = 0;
+
+        public int ArriveSheepCount
+        {
+            get => _arriveSheepCount;
+            set
+            {
+                _arriveSheepCount = value;
+                GameEntry.Event.Fire(this, SheepArriveArgs.Create(_arriveSheepCount, TotalSheepCount));
+            }
+        }
+
+        public int TotalSheepCount
+        {
+            get => _totalSheepCount;
+            set
+            {
+                _totalSheepCount = value;
+                GameEntry.Event.Fire(this, SheepArriveArgs.Create(_arriveSheepCount, TotalSheepCount));
+            }
+        }
+
+        private int _totalSheepCount = 0;
+        private int _arriveSheepCount = 0;
         public LevelConfig LevelConfig;
 
         private bool _pause = false;
@@ -184,6 +206,10 @@ namespace GameMain
             if (state == GameState) return;
             GameState = state;
             GameEntry.Event.Fire(this, OnGameStateChangeArgs.Create(state));
+        }
+
+        public void RequestRestart()
+        {
         }
     }
 }
