@@ -304,7 +304,7 @@ Shader "Mirza Beig/Distortion Shockwave Particle"
 			#endif
 			CBUFFER_END
 
-			uniform float4 _CameraDepthTexture_TexelSize;
+			// uniform float4 _CameraDepthTexture_TexelSize;
 
 
 			
@@ -673,7 +673,7 @@ Shader "Mirza Beig/Distortion Shockwave Particle"
 			#endif
 			CBUFFER_END
 
-			uniform float4 _CameraDepthTexture_TexelSize;
+			// uniform float4 _CameraDepthTexture_TexelSize;
 
 
 			
@@ -1001,7 +1001,7 @@ Shader "Mirza Beig/Distortion Shockwave Particle"
 			#endif
 			CBUFFER_END
 
-			uniform float4 _CameraDepthTexture_TexelSize;
+			// uniform float4 _CameraDepthTexture_TexelSize;
 
 
 			
@@ -1325,7 +1325,7 @@ Shader "Mirza Beig/Distortion Shockwave Particle"
 			#endif
 			CBUFFER_END
 
-			uniform float4 _CameraDepthTexture_TexelSize;
+			// uniform float4 _CameraDepthTexture_TexelSize;
 
 
 			
@@ -1656,7 +1656,7 @@ Shader "Mirza Beig/Distortion Shockwave Particle"
 			#endif
 			CBUFFER_END
 
-			uniform float4 _CameraDepthTexture_TexelSize;
+			// uniform float4 _CameraDepthTexture_TexelSize;
 
 
 			
