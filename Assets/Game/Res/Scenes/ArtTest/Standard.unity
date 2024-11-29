@@ -18826,7 +18826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41
+      value: -38.77
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23312,7 +23312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   complexMaskingMode: 0
   drawingMode: 1
-  outlineLayer: 0
+  outlineLayer: 1
   outlineTargets:
   - CutoutMask: 8
     renderer: {fileID: 1021875865}
@@ -27376,7 +27376,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734398843}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
@@ -45177,15 +45177,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c22a5b83f45b604bbd0d901a0b7668a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16
+      value: -24.94
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c22a5b83f45b604bbd0d901a0b7668a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 6.54
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c22a5b83f45b604bbd0d901a0b7668a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35
+      value: 34.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c22a5b83f45b604bbd0d901a0b7668a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50955,7 +50955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   complexMaskingMode: 0
   drawingMode: 1
-  outlineLayer: 0
+  outlineLayer: 1
   outlineTargets:
   - CutoutMask: 8
     renderer: {fileID: 294125072}
@@ -66305,6 +66305,7 @@ GameObject:
   - component: {fileID: 1700084774}
   - component: {fileID: 1700084773}
   - component: {fileID: 1700084772}
+  - component: {fileID: 1700084778}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -66327,7 +66328,7 @@ MonoBehaviour:
   stage: 1
   renderingStrategy: 0
   renderingMode: 1
-  outlineLayerMask: -1
+  outlineLayerMask: 3
   primaryBufferSizeMode: 0
   primaryRendererScale: 0.75
   primarySizeReference: 2500
@@ -66468,6 +66469,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 39.61, y: 0, z: 0}
+--- !u!114 &1700084778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700084771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb42831ee5422f409e7f24f9e7488ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage: 1
+  renderingStrategy: 0
+  renderingMode: 1
+  outlineLayerMask: 6
+  primaryBufferSizeMode: 0
+  primaryRendererScale: 0.75
+  primarySizeReference: 2500
+  blurShift: 1
+  dilateShift: 2
+  dilateIterations: 1
+  dilateQuality: 2
+  blurIterations: 0
+  blurType: 1
 --- !u!1001 &1701132966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70053,7 +70079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   complexMaskingMode: 0
   drawingMode: 1
-  outlineLayer: 0
+  outlineLayer: 1
   outlineTargets:
   - CutoutMask: 8
     renderer: {fileID: 1016814249}
@@ -80395,7 +80421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   complexMaskingMode: 0
   drawingMode: 1
-  outlineLayer: 0
+  outlineLayer: 1
   outlineTargets:
   - CutoutMask: 8
     renderer: {fileID: 1094421679}
