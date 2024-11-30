@@ -134,7 +134,7 @@ namespace GameMain
             }
             else
             {
-                Debug.LogError($"转换到未知场景：{_loadSceneName}");
+                ChangeState<ProcedureMain>(procedureOwner);
             }
         }
 

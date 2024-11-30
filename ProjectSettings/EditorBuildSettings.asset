@@ -21,14 +21,17 @@ EditorBuildSettings:
     path: Assets/Game/Res/Scenes/ArtTest/Mugs - Scene1 - OneColorVariousParameters.unity
     guid: f8e73c9b33562224e856292674029092
   - enabled: 1
-    path: Assets/Game/Res/Scenes/ArtTest/Standard.unity
-    guid: 678ebee929128534fbf7af7d45b15c89
+    path: Assets/Game/Res/Scenes/ArtTest/Start.unity
+    guid: cd804d4b9f7a2ec42bea9159bb96a336
   - enabled: 1
     path: Assets/Game/Res/Scenes/ArtTest/Start.unity
     guid: cd804d4b9f7a2ec42bea9159bb96a336
   - enabled: 1
     path: Assets/Game/Res/Scenes/ArtTest/StylizedEffect.unity
     guid: 1ea11e3c9b7f9ce408fa637095308e2e
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/1.unity
+    guid: b693f35846c0165479b75775ba591de9
   - enabled: 1
     path: Assets/Game/Res/Scenes/Main.unity
     guid: 79e864125dd53e04b94a6a143aec0c9d
@@ -38,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Res/Scenes/Splash.unity
     guid: 2de5b8aa175d49646af49fc2a7b4a4c1
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Standard.unity
+    guid: 678ebee929128534fbf7af7d45b15c89
   - enabled: 1
     path: Assets/Game/Res/Scenes/Test/UIEnv.unity
     guid: 9ed75641ed56b32409c98bfc5bf2a90e
