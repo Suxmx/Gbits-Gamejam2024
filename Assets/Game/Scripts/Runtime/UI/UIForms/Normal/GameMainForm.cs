@@ -14,8 +14,8 @@ namespace GameMain
     public partial class GameMainForm : UGuiForm
     {
         [SerializeField] private Texture2D _removeCursor;
-        [SerializeField] private GameObject _buildItemBtnPrefab;
-        [SerializeField] private Dictionary<EBuildItem, Sprite> _buildItemIconMap = new();
+        [SerializeField] private Texture2D _normalCursor;
+        [SerializeField] private Dictionary<EBuildItem, GameObject> _buildItemPrefabMap = new();
 
         protected override void OnInit(object userData)
         {
@@ -43,10 +43,6 @@ namespace GameMain
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
-            if (GameEntry.Debugger is not null)
-            {
-                m_txt_FrameRate.text = $"帧率：{(GameEntry.Procedure.CurrentProcedure as ProcedureMain).CurrentFps,0:00}";
-            }
         }
 
         private void RefreshStateOnOpen()
@@ -55,17 +51,20 @@ namespace GameMain
 
             foreach (var config in GameManager.Instance.LevelConfig.AvailableBuildItems)
             {
-                var buildItem = Instantiate(_buildItemBtnPrefab, m_rect_BuildItem).GetComponent<BuildItemUI>();
-                buildItem.Init(config.Item, _buildItemIconMap[config.Item]);
+                var buildItem = Instantiate(_buildItemPrefabMap[config.Item], m_rect_BuildItem)
+                    .GetComponent<BuildItemUI>();
+                buildItem.Init(config.Item,config.Count);
             }
 
             ChangeBuildStateUI(GameManager.Build.BuildState);
             //底部工具栏
+            m_btn_ExitPlay.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Runtime);
             m_btn_Start.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
             m_btn_Undo.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
             m_btn_Remove.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
             //现有羊数量
-            m_tmp_ArriveSheep.text = $"到达羊数量：{GameManager.Instance.ArriveSheepCount}/{GameManager.Instance.TotalSheepCount}";
+            m_tmp_ArriveSheep.text =
+                $"到达羊数量：{GameManager.Instance.ArriveSheepCount}/{GameManager.Instance.TotalSheepCount}";
         }
 
         #region Events
@@ -73,10 +72,8 @@ namespace GameMain
         private void RegisterEvents()
         {
             //bottom bar
-            m_btn_Build.onClick.AddListener(OnClickBuild);
             m_btn_Remove.onClick.AddListener(OnClickRemove);
             //top bar
-            m_btn_Pause.onClick.AddListener(OnClickPause);
             m_btn_Restart.onClick.AddListener(OnClickRestart);
             m_btn_Start.onClick.AddListener(OnClickStart);
             m_btn_Undo.onClick.AddListener(OnClickUndo);
@@ -92,10 +89,8 @@ namespace GameMain
         private void RemoveEvents()
         {
             //bottom bar
-            m_btn_Build.onClick.RemoveListener(OnClickBuild);
             m_btn_Remove.onClick.RemoveListener(OnClickRemove);
             //top bar
-            m_btn_Pause.onClick.RemoveListener(OnClickPause);
             m_btn_Restart.onClick.RemoveListener(OnClickRestart);
             m_btn_Start.onClick.RemoveListener(OnClickStart);
             m_btn_Undo.onClick.RemoveListener(OnClickUndo);
@@ -121,10 +116,6 @@ namespace GameMain
             GameManager.Instance.Pause = false;
         }
 
-        private void OnClickBuild()
-        {
-            GameManager.Build.ChangeBuildState(EBuildState.Build);
-        }
 
         private void OnClickRemove()
         {
@@ -164,11 +155,10 @@ namespace GameMain
         private void OnGameStateChange(object sender, GameEventArgs e)
         {
             var arg = (OnGameStateChangeArgs)e;
-            if (arg.GameState == EGameState.Runtime)
-            {
-                m_btn_Undo.gameObject.SetActive(false);
-                m_btn_Remove.gameObject.SetActive(false);
-            }
+            m_btn_ExitPlay.gameObject.SetActive(arg.GameState == EGameState.Runtime);
+            m_btn_Start.gameObject.SetActive(arg.GameState == EGameState.Editor);
+            m_btn_Undo.gameObject.SetActive(arg.GameState == EGameState.Editor);
+            m_btn_Remove.gameObject.SetActive(arg.GameState == EGameState.Editor);
         }
 
         private void OnSheepArrive(object sender, GameEventArgs e)
@@ -181,20 +171,14 @@ namespace GameMain
 
         public void ChangeBuildStateUI(EBuildState state)
         {
-            m_btn_Build.GetComponent<Image>().color =
-                state == EBuildState.Build ? Color.green : Color.white;
-            m_btn_Remove.GetComponent<Image>().color =
-                state == EBuildState.Remove ? Color.green : Color.white;
-
-            m_rect_BuildItem.gameObject.SetActive(state == EBuildState.Build);
             if (state == EBuildState.Remove)
             {
                 Cursor.SetCursor(_removeCursor, new Vector2(16, 16), CursorMode.Auto);
             }
             else
             {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(_normalCursor, new Vector2(16, 16), CursorMode.Auto);
             }
         }
     }
-}
+}   
