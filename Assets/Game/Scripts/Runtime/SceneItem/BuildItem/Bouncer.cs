@@ -7,6 +7,7 @@ namespace GameMain
     {
         [SerializeField] private Vector3 _boxSize;
         [SerializeField] private Vector3 _offset;
+        [SerializeField] private float _bounceSpeed=15;
         private Vector3 _direction => transform.rotation * Vector3.up;
         private bool _bdontChange => Mathf.Abs(_direction.x) < 1e-2f;
         private bool _bFacingRight => _direction.x > 0;
@@ -71,7 +72,7 @@ namespace GameMain
                     sheep.ChangeFacing(_bFacingRight);
                 }
 
-                sheep.ChangeVelocityTo(_direction * 15);
+                sheep.ChangeVelocityTo(_direction * _bounceSpeed);
                 // Debug.Log("trigger");
             }
         }
