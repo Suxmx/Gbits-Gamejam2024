@@ -43,7 +43,6 @@ namespace Game.Scripts.Runtime.Cutscene
 
         private void OnCutsceneFadeEnd(object sender, GameEventArgs e)
         {
-            Debug.Log("fade end "+(sender as MonoBehaviour).name + OnCutsceneFadeArgs.EventId);
             _graphics.gameObject.SetActive(false);
         }
     }
