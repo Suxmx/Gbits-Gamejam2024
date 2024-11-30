@@ -182,7 +182,6 @@ namespace GameMain
         private void OnCutsceneEnter(object sender, GameEventArgs e)
         {
             // if ((MenuForm)sender != this) return;
-            Debug.Log("Cutscene enter");
             GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
             if (_pendingOpenStuffForm)
             {

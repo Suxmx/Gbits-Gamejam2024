@@ -14,31 +14,18 @@ namespace GameMain
     public class ProcedureMenu : ProcedureBase
     {
         private int _menuSerialId;
+        private ProcedureOwner _procedureOwner;
 
         public override bool UseNativeDialog
         {
             get { return false; }
         }
 
-        private bool _enterGame;
-        private ProcedureOwner _owner;
-
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            _owner = procedureOwner;
-            _enterGame = false;
+            _procedureOwner = procedureOwner;
             _menuSerialId = (int)GameEntry.UI.OpenUIForm(UIFormId.MenuForm);
-        }
-
-        protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
-        {
-            base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            if (_enterGame)
-            {
-                procedureOwner.SetData<VarString>("NextScene", AssetUtility.MainSceneName);
-                ChangeState<ProcedureChangeScene>(procedureOwner);
-            }
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -50,8 +37,9 @@ namespace GameMain
 
         public void EnterGame(int index)
         {
-            _owner.SetData<VarInt32>("LevelIndex", index);
-            _enterGame = true;
+            _procedureOwner.SetData<VarInt32>("LevelIndex", index);
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(index));
+            ChangeState<ProcedureChangeScene>(_procedureOwner);
         }
     }
 }

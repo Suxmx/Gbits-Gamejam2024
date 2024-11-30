@@ -1,6 +1,6 @@
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024/12/1 0:53:04
+// 生成时间：2024/12/1 7:21:14
 //------------------------------------------------------------
 namespace GameMain
 {
@@ -41,6 +41,11 @@ namespace GameMain
 		/// </summary>
 		public const int StuffForm = 105;
 
+		/// <summary>
+		/// 结算UI
+		/// </summary>
+		public const int SettleUIForm = 106;
+
 	}
 	public enum EUIFormId
 	{
@@ -78,6 +83,11 @@ namespace GameMain
 		/// 制作人员UI
 		/// </summary>
 		StuffForm = UIFormId.StuffForm,
+
+		/// <summary>
+		/// 结算UI
+		/// </summary>
+		SettleUIForm = UIFormId.SettleUIForm,
 
 	}
 }

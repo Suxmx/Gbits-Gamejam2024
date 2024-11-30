@@ -79,7 +79,7 @@ namespace GameMain
 
 
             _changeToMenu = sceneName == AssetUtility.MenuSceneName;
-            _changeToMain = sceneName == AssetUtility.MainSceneName;
+            _changeToMain = sceneName.Contains("Level");
             _changeToSplash = sceneName == AssetUtility.SplashSceneName;
 
             //如果是重新加载当前scene

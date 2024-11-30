@@ -25,12 +25,13 @@ namespace GameMain
         #endregion
 
 
-        public static void Create()
+        public static void Create(int index)
         {
             if (Instance == null)
             {
                 GameObject go = new GameObject("GameManager");
                 Instance = go.AddComponent<GameManager>();
+                Instance.Level = index;
                 _ = Instance.OnEnter();
             }
         }

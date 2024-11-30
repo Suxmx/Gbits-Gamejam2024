@@ -9,3 +9,4 @@
 	103	对话UI	DialogueForm	Normal	FALSE	FALSE
 	104	选关UI	LevelChooseForm	Normal	FALSE	TRUE
 	105	制作人员UI	StuffForm	Normal	FALSE	TRUE
+	106	结算UI	SettleUIForm	Normal	FALSE	TRUE

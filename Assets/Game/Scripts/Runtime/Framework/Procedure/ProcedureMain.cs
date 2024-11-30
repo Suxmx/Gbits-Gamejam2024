@@ -19,6 +19,7 @@ namespace GameMain
         private bool _restart = false;
         private FpsCounter _fpsCounter;
         private ProcedureOwner _procedureOwner;
+        private int _levelIndex = 0;
 
         public override bool UseNativeDialog
         {
@@ -29,17 +30,13 @@ namespace GameMain
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            bool cutscene = false;
-            if (procedureOwner.HasData("PlayCutscene"))
-            {
-                cutscene=procedureOwner.GetData<VarBoolean>("PlayCutscene");
-            }
+            _levelIndex = procedureOwner.GetData<VarInt32>("LevelIndex");
             _returnMenu = false;
             _restart = false;
             _fpsCounter = new FpsCounter(0.5f);
             _procedureOwner = procedureOwner;
 
-            GameManager.Create();
+            GameManager.Create(_levelIndex);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -53,7 +50,7 @@ namespace GameMain
             }
             else if (_restart)
             {
-                procedureOwner.SetData<VarString>("NextScene", AssetUtility.MainSceneName);
+                procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(_levelIndex));
                 ChangeState<ProcedureChangeScene>(procedureOwner);
             }
         }
@@ -73,6 +70,14 @@ namespace GameMain
         {
             _procedureOwner.SetData<VarBoolean>("PlayCutscene", true);
             _restart = true;
+        }
+
+        public void NextLevel()
+        {
+            _levelIndex++;
+            _procedureOwner.SetData<VarInt32>("LevelIndex", _levelIndex);
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(_levelIndex));
+            ChangeState<ProcedureChangeScene>(_procedureOwner);
         }
     }
 }
