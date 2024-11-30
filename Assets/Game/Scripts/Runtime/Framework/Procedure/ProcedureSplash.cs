@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using GameFramework.Resource;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -15,31 +16,50 @@ namespace GameMain
     {
         public override bool UseNativeDialog
         {
-            get
+            get { return true; }
+        }
+
+        private ProcedureOwner _procedureOwner;
+
+        protected override void OnEnter(ProcedureOwner procedureOwner)
+        {
+            base.OnEnter(procedureOwner);
+            _procedureOwner = procedureOwner;
+            if (!GameEntry.Procedure.IfPlaySplash)
             {
-                return true;
+                DoChangeState();
+            }
+            else
+            {
+                GameObject.Find("Splash").GetComponent<Animator>().Play("Splash", 0, 0);
             }
         }
 
-        protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
+        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
+            base.OnLeave(procedureOwner, isShutdown);
+            procedureOwner.SetData<VarBoolean>("PlayCutscene", false);
+        }
 
-            // TODO: 这里可以播放一个 Splash 动画
-            // ...
-
+        private void DoChangeState()
+        {
             if (GameEntry.Base.EditorResourceMode)
             {
                 // 编辑器模式
                 Log.Info("Editor resource mode detected.");
-                ChangeState<ProcedurePreload>(procedureOwner);
+                ChangeState<ProcedurePreload>(_procedureOwner);
             }
             else if (GameEntry.Resource.ResourceMode == ResourceMode.Package)
             {
                 // 单机模式
                 Log.Info("Package resource mode detected.");
-                ChangeState<ProcedureInitResources>(procedureOwner);
+                ChangeState<ProcedureInitResources>(_procedureOwner);
             }
+        }
+
+        public void SplashPlayEnd()
+        {
+            DoChangeState();
         }
     }
 }

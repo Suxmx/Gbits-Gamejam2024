@@ -45,7 +45,8 @@ namespace GameMain
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
             // 运行一帧即切换到 Splash 展示流程
-            ChangeState<ProcedureSplash>(procedureOwner);
+            procedureOwner.SetData<VarString>("NextScene", AssetUtility.SplashSceneName);
+            ChangeState<ProcedureChangeScene>(procedureOwner);
         }
 
         // private void InitLanguageSettings()

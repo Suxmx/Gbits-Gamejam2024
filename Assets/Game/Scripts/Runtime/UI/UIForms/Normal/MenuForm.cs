@@ -7,6 +7,7 @@ namespace GameMain
     public partial class MenuForm : UGuiForm
     {
         private int? _settingFormSerialId = null;
+        private int? _levelChooseFormSerialId = null;
         
         protected override void OnInit(object userData)
         {
@@ -44,7 +45,8 @@ namespace GameMain
 
         private void OnStartGame()
         {
-            (GameEntry.Procedure.CurrentProcedure as ProcedureMenu).EnterGame();
+            GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
+            // (GameEntry.Procedure.CurrentProcedure as ProcedureMenu).EnterGame();
         }
 
         private void OnExitGame()

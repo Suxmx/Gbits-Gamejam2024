@@ -17,7 +17,10 @@ namespace GameMain
 {
     public class ProcedureChangeScene : ProcedureBase
     {
-        private bool m_ChangeToMenu = false;
+        private bool _changeToMenu = false;
+        private bool _changeToMain = false;
+        private bool _changeToSplash = false;
+
         private bool m_IsChangeSceneComplete = false;
         private bool _pendingLoadScene;
         private string _loadSceneName;
@@ -42,7 +45,7 @@ namespace GameMain
             GameEntry.Event.Subscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
             GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            
+
             // 还原游戏速度
             GameEntry.Base.ResetNormalGameSpeed();
 
@@ -54,7 +57,6 @@ namespace GameMain
             }
             else
             {
-                Debug.Log("play cutscene");
                 GameEntry.Cutscene.PlayCutscene();
             }
         }
@@ -76,8 +78,11 @@ namespace GameMain
             }
 
 
-            m_ChangeToMenu = sceneName == AssetUtility.MenuSceneName;
+            _changeToMenu = sceneName == AssetUtility.MenuSceneName;
+            _changeToMain = sceneName == AssetUtility.MainSceneName;
+            _changeToSplash = sceneName == AssetUtility.SplashSceneName;
 
+            //如果是重新加载当前scene
             if (loadedSceneAssetNames.FindIndex(x => x == AssetUtility.GetSceneAsset(sceneName)) < 0)
             {
                 GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(sceneName), AssetPriority.SceneAsset, this);
@@ -115,13 +120,21 @@ namespace GameMain
             }
 
 
-            if (m_ChangeToMenu)
+            if (_changeToMenu)
             {
                 ChangeState<ProcedureMenu>(procedureOwner);
             }
-            else
+            else if (_changeToMain)
             {
                 ChangeState<ProcedureMain>(procedureOwner);
+            }
+            else if (_changeToSplash)
+            {
+                ChangeState<ProcedureSplash>(procedureOwner);
+            }
+            else
+            {
+                Debug.LogError($"转换到未知场景：{_loadSceneName}");
             }
         }
 

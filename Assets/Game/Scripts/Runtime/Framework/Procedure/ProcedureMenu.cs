@@ -21,10 +21,12 @@ namespace GameMain
         }
 
         private bool _enterGame;
+        private ProcedureOwner _owner;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
+            _owner = procedureOwner;
             _enterGame = false;
             _menuSerialId = (int)GameEntry.UI.OpenUIForm(UIFormId.MenuForm);
         }
@@ -44,10 +46,13 @@ namespace GameMain
         {
             base.OnLeave(procedureOwner, isShutdown);
             GameEntry.UI.CloseUIForm(_menuSerialId);
+            
+            procedureOwner.SetData<VarBoolean>("PlayCutscene", true);
         }
 
-        public void EnterGame()
+        public void EnterGame(int index)
         {
+            _owner.SetData<VarInt32>("LevelIndex", index);
             _enterGame = true;
         }
     }

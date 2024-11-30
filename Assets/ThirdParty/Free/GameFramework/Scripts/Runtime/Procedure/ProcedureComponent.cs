@@ -32,6 +32,7 @@ namespace UnityGameFramework.Runtime
 
         public string TestSceneName;
         public bool IfEnterMenu;
+        public bool IfPlaySplash;
 
         /// <summary>
         /// 获取当前流程。

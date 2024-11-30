@@ -26,6 +26,7 @@ namespace UnityGameFramework.Editor
         //DEBUG
         private SerializedProperty m_TestSceneNameProp;
         private SerializedProperty m_IfEnterMenuProp;
+        private SerializedProperty m_IfPlaySplashProp;
 
         private string[] m_ProcedureTypeNames = null;
         private List<string> m_CurrentAvailableProcedureTypeNames = null;
@@ -111,7 +112,15 @@ namespace UnityGameFramework.Editor
                     {
                         m_IfEnterMenuProp.boolValue = selected;
                     }
+                    
+                    selected = EditorGUILayout.ToggleLeft("是否播放Splash",  m_IfPlaySplashProp.boolValue);
+                    if ( m_IfPlaySplashProp.boolValue != selected)
+                    {
+                        m_IfPlaySplashProp.boolValue = selected;
+                    }
                 }
+                
+                
                 if (m_AvailableSceneNames.Count > 0)
                 {
                     int selectedIndex = EditorGUILayout.Popup("ProcedureMain对应的Scene", m_TestSceneIndex,
@@ -179,6 +188,7 @@ namespace UnityGameFramework.Editor
             m_EntranceProcedureTypeName = serializedObject.FindProperty("m_EntranceProcedureTypeName");
             m_TestSceneNameProp = serializedObject.FindProperty("TestSceneName");
             m_IfEnterMenuProp = serializedObject.FindProperty("IfEnterMenu");
+            m_IfPlaySplashProp = serializedObject.FindProperty("IfPlaySplash");
 
             RefreshTypeNames();
             FindAllScenes();
