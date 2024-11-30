@@ -11,6 +11,7 @@ namespace GameMain
         private bool _bdontChange => Mathf.Abs(_direction.x) < 1e-2f;
         private bool _bFacingRight => _direction.x > 0;
         private bool _bEnableLogic = false;
+        private Collider _boxCollider;
 
         private void OnDrawGizmos()
         {
@@ -21,7 +22,10 @@ namespace GameMain
 
         public override void EnableLogic()
         {
+            _boxCollider??=GetComponent<Collider>();
+            _boxCollider.enabled = true;
             Rigid.linearVelocity = Vector3.zero;
+            
             if (!_bIsStatic)
                 Rigid.useGravity = true;
             _bEnableLogic = true;
@@ -29,6 +33,8 @@ namespace GameMain
 
         public override void DisableLogicWhenBuilding()
         {
+            _boxCollider??=GetComponent<Collider>();
+            _boxCollider.enabled = false;
             Rigid.useGravity = false;
             _bEnableLogic = false;
         }

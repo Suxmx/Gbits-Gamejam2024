@@ -7,6 +7,7 @@ namespace GameMain
     public class Sheep : GameEntityBase
     {
         public Rigidbody Rigid => _rigidbody;
+        public Collider Collider => _capsuleCollider;
         public bool Arrival = false;
         [SerializeField] private float speed = 5;
 
