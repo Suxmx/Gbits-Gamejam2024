@@ -37,5 +37,39 @@ namespace GameMain
         {
             rectTransform.anchoredPosition = pos;
         }
+
+        public static float GetWidth(this RectTransform rectTransform)
+        {
+            return rectTransform.sizeDelta.x;
+        }
+
+        public static float GetHeight(this RectTransform rectTransform)
+        {
+            return rectTransform.sizeDelta.y;
+        }
+
+        public static Vector2 GetSize(this RectTransform rectTransform)
+        {
+            return rectTransform.sizeDelta;
+        }
+
+        public static void SetSize(this RectTransform rectTransform, Vector2 size)
+        {
+            rectTransform.sizeDelta = size;
+        }
+
+        public static void SetWidth(this RectTransform rectTransform, float width)
+        {
+            var size = rectTransform.sizeDelta;
+            size.x = width;
+            rectTransform.sizeDelta = size;
+        }
+
+        public static void SetHeight(this RectTransform rectTransform, float height)
+        {
+            var size = rectTransform.sizeDelta;
+            size.y = height;
+            rectTransform.sizeDelta = size;
+        }
     }
 }

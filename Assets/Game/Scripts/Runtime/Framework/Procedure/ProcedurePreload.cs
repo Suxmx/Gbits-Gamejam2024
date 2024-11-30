@@ -69,6 +69,7 @@ namespace GameMain
                     return;
                 }
             }
+
             Debug.Log("Preload end");
 #if UNITY_EDITOR
             if (GameEntry.Procedure.IfEnterMenu) //进入菜单
@@ -81,7 +82,8 @@ namespace GameMain
             }
             else //进入Main流程场景
             {
-                procedureOwner.SetData<VarString>("NextScene", AssetUtility.MainSceneName);
+                procedureOwner.SetData<VarInt32>("LevelIndex", 1);
+                procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(1));
             }
 #else
             procedureOwner.SetData<VarString>("NextScene",AssetUtility.MenuSceneName);
