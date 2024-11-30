@@ -26,7 +26,7 @@ namespace GameMain
 
         public override bool DetectBuildable()
         {
-            var size = Physics.OverlapSphereNonAlloc(transform.position, _radius, _tmpColliders, _cantBuildLayer);
+            var size = Physics.OverlapSphereNonAlloc(transform.position, _radius, _tmpColliders, _cantBuildLayer,QueryTriggerInteraction.Ignore);
             for (int i = 0; i < Mathf.Min(size, 10); i++)
             {
                 if (_tmpColliders[i].transform != transform && !_tmpColliders[i].transform.IsChildOf(transform))

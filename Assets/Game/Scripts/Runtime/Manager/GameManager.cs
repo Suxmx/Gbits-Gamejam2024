@@ -17,7 +17,7 @@ namespace GameMain
         #region Static
 
         public static GameManager Instance { get; private set; }
-        public static Plane BuildPlane = new Plane(Vector3.forward, new Vector3(0, 0, 0f));
+        public static Plane BuildPlane = new Plane(Vector3.forward, new Vector3(0, 0, 34.8f));
 
         public static BuildManager Build { get; private set; }
         public static bool IsInited => Instance != null && Instance.Inited;

@@ -11,7 +11,8 @@ namespace GameMain
         WindArea,
         Pendulum,
         Dasher,
-        Portal
+        Portal,
+        OneWayPlatform,
     }
 
     public enum EBuildState
@@ -235,6 +236,16 @@ namespace GameMain
             if (BuildState == state) return;
             BuildState = state;
             GameEntry.Event.Fire(this, OnBuildStateChangeArgs.Create(state));
+        }
+
+        private void SaveBuildItemStates()
+        {
+            
+        }
+        
+        private void ResumeBuildItemStates()
+        {
+            
         }
     }
 }

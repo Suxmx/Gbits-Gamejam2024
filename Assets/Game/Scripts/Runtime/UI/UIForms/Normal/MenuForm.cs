@@ -14,8 +14,6 @@ namespace GameMain
     public partial class MenuForm : UGuiForm
     {
         [SerializeField] private Color _chosenFontColor;
-        private int? _levelChooseFormSerialId = null;
-        private int? _stuffFormSerialId = null;
         private int _curBtnIndex = 0;
 
         private bool _pendingOpenLevelChooseForm = false;

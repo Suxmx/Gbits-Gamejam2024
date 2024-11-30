@@ -34,7 +34,7 @@ namespace GameMain
         public override bool DetectBuildable()
         {
             var size = Physics.OverlapBoxNonAlloc(transform.position + _offset, _boxSize / 2, _tmpColliders,
-                transform.rotation, _cantBuildLayer);
+                transform.rotation, _cantBuildLayer,QueryTriggerInteraction.Ignore);
             for (int i = 0; i < Mathf.Min(size, 10); i++)
             {
                 if (_tmpColliders[i].transform != transform && !_tmpColliders[i].transform.IsChildOf(transform))

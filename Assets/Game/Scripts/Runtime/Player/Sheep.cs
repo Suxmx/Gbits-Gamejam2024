@@ -190,6 +190,7 @@ namespace GameMain
 
         public void AddForce(Vector3 force, ForceMode mode)
         {
+            _rigidbody??=GetComponent<Rigidbody>();
             _rigidbody.AddForce(force, mode);
         }
 
