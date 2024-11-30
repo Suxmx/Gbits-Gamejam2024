@@ -64,7 +64,7 @@ namespace GameMain
         private void DoChangeScene(string sceneName)
         {
             // 停止所有声音
-            GameEntry.Audio.StopAllSounds();
+            GameEntry.Audio.StopAllSounds(); 
 
             // 隐藏所有实体
             GameEntry.Entity.HideAllLoadingEntities();

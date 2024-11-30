@@ -18,6 +18,7 @@ namespace GameMain
         private bool _returnMenu = false;
         private bool _restart = false;
         private FpsCounter _fpsCounter;
+        private ProcedureOwner _procedureOwner;
 
         public override bool UseNativeDialog
         {
@@ -36,6 +37,7 @@ namespace GameMain
             _returnMenu = false;
             _restart = false;
             _fpsCounter = new FpsCounter(0.5f);
+            _procedureOwner = procedureOwner;
 
             GameManager.Create();
         }
@@ -69,6 +71,7 @@ namespace GameMain
 
         public void Restart()
         {
+            _procedureOwner.SetData<VarBoolean>("PlayCutscene", true);
             _restart = true;
         }
     }

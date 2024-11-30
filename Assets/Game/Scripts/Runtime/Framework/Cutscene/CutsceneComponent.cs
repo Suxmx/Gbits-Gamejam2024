@@ -1,6 +1,9 @@
+using System;
+using GameFramework.Event;
 using GameMain;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using GameEntry = GameMain.GameEntry;
 
 namespace Game.Scripts.Runtime.Cutscene
 {
@@ -16,15 +19,32 @@ namespace Game.Scripts.Runtime.Cutscene
             _animator = _graphics.GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            GameEntry.Event.Subscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
+        }
+
+        private void OnDisable()
+        {
+            GameEntry.Event.Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
+        }
+
         public void PlayCutscene()
         {
             _graphics.gameObject.SetActive(true);
-            _animator.Play("Enter",0,0);
+            _animator.Play("Enter", 0, 0);
+            _animator.Update(0);
         }
 
         public void FadeCutscene()
         {
-            _animator.SetTrigger("Fade");
+            _animator.Play("Fade", 0, 0);
+        }
+
+        private void OnCutsceneFadeEnd(object sender, GameEventArgs e)
+        {
+            Debug.Log("fade end "+(sender as MonoBehaviour).name + OnCutsceneFadeArgs.EventId);
+            _graphics.gameObject.SetActive(false);
         }
     }
 }

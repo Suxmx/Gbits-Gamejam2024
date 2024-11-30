@@ -119,6 +119,10 @@ namespace UnityGameFramework.Runtime
         /// <param name="e">事件内容。</param>
         public void Fire(object sender, GameEventArgs e)
         {
+            if (e.Id == 1279417368)
+            {
+                Debug.Log("here");
+            }
             m_EventManager.Fire(sender, e);
         }
 

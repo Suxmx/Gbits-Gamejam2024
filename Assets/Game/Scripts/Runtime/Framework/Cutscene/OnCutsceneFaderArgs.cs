@@ -11,16 +11,16 @@ namespace GameMain
 {
     public class OnCutsceneFadeArgs : GameEventArgs
     {
-        public static readonly int EventId = typeof(OnCutsceneEnterArgs).GetHashCode();
+        public static readonly int EventId = typeof(OnCutsceneFadeArgs).GetHashCode();
 
         public override int Id
         {
             get { return EventId; }
         }
 
-        public static OnCutsceneEnterArgs Create()
+        public static OnCutsceneFadeArgs Create()
         {
-            OnCutsceneEnterArgs args = ReferencePool.Acquire<OnCutsceneEnterArgs>();
+            OnCutsceneFadeArgs args = ReferencePool.Acquire<OnCutsceneFadeArgs>();
             return args;
         }
 

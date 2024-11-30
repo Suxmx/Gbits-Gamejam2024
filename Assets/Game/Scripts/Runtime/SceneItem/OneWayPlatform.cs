@@ -9,6 +9,13 @@ namespace GameMain
         private Collider _collider;
         
         private HashSet<Sheep> _sheepSet = new HashSet<Sheep>();
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color=Color.red;
+            Gizmos.DrawSphere(transform.position+Vector3.up*0.2f, 0.1f);
+        }
+
         protected override void OnInit()
         {
             _collider = transform.Find("Collider").GetComponent<Collider>();
@@ -27,7 +34,11 @@ namespace GameMain
         {
             foreach (var sheep in _sheepSet)
             {
-                if (sheep.transform.position.y > transform.position.y)
+                if (!sheep || sheep.IsDie)
+                {
+                    continue;
+                }
+                if (sheep.transform.position.y > transform.position.y+0.2f)
                 {
                     Physics.IgnoreCollision(sheep.Collider,_collider,false);
                 }

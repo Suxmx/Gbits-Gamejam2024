@@ -15,17 +15,6 @@ namespace Game.Scripts.Runtime
             _animator = GetComponent<Animator>();
         }
         
-        public void PlayCutscene()
-        {
-            gameObject.SetActive(true);
-            _animator.Play("Enter",0,0);
-        }
-        
-        public void FadeCutscene()
-        {
-            _animator.SetTrigger("Fade");
-        }
-
         public void OnCutsceneEnterEnd()
         {
             Debug.Log("OnCutsceneEnterEnd");
@@ -33,6 +22,7 @@ namespace Game.Scripts.Runtime
         }
         public void OnCutsceneFadeEnd()
         {
+            Debug.Log("fade endddd");
             UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>().Fire(this,OnCutsceneFadeArgs.Create());
             gameObject.SetActive(false);
         }
