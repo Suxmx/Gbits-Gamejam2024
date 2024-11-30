@@ -26275,11 +26275,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2063853485382682403, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.42
+      value: -16.32
       objectReference: {fileID: 0}
     - target: {fileID: 2063853485382682403, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.56
+      value: 6.7
       objectReference: {fileID: 0}
     - target: {fileID: 2063853485382682403, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26317,10 +26317,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: SheepSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7995371518809618797, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995371518809618797, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995371518809618797, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995371518809618797, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8010650300108666495, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5879443404923975273, guid: a6b262980e340c240a9c2108eed19d89, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4629296146509809153, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7839483780016129971, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
 --- !u!1001 &680648019
 PrefabInstance:
