@@ -18925,7 +18925,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4908009
+      value: 2.490801
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_LocalScale.y
@@ -18933,7 +18933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.4908009
+      value: 2.490801
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19006,6 +19006,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1266094086}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1266094087}
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: 527d1ec89ddc5c6438cf0041b2e15599, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1357312746}
@@ -54443,6 +54446,28 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
+--- !u!95 &1266094087
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266094085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e536db19d8c8974fb1678391bf18f7a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1272207176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88931,7 +88956,6 @@ SceneRoots:
   - {fileID: 1703914510}
   - {fileID: 1809142422}
   - {fileID: 734398844}
-  - {fileID: 522838081}
   - {fileID: 1730538269}
   - {fileID: 951745985}
   - {fileID: 1019553125}
@@ -88958,3 +88982,4 @@ SceneRoots:
   - {fileID: 1016814243}
   - {fileID: 2025758224}
   - {fileID: 42091186}
+  - {fileID: 522838081}
