@@ -27,8 +27,8 @@ EditorBuildSettings:
     path: Assets/Game/Res/Scenes/ArtTest/StylizedEffect.unity
     guid: 1ea11e3c9b7f9ce408fa637095308e2e
   - enabled: 1
-    path: Assets/Game/Res/Scenes/Levels/1.unity
-    guid: b693f35846c0165479b75775ba591de9
+    path: Assets/Game/Res/Scenes/Levels/Main.unity
+    guid: d5cc3113235301041807c153a3fdf6b5
   - enabled: 1
     path: Assets/Game/Res/Scenes/Main.unity
     guid: 678ebee929128534fbf7af7d45b15c89

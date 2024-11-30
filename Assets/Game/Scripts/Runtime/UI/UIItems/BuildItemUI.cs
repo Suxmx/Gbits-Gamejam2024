@@ -1,4 +1,6 @@
 using System;
+using GameFramework.Event;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +10,14 @@ namespace GameMain
     {
         private Button _btn;
         private EBuildItem _buildItem;
+        private TextMeshProUGUI _countTmp;
 
-        public void Init(EBuildItem buildItem,Sprite icon)
+        public void Init(EBuildItem buildItem,int count)
         {
             _buildItem = buildItem;
-            transform.Find("Icon").GetComponent<Image>().sprite = icon;
+            _countTmp = GetComponentInChildren<TextMeshProUGUI>();
+            _countTmp.text = count.ToString();
+            GameEntry.Event.Subscribe(OnBuildItemCountChangeArgs.EventId, OnBuildItem);
         }
 
         private void Awake()
@@ -33,6 +38,15 @@ namespace GameMain
         private void OnClick()
         {
             GameManager.Build.StartBuild(_buildItem);
+        }
+        
+        private void OnBuildItem(object sender, GameEventArgs e)
+        {
+            var args = (OnBuildItemCountChangeArgs)e;
+            if (args.BuildItem == _buildItem)
+            {
+                _countTmp.text = args.Count.ToString();
+            }
         }
     }
 }
