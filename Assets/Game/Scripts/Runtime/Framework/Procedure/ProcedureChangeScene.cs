@@ -64,7 +64,7 @@ namespace GameMain
         private void DoChangeScene(string sceneName)
         {
             // 停止所有声音
-            GameEntry.Audio.StopAllSounds(); 
+            GameEntry.Audio.StopAllSounds();
 
             // 隐藏所有实体
             GameEntry.Entity.HideAllLoadingEntities();
@@ -204,8 +204,12 @@ namespace GameMain
         {
             if (!_hasCutscene) return;
 
-            Debug.Log("Cutscene enter");
+            // Debug.Log("Cutscene enter");
             DoChangeScene(_loadSceneName);
+            if (GameEntry.UI.GetUIFormById(UIFormId.MenuForm) && GameEntry.UI.GetUIFormById(UIFormId.MenuForm).gameObject.activeInHierarchy)
+            {
+                GameEntry.UI.CloseUIFormById(UIFormId.MenuForm);
+            }
         }
     }
 }

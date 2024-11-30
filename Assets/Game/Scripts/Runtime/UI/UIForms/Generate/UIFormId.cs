@@ -1,6 +1,6 @@
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024/11/30 15:12:50
+// 生成时间：2024/12/1 0:53:04
 //------------------------------------------------------------
 namespace GameMain
 {
@@ -36,6 +36,11 @@ namespace GameMain
 		/// </summary>
 		public const int LevelChooseForm = 104;
 
+		/// <summary>
+		/// 制作人员UI
+		/// </summary>
+		public const int StuffForm = 105;
+
 	}
 	public enum EUIFormId
 	{
@@ -68,6 +73,11 @@ namespace GameMain
 		/// 选关UI
 		/// </summary>
 		LevelChooseForm = UIFormId.LevelChooseForm,
+
+		/// <summary>
+		/// 制作人员UI
+		/// </summary>
+		StuffForm = UIFormId.StuffForm,
 
 	}
 }

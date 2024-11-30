@@ -29,9 +29,10 @@ namespace Game.Scripts.Runtime.Cutscene
             GameEntry.Event.Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
         }
 
-        public void PlayCutscene()
+        public void PlayCutscene(float speed=1)
         {
             _graphics.gameObject.SetActive(true);
+            _animator.speed = speed;
             _animator.Play("Enter", 0, 0);
             _animator.Update(0);
         }
@@ -45,5 +46,6 @@ namespace Game.Scripts.Runtime.Cutscene
         {
             _graphics.gameObject.SetActive(false);
         }
+        
     }
 }

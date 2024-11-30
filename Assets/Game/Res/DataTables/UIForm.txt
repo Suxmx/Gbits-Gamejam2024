@@ -8,3 +8,4 @@
 	102	游戏UI	GameMainForm	Normal	FALSE	TRUE
 	103	对话UI	DialogueForm	Normal	FALSE	FALSE
 	104	选关UI	LevelChooseForm	Normal	FALSE	TRUE
+	105	制作人员UI	StuffForm	Normal	FALSE	TRUE

@@ -22,6 +22,8 @@ namespace GameMain
 
         private Tween _chooseTween;
 
+        private bool _pendingClose = false;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -56,6 +58,13 @@ namespace GameMain
                 Debug.Log("curChooseIndex: " + _curChooseIndex);
                 ChooseIndex(_curChooseIndex);
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape) && !_pendingClose)
+            {
+                _pendingClose = true;
+                GameEntry.Cutscene.PlayCutscene(2);
+                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            }
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -67,7 +76,7 @@ namespace GameMain
         private void RegisterEvents()
         {
             m_btn_ReturnMenu.onClick.AddListener(OnClickReturnMenu);
-            
+
             GameEntry.Event.Subscribe(ChooseLevelArgs.EventId, OnChooseLevel);
         }
 
@@ -98,14 +107,27 @@ namespace GameMain
 
         private void OnClickReturnMenu()
         {
-            GameEntry.UI.CloseUIForm(this);
+            if (!_pendingClose)
+            {
+                _pendingClose = true;
+                GameEntry.Cutscene.PlayCutscene(2);
+                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            }
         }
 
         private void OnChooseLevel(object sender, GameEventArgs e)
         {
             ChooseLevelArgs args = (ChooseLevelArgs)e;
             GameEntry.UI.CloseUIForm(this);
-            (GameEntry.Procedure.CurrentProcedure as ProcedureMenu).EnterGame(_curChooseIndex + 1);
+            (GameEntry.Procedure.CurrentProcedure as ProcedureMenu)?.EnterGame(_curChooseIndex + 1);
+        }
+
+        private void OnCutsceneEnter(object sender, GameEventArgs e)
+        {
+            _pendingClose = false;
+            GameEntry.UI.CloseUIForm(this);
+            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            GameEntry.Cutscene.FadeCutscene();
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
+using GameFramework.Event;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEditor;
@@ -16,6 +17,9 @@ namespace GameMain
         private int? _levelChooseFormSerialId = null;
         private int? _stuffFormSerialId = null;
         private int _curBtnIndex = 0;
+
+        private bool _pendingOpenLevelChooseForm = false;
+        private bool _pendingOpenStuffForm = false;
 
         private List<Button> _btns = new();
 
@@ -43,14 +47,10 @@ namespace GameMain
                 PointerEventData pointerData = new PointerEventData(EventSystem.current);
                 pointerData.position = Input.mousePosition;
                 List<RaycastResult> results = new List<RaycastResult>();
-                GraphicRaycaster raycaster = (GameEntry.UI.GetUIGroup("Normal").Helper as UIGroupHelperBase)
-                    .GetComponent<GraphicRaycaster>();
-                // Debug.Log(raycaster.gameObject.name);
-                raycaster.Raycast(pointerData, results);
-                
+                EventSystem.current.RaycastAll(pointerData, results);
+
                 foreach (RaycastResult result in results)
                 {
-                    Debug.Log(result.gameObject.name);
                     if (result.gameObject.GetComponent<ButtonHover>())
                     {
                         OnHoverButton(result.gameObject.transform as RectTransform);
@@ -85,6 +85,7 @@ namespace GameMain
         private void RegisterEvents()
         {
             m_btn_StartGame.onClick.AddListener(OnClickStartGame);
+            m_btn_LevelSelect.onClick.AddListener(OnClickLevelSelect);
             m_btn_ExitGame.onClick.AddListener(OnClickExitGame);
             m_btn_Stuff.onClick.AddListener(OnClickStuff);
         }
@@ -92,6 +93,7 @@ namespace GameMain
         private void RemoveEvents()
         {
             m_btn_StartGame.onClick.RemoveListener(OnClickStartGame);
+            m_btn_LevelSelect.onClick.RemoveListener(OnClickLevelSelect);
             m_btn_ExitGame.onClick.RemoveListener(OnClickExitGame);
             m_btn_Stuff.onClick.RemoveListener(OnClickStuff);
         }
@@ -139,12 +141,17 @@ namespace GameMain
         private void OnClickStartGame()
         {
             // GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
-            (GameEntry.Procedure.CurrentProcedure as ProcedureMenu).EnterGame(1);
+            (GameEntry.Procedure.CurrentProcedure as ProcedureMenu)?.EnterGame(1);
         }
 
         private void OnClickLevelSelect()
         {
-            GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
+            if (!_pendingOpenStuffForm && !_pendingOpenLevelChooseForm)
+            {
+                _pendingOpenLevelChooseForm = true;
+                GameEntry.Cutscene.PlayCutscene(2);
+                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            }
         }
 
         private void OnClickExitGame()
@@ -158,13 +165,39 @@ namespace GameMain
 
         private void OnHoverButton(RectTransform rect)
         {
-            _curBtnIndex = _btns.FindIndex(x => x.transform == rect);
+            int index = _btns.FindIndex(x => x.transform == rect);
+            if (index == -1 || index == _curBtnIndex) return;
+            _curBtnIndex = index;
             PreSelectButton(_curBtnIndex);
         }
 
         private void OnClickStuff()
         {
-            // GameEntry.UI.OpenUIForm(UIFormId.StuffForm);
+            if (!_pendingOpenStuffForm && !_pendingOpenLevelChooseForm)
+            {
+                _pendingOpenStuffForm = true;
+                GameEntry.Cutscene.PlayCutscene(2);
+                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            }
+        }
+
+        private void OnCutsceneEnter(object sender, GameEventArgs e)
+        {
+            // if ((MenuForm)sender != this) return;
+            Debug.Log("Cutscene enter");
+            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            if (_pendingOpenStuffForm)
+            {
+                _pendingOpenStuffForm = false;
+                GameEntry.UI.OpenUIForm(UIFormId.StuffForm);
+                GameEntry.Cutscene.FadeCutscene();
+            }
+            else if (_pendingOpenLevelChooseForm)
+            {
+                _pendingOpenLevelChooseForm = false;
+                GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
+                GameEntry.Cutscene.FadeCutscene();
+            }
         }
 
         #endregion

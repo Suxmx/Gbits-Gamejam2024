@@ -14,7 +14,7 @@ namespace GameMain
     public class ProcedureMenu : ProcedureBase
     {
         private int _menuSerialId;
-        
+
         public override bool UseNativeDialog
         {
             get { return false; }
@@ -39,14 +39,12 @@ namespace GameMain
                 procedureOwner.SetData<VarString>("NextScene", AssetUtility.MainSceneName);
                 ChangeState<ProcedureChangeScene>(procedureOwner);
             }
-            
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-            GameEntry.UI.CloseUIForm(_menuSerialId);
-            
+
             procedureOwner.SetData<VarBoolean>("PlayCutscene", true);
         }
 
