@@ -7,7 +7,7 @@ namespace GameMain
     {
         [SerializeField] private float _radius;
         
-        private bool _bEnableLogic = false;
+        private bool _bEnableLogic = true;
         private GameObject _outlineObject;
 
         private void OnDrawGizmos()
@@ -49,7 +49,7 @@ namespace GameMain
         {
             if (!_bEnableLogic) return;
             Sheep sheep = other.GetComponentInParent<Sheep>();
-            if (sheep)
+            if (sheep && !sheep.IsDie)
             {
                 var dist = Vector2.Distance(transform.position, sheep.transform.position);
                 if (dist < 0.5f)
@@ -58,8 +58,11 @@ namespace GameMain
                 }
                 else
                 {
-                    var direction = (transform.position - sheep.transform.position).normalized;
-                    sheep.AddForce(direction * 10 / (dist * dist), ForceMode.Acceleration);
+                    
+                    var force = (transform.position - sheep.transform.position).normalized;
+                    force = force * 1000 / (dist * dist);
+                    sheep.AddForce(force, ForceMode.Acceleration);
+                    
                 }
             }
         }

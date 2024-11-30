@@ -7,6 +7,7 @@ namespace GameMain
     public class Sheep : GameEntityBase
     {
         public Rigidbody Rigid => _rigidbody;
+        public bool IsDie => _die;
         public Collider Collider => _capsuleCollider;
         public bool Arrival = false;
         [SerializeField] private float speed = 5;
@@ -18,6 +19,7 @@ namespace GameMain
         private CountdownTimer _dieTimer,_portalTimer;
         private CapsuleCollider _capsuleCollider;
         private bool _canTeleport=true;
+        private bool _die = false;
 
         protected override void OnDestroy()
         {
@@ -30,7 +32,7 @@ namespace GameMain
             _rigidbody = GetComponent<Rigidbody>();
             _capsuleCollider = GetComponentInChildren<CapsuleCollider>();
             _graphics = transform.Find("Graphics");
-            _bFacingRight = true;
+            ChangeFacing(true);
             _dieTimer = new CountdownTimer(1f, false);
             _dieTimer.OnCompleted += Die;
             
@@ -178,6 +180,7 @@ namespace GameMain
             }
 
             _bFacingRight = bRight;
+            _graphics.localScale = new Vector3(_bFacingRight ? 1 : -1, 1, 1);
         }
 
         public void ChangeVelocityTo(Vector3 velocity)
@@ -192,6 +195,8 @@ namespace GameMain
 
         public void Die()
         {
+            if (_die) return;
+            _die = true;
             Destroy(gameObject);
         }
 
