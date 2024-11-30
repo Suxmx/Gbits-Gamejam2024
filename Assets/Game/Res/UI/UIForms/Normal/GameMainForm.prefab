@@ -1190,6 +1190,8 @@ MonoBehaviour:
       Data: 
   _removeCursor: {fileID: 2800000, guid: df246cbd7a08fe643a954f9e6f8d4ee4, type: 3}
   _normalCursor: {fileID: 2800000, guid: dd50f1a0ed53fc94598c5a66cb12d3b6, type: 3}
+  _editModeSprite: {fileID: 21300000, guid: 110d423414af33c4f847f779ffa0d609, type: 3}
+  _playModeSprite: {fileID: 21300000, guid: e5ae225b33ac484489df54234949da3e, type: 3}
 --- !u!114 &4063075615735733016
 MonoBehaviour:
   m_ObjectHideFlags: 0

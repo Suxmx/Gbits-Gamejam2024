@@ -13,6 +13,7 @@ namespace GameMain
         private bool _start = false;
 
         private float _timer = 0;
+        private int _currentSheepCount;
         private Material _doorLightMaterial;
 
         protected override void OnInit()
@@ -20,6 +21,7 @@ namespace GameMain
             GameEntry.Event.Subscribe(OnGameStateChangeArgs.EventId, OnGameStateChange);
             GameManager.Instance.TotalSheepCount += _sheepCount;
             _doorLightMaterial = transform.Find("Graphics/DOOR/DoorLight").GetComponent<MeshRenderer>().material;
+            _currentSheepCount = _sheepCount;
         }
 
         protected override void OnBeDestroyed()
@@ -31,7 +33,7 @@ namespace GameMain
         {
             if (!_start) return;
             _timer += Time.deltaTime;
-            if (_timer >= _spawnInterval && _sheepCount > 0)
+            if (_timer >= _spawnInterval && _currentSheepCount > 0)
             {
                 _timer -= _spawnInterval;
                 SpawnSheep();
@@ -40,10 +42,10 @@ namespace GameMain
 
         private void SpawnSheep()
         {
-            _sheepCount--;
+            _currentSheepCount--;
             Sheep sheep = Instantiate(_sheepPrefab, transform.position, Quaternion.identity).GetComponent<Sheep>();
             sheep.gameObject.SetActive(true);
-            sheep.AddForce(new Vector3(1,1).normalized*10,ForceMode.Impulse);
+            sheep.AddForce(new Vector3(1, 1).normalized * 10, ForceMode.Impulse);
             var color1 = _doorLightBaseColor * Mathf.Pow(2, 4);
             var color2 = _doorLightBaseColor * Mathf.Pow(2, 2);
             Sequence s = DOTween.Sequence();
@@ -62,6 +64,8 @@ namespace GameMain
             else
             {
                 _start = false;
+                _currentSheepCount = _sheepCount;
+                _timer = 0;
             }
         }
     }

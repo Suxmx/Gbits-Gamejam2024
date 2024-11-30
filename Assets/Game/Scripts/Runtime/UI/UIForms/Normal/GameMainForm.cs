@@ -15,6 +15,8 @@ namespace GameMain
     {
         [SerializeField] private Texture2D _removeCursor;
         [SerializeField] private Texture2D _normalCursor;
+        [SerializeField] private Sprite _editModeSprite;
+        [SerializeField] private Sprite _playModeSprite;
         [SerializeField] private Dictionary<EBuildItem, GameObject> _buildItemPrefabMap = new();
 
         protected override void OnInit(object userData)
@@ -53,7 +55,7 @@ namespace GameMain
             {
                 var buildItem = Instantiate(_buildItemPrefabMap[config.Item], m_rect_BuildItem)
                     .GetComponent<BuildItemUI>();
-                buildItem.Init(config.Item,config.Count);
+                buildItem.Init(config.Item, config.Count);
             }
 
             ChangeBuildStateUI(GameManager.Build.BuildState);
@@ -65,6 +67,8 @@ namespace GameMain
             //现有羊数量
             m_tmp_ArriveSheep.text =
                 $"到达羊数量：{GameManager.Instance.ArriveSheepCount}/{GameManager.Instance.TotalSheepCount}";
+
+            m_img_Mode.sprite = GameManager.Instance.GameState == EGameState.Editor ? _editModeSprite : _playModeSprite;
         }
 
         #region Events
@@ -73,6 +77,7 @@ namespace GameMain
         {
             //bottom bar
             m_btn_Remove.onClick.AddListener(OnClickRemove);
+            m_btn_ExitPlay.onClick.AddListener(OnClickExitPlay);
             //top bar
             m_btn_Restart.onClick.AddListener(OnClickRestart);
             m_btn_Start.onClick.AddListener(OnClickStart);
@@ -90,6 +95,7 @@ namespace GameMain
         {
             //bottom bar
             m_btn_Remove.onClick.RemoveListener(OnClickRemove);
+            m_btn_ExitPlay.onClick.RemoveListener(OnClickExitPlay);
             //top bar
             m_btn_Restart.onClick.RemoveListener(OnClickRestart);
             m_btn_Start.onClick.RemoveListener(OnClickStart);
@@ -134,6 +140,11 @@ namespace GameMain
             GameManager.Instance.ChangeGameState(EGameState.Runtime);
         }
 
+        private void OnClickExitPlay()
+        {
+            GameManager.Instance.ChangeGameState(EGameState.Editor);
+        }
+
         private void OnClickRestart()
         {
             (GameEntry.Procedure.CurrentProcedure as ProcedureMain).Restart();
@@ -159,6 +170,8 @@ namespace GameMain
             m_btn_Start.gameObject.SetActive(arg.GameState == EGameState.Editor);
             m_btn_Undo.gameObject.SetActive(arg.GameState == EGameState.Editor);
             m_btn_Remove.gameObject.SetActive(arg.GameState == EGameState.Editor);
+
+            m_img_Mode.sprite = arg.GameState == EGameState.Editor ? _editModeSprite : _playModeSprite;
         }
 
         private void OnSheepArrive(object sender, GameEventArgs e)
@@ -181,4 +194,4 @@ namespace GameMain
             }
         }
     }
-}   
+}

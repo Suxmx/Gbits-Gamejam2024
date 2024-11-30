@@ -160,7 +160,9 @@ namespace GameMain
             else if (BuildState == EBuildState.Remove)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                var size = Physics.RaycastNonAlloc(ray, _tmpHits, 1000f);
+                var size = Physics.RaycastNonAlloc(ray, _tmpHits, 1000f,
+                    LayerMask.GetMask("SheepIgnore", "Default", "CantBuild", "SheepInteract"),
+                    queryTriggerInteraction: QueryTriggerInteraction.Ignore);
                 bool found = false;
                 for (int i = 0; i < size; i++)
                 {
@@ -179,6 +181,7 @@ namespace GameMain
                     if (found)
                     {
                         _preRemoveItem = buildItem;
+                        // if(!buildItem) continue;
                         buildItem.SetOutliner(true);
                         buildItem.SetOutlinerColor(Color.red);
                         if (Input.GetMouseButtonDown(0))
@@ -277,12 +280,44 @@ namespace GameMain
             GameEntry.Event.Fire(this, OnBuildStateChangeArgs.Create(state));
         }
 
-        private void SaveBuildItemStates()
+        private struct BuildItemSaveData
         {
+            public BuildItemBase Item;
+            public Vector3 Position;
+            public Quaternion Rotation;
         }
 
-        private void ResumeBuildItemStates()
+        List<BuildItemSaveData> _buildItemSaveDatas = new();
+
+        public void SaveBuildItemStates()
         {
+            _buildItemSaveDatas.Clear();
+            var items = FindObjectsByType<BuildItemBase>(FindObjectsSortMode.None);
+            foreach (var item in items)
+            {
+                var data = new BuildItemSaveData()
+                {
+                    Item = item,
+                    Position = item.transform.position,
+                    Rotation = item.transform.rotation
+                };
+                _buildItemSaveDatas.Add(data);
+            }
+        }
+
+        public void ResumeBuildItemStates()
+        {
+            foreach (var data in _buildItemSaveDatas)
+            {
+                data.Item.transform.position = data.Position;
+                data.Item.transform.rotation = data.Rotation;
+                var rigid = data.Item.GetComponent<Rigidbody>();
+                if (rigid)
+                {
+                    rigid.linearVelocity = Vector3.zero;
+                    rigid.angularVelocity = Vector3.zero;
+                }
+            }
         }
     }
 }

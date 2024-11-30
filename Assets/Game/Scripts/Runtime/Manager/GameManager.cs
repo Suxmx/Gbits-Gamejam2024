@@ -205,11 +205,23 @@ namespace GameMain
         {
             if (state == GameState) return;
             GameState = state;
-            GameEntry.Event.Fire(this, OnGameStateChangeArgs.Create(state));
-        }
+            if (GameState == EGameState.Runtime)
+            {
+                Build.SaveBuildItemStates();
+            }
+            else
+            {
+                TotalSheepCount = 0;
+                ArriveSheepCount = 0;
+                Build.ResumeBuildItemStates();
+                var sheep = FindObjectsByType<Sheep>(FindObjectsSortMode.None);
+                for (int i = sheep.Length - 1; i >= 0; i--)
+                {
+                    Destroy(sheep[i].gameObject);
+                }
+            }
 
-        public void RequestRestart()
-        {
+            GameEntry.Event.Fire(this, OnGameStateChangeArgs.Create(state));
         }
     }
 }
