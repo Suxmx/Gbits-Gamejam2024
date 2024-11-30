@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2989909923307112464}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.21, y: 6.54, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   complexMaskingMode: 0
   drawingMode: 1
-  outlineLayer: 1
+  outlineLayer: 0
   outlineTargets:
   - CutoutMask: 8
     renderer: {fileID: 7969045260262232084}
