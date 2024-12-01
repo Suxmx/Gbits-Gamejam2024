@@ -15,6 +15,8 @@ namespace GameMain
     public struct LevelConfig
     {
         public int Index;
+        public int TargetSheepCount;
+        [TextArea] public string LevelTip;
         public List<LevelBuildItemConfig> AvailableBuildItems;
     }
 

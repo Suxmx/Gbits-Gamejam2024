@@ -133,7 +133,7 @@ namespace GameMain
 
             GameState = EGameState.Editor;
             //打开主界面
-            _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
+            // _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
             GameEntry.Event.FireNow(this, OnGameManagerInitArg.Create());
         }
 
