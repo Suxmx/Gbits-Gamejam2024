@@ -75,6 +75,21 @@ namespace GameMain
         public void NextLevel()
         {
             _levelIndex++;
+            if (_levelIndex > AssetUtility.LevelCount)
+            {
+                _procedureOwner.SetData<VarString>("NextScene", AssetUtility.EndSceneName);
+                ChangeState<ProcedureChangeScene>(_procedureOwner);
+                return;
+            }
+
+            _procedureOwner.SetData<VarInt32>("LevelIndex", _levelIndex);
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
+            ChangeState<ProcedureChangeScene>(_procedureOwner);
+        }
+
+        public void ChooseLevel(int index)
+        {
+            _levelIndex = index;
             _procedureOwner.SetData<VarInt32>("LevelIndex", _levelIndex);
             _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
             ChangeState<ProcedureChangeScene>(_procedureOwner);

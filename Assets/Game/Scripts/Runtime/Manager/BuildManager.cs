@@ -66,10 +66,10 @@ namespace GameMain
             foreach (EBuildItem item in buildItems)
             {
                 // 创建一个任务并添加到列表
-                Debug.Log("load prefab for " + item);
+                // Debug.Log("load prefab for " + item);
                 _prefabMap[item] = await GameEntry.Resource
                     .LoadAssetAsync<GameObject>(AssetUtility.GetBuildItemPrefab(item));
-                Debug.Log("load prefab for " + item + " done");
+                // Debug.Log("load prefab for " + item + " done");
             }
         }
 

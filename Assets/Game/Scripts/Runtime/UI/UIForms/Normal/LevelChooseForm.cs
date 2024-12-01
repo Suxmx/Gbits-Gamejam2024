@@ -76,6 +76,11 @@ namespace GameMain
         private void RegisterEvents()
         {
             m_btn_ReturnMenu.onClick.AddListener(OnClickReturnMenu);
+            var items = GetComponentsInChildren<LevelChooseItem>();
+            foreach (var item in items)
+            {
+                item.OnOpen();
+            }
 
             GameEntry.Event.Subscribe(ChooseLevelArgs.EventId, OnChooseLevel);
         }
@@ -83,6 +88,12 @@ namespace GameMain
         private void RemoveEvents()
         {
             m_btn_ReturnMenu.onClick.RemoveListener(OnClickReturnMenu);
+            var items = GetComponentsInChildren<LevelChooseItem>();
+            foreach (var item in items)
+            {
+                item.OnClose();
+            }
+
             GameEntry.Event.Unsubscribe(ChooseLevelArgs.EventId, OnChooseLevel);
         }
 
@@ -94,7 +105,7 @@ namespace GameMain
             _levelItems[index].gameObject.SetActive(true);
             if (_chooseTween.IsActivePlaying()) _chooseTween.Kill();
             _chooseTween = DOTween.To(() => m_rect_LevelGroup.anchoredPosition.x, x => m_rect_LevelGroup.SetPosX(x),
-                end, 0.5f);
+                end, 0.5f).SetUpdate(true);
             // _chooseTween.onUpdate += () => Debug.Log(m_rect_LevelGroup.anchoredPosition.x);
             _chooseTween.onComplete += DeactivateInvisibleLevelItems;
         }
@@ -119,7 +130,13 @@ namespace GameMain
         {
             ChooseLevelArgs args = (ChooseLevelArgs)e;
             // GameEntry.UI.CloseUIForm(this);
+            if (GameEntry.Procedure.CurrentProcedure is ProcedureMain)
+            {
+                GameEntry.UI.CloseUIFormById(UIFormId.PauseForm);
+            }
+
             (GameEntry.Procedure.CurrentProcedure as ProcedureMenu)?.EnterGame(_curChooseIndex + 1);
+            (GameEntry.Procedure.CurrentProcedure as ProcedureMain)?.ChooseLevel(_curChooseIndex + 1);
         }
 
         private void OnCutsceneEnter(object sender, GameEventArgs e)
