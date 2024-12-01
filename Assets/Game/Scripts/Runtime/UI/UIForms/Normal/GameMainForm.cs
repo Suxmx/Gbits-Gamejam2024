@@ -76,10 +76,37 @@ namespace GameMain
                 GameManager.Instance.Pause = true;
                 GameEntry.UI.OpenUIForm(UIFormId.PauseForm);
             }
-
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.P))
             {
                 GameEntry.UI.OpenUIForm(UIFormId.SettleUIForm);
+            }
+#endif
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                OnClickRestart();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Z) && GameManager.Instance.GameState == EGameState.Editor)
+            {
+                OnClickUndo();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (GameManager.Instance.GameState == EGameState.Editor)
+                {
+                    OnClickStart();
+                }
+                else if (GameManager.Instance.GameState == EGameState.Runtime)
+                {
+                    OnClickExitPlay();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.X) && GameManager.Instance.GameState == EGameState.Editor)
+            {
+                OnClickRemove();
             }
         }
 
@@ -122,6 +149,11 @@ namespace GameMain
                 doorUI.InitEndPointUI(end);
                 _doorUIs.Add(doorUI);
             }
+
+            //设置关卡名
+            m_tmp_LevelName.text = $"LEVEL{GameManager.Instance.Level} - {GameManager.Instance.LevelConfig.LevelName}";
+            m_img_Key1.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Editor);
+            m_img_Key2.gameObject.SetActive(GameManager.Instance.GameState == EGameState.Runtime);
         }
 
         #region Events
@@ -225,6 +257,9 @@ namespace GameMain
             m_btn_Remove.gameObject.SetActive(arg.GameState == EGameState.Editor);
 
             m_img_Mode.sprite = arg.GameState == EGameState.Editor ? _editModeSprite : _playModeSprite;
+
+            m_img_Key1.gameObject.SetActive(arg.GameState == EGameState.Editor);
+            m_img_Key2.gameObject.SetActive(arg.GameState == EGameState.Runtime);
         }
 
         private void OnSheepArrive(object sender, GameEventArgs e)

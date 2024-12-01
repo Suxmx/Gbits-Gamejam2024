@@ -287,6 +287,7 @@ MonoBehaviour:
   _bIsStatic: 0
   _boxSize: {x: 3.817353, y: 0.5, z: 1.96}
   _offset: {x: -0.980244, y: 0.2502834, z: 0.01509476}
+  _bounceSpeed: 16
 --- !u!1001 &661802834261526296
 PrefabInstance:
   m_ObjectHideFlags: 0

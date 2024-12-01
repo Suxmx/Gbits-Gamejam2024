@@ -17,7 +17,9 @@ namespace GameMain
         public int Index;
         public int TargetSheepCount;
         [TextArea] public string LevelTip;
+        public string LevelName;
         public List<LevelBuildItemConfig> AvailableBuildItems;
+        
     }
 
     [Serializable]

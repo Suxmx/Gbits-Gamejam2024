@@ -45,7 +45,7 @@ namespace GameMain
         private void SpawnSheep()
         {
             _currentSheepCount--;
-            Sheep sheep = Instantiate(_sheepPrefab, transform.position + Vector3.up * 0.2f, Quaternion.identity)
+            Sheep sheep = Instantiate(_sheepPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity)
                 .GetComponent<Sheep>();
             GameEntry.Event.Fire(this, SheepSpawnArgs.Create());
             sheep.gameObject.SetActive(true);

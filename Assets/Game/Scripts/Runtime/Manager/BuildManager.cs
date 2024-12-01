@@ -14,6 +14,7 @@ namespace GameMain
         Dasher,
         Portal,
         OneWayPlatform,
+        DasherUp
     }
 
     public enum EBuildState

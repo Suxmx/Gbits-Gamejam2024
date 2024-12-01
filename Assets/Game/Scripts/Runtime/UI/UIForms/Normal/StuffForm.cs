@@ -19,7 +19,7 @@ namespace GameMain
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
-            //GetBindComponents(gameObject);
+            GetBindComponents(gameObject);
         }
 
         protected override void OnOpen(object userData)
@@ -31,11 +31,9 @@ namespace GameMain
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
-            if (Input.GetKeyDown(KeyCode.Escape) && !_pendingClose)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _pendingClose = true;
-                GameEntry.Cutscene.PlayCutscene(2);
-                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+                DoClose();
             }
         }
 
@@ -47,10 +45,20 @@ namespace GameMain
 
         private void RegisterEvents()
         {
+            m_btn_ReturnMenu.onClick.AddListener(DoClose);
         }
 
         private void RemoveEvents()
         {
+            m_btn_ReturnMenu.onClick.RemoveListener(DoClose);
+        }
+
+        private void DoClose()
+        {
+            if (_pendingClose) return;
+            _pendingClose = true;
+            GameEntry.Cutscene.PlayCutscene(2);
+            GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
         }
 
         private void OnCutsceneEnter(object sender, GameEventArgs e)

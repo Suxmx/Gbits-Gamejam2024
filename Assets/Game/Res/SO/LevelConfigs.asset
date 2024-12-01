@@ -14,74 +14,152 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelConfigs:
   - Index: 1
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u6797\u95F4\u7269\u8BED"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 2
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u5371\u673A\u56DB\u4F0F"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 3
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u52C7\u5F80\u76F4\u524D"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 4
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u8FF7\u9014\u77E5\u8FD4"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 5
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u4E0D\u649E\u5357\u5899"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 6
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u5200\u5C16\u8D77\u821E"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 7
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u590D\u5F0F\u5EFA\u7B51"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 8
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u80CC\u9053\u800C\u9A70"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5
   - Index: 9
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u7A7A\u4E2D\u82AD\u857E"
     AvailableBuildItems:
     - Item: 0
       Count: 5
     - Item: 1
       Count: 5
     - Item: 6
+      Count: 5
+    - Item: 4
+      Count: 5
+    - Item: 7
+      Count: 5
+  - Index: 10
+    TargetSheepCount: 0
+    LevelTip: 
+    LevelName: "\u68A6\u4E0E\u7F8A\u7FA4"
+    AvailableBuildItems:
+    - Item: 0
+      Count: 10
+    - Item: 1
+      Count: 10
+    - Item: 6
+      Count: 10
+    - Item: 4
+      Count: 5
+    - Item: 7
       Count: 5

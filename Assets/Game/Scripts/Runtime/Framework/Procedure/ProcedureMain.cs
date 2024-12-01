@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using NodeCanvas.DialogueTrees;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -75,8 +76,10 @@ namespace GameMain
         public void NextLevel()
         {
             _levelIndex++;
+            Debug.Log($"level:{_levelIndex}");
             if (_levelIndex > AssetUtility.LevelCount)
             {
+                Debug.Log("change to end");
                 _procedureOwner.SetData<VarString>("NextScene", AssetUtility.EndSceneName);
                 ChangeState<ProcedureChangeScene>(_procedureOwner);
                 return;
