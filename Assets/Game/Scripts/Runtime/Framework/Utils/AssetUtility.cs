@@ -5,6 +5,7 @@ namespace GameMain
     public static partial class AssetUtility
     {
         public static string MenuSceneName = "Menu";
+
         // public static string MainSceneName = "Main";
         public static string SplashSceneName = "Splash";
         public static string DialogueSceneName = "Dialogue";
@@ -52,10 +53,10 @@ namespace GameMain
         {
             return Utility.Text.Format("{0}/Prefabs/BuildItems/{1}.prefab", ResRootPath, item.ToString());
         }
-        
-        public static string GetLevelSceneAsset(int levelIndex)
+
+        public static string GetLevelSceneSubName(int levelIndex)
         {
-            return Utility.Text.Format("{0}/Scenes/Level/Level{1}.unity", ResRootPath, levelIndex);
+            return Utility.Text.Format("Levels/Level{0}", levelIndex);
         }
     }
 }

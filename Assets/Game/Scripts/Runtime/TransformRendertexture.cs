@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor; // 需要编辑器相关功能
 using Sirenix.OdinInspector;
@@ -73,3 +75,4 @@ namespace Game
         }
     }
 }
+#endif

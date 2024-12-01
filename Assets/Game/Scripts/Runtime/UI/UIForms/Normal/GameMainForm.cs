@@ -45,6 +45,14 @@ namespace GameMain
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnClickPause();
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                GameEntry.UI.OpenUIForm(UIFormId.SettleUIForm);
+            }
         }
 
         private void RefreshStateOnOpen()

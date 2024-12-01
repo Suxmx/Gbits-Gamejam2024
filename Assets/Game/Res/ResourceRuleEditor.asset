@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ResourceRuleEditor
   m_EditorClassIdentifier: 
   rules:
-  - valid: 1
+  - valid: 0
     name: Config
     variant: 
     fileSystem: GameData
@@ -49,6 +49,96 @@ MonoBehaviour:
     fileSystem: 
     groups: 
     assetsDirectoryPath: Assets/Game/Res/UI
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Animation
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Animation
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Audio
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Audio
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Fonts
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Fonts
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Images
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Images
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Materials
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Materials
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Models
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Models
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Prefabs
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Prefabs
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: SO
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/SO
+    loadType: 0
+    packed: 1
+    filterType: 0
+    searchPatterns: '*.*'
+  - valid: 1
+    name: Tex
+    variant: 
+    fileSystem: 
+    groups: 
+    assetsDirectoryPath: Assets/Game/Res/Textures
     loadType: 0
     packed: 1
     filterType: 0
