@@ -18,6 +18,7 @@ EditorBuildSettings:
     path: Assets/Game/Res/Scenes/Levels/Level3.unity
     guid: 6bd3c93231b3ae442b600e44369f3f4b
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Game/Res/Scenes/Levels/Level4.unity
     guid: 9dc13691f47fd9d48a1613d9bcc5e5f1
   - enabled: 1
@@ -29,6 +30,43 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Res/Scenes/Levels/Level20.unity
     guid: bb20f9a8ed417f046ac3c3bb6cc3b862
+=======
+    path: Assets/Game/Res/Scenes/ArtTest/Mugs - Scene1 - OneColorVariousParameters.unity
+    guid: f8e73c9b33562224e856292674029092
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/ArtTest/Start.unity
+    guid: cd804d4b9f7a2ec42bea9159bb96a336
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/ArtTest/StylizedEffect.unity
+    guid: 1ea11e3c9b7f9ce408fa637095308e2e
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level1.unity
+    guid: ad054f8a76dd2bc469bc26afee93c588
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level2.unity
+    guid: 62dd9a2f6f93c7c4eb49c33f7e0d142e
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level3.unity
+    guid: 6bd3c93231b3ae442b600e44369f3f4b
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level4.unity
+    guid: bff8fb7c75664e54db6d80ff1e194f36
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level4.unity
+    guid: 9dc13691f47fd9d48a1613d9bcc5e5f1
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level5.unity
+    guid: fe0033f3ec595204d945dcf3feb5b2b3
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level7.unity
+    guid: 6b169105477e6e34f91d13dcaa534a5f
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Level20.unity
+    guid: bb20f9a8ed417f046ac3c3bb6cc3b862
+  - enabled: 1
+    path: Assets/Game/Res/Scenes/Levels/Template.unity
+    guid: d5cc3113235301041807c153a3fdf6b5
+>>>>>>> Stashed changes
   - enabled: 1
     path: Assets/Game/Res/Scenes/Main.unity
     guid: 678ebee929128534fbf7af7d45b15c89
