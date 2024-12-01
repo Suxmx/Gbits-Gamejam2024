@@ -1,6 +1,6 @@
 //------------------------------------------------------------
 // 此文件由工具自动生成，请勿直接修改。
-// 生成时间：2024/12/1 7:21:14
+// 生成时间：2024/12/1 13:25:19
 //------------------------------------------------------------
 namespace GameMain
 {
@@ -46,6 +46,11 @@ namespace GameMain
 		/// </summary>
 		public const int SettleUIForm = 106;
 
+		/// <summary>
+		/// 暂停UI
+		/// </summary>
+		public const int PauseForm = 107;
+
 	}
 	public enum EUIFormId
 	{
@@ -88,6 +93,11 @@ namespace GameMain
 		/// 结算UI
 		/// </summary>
 		SettleUIForm = UIFormId.SettleUIForm,
+
+		/// <summary>
+		/// 暂停UI
+		/// </summary>
+		PauseForm = UIFormId.PauseForm,
 
 	}
 }

@@ -13,20 +13,21 @@ namespace GameMain
             _btn = transform.Find("Mask").GetComponent<Button>();
         }
 
-        private void OnEnable()
+        public void OnOpen()
         {
+            // Debug.Log("onopen");
             _btn.onClick.AddListener(OnClickEnter);
         }
 
-        private void OnDisable()
+        public void OnClose()
         {
             _btn.onClick.RemoveListener(OnClickEnter);
         }
 
-
         private void OnClickEnter()
         {
-            GameEntry.Event.Fire(this,ChooseLevelArgs.Create());
+            // Debug.Log("click");
+            GameEntry.Event.Fire(this, ChooseLevelArgs.Create());
         }
     }
 }

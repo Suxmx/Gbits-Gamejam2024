@@ -20,6 +20,7 @@ namespace GameMain
         private bool _changeToMenu = false;
         private bool _changeToMain = false;
         private bool _changeToSplash = false;
+        private bool _changeToEnd = false;
 
         private bool m_IsChangeSceneComplete = false;
         private bool _pendingLoadScene;
@@ -81,6 +82,7 @@ namespace GameMain
             _changeToMenu = sceneName == AssetUtility.MenuSceneName;
             _changeToMain = sceneName.Contains("Level");
             _changeToSplash = sceneName == AssetUtility.SplashSceneName;
+            _changeToEnd = sceneName == AssetUtility.EndSceneName;
 
             //如果是重新加载当前scene
             if (loadedSceneAssetNames.FindIndex(x => x == AssetUtility.GetSceneAsset(sceneName)) < 0)
@@ -131,6 +133,10 @@ namespace GameMain
             else if (_changeToSplash)
             {
                 ChangeState<ProcedureSplash>(procedureOwner);
+            }
+            else if (_changeToEnd)
+            {
+                ChangeState<ProcedureEnd>(procedureOwner);
             }
             else
             {

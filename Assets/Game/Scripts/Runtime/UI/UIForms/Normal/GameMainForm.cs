@@ -23,6 +23,7 @@ namespace GameMain
         [SerializeField] private Dictionary<EBuildItem, GameObject> _buildItemPrefabMap = new();
 
         private List<DoorUIItem> _doorUIs = new();
+        private bool _justResume;
 
         protected override void OnInit(object userData)
         {
@@ -40,6 +41,7 @@ namespace GameMain
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
+            _justResume = false;
             RemoveEvents();
             for (int i = 0; i < m_rect_BuildItem.childCount; i++)
             {
@@ -54,12 +56,25 @@ namespace GameMain
             _doorUIs.Clear();
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _justResume = true;
+        }
+
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
+            if (_justResume)
+            {
+                _justResume = false;
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                OnClickPause();
+                GameManager.Instance.Pause = true;
+                GameEntry.UI.OpenUIForm(UIFormId.PauseForm);
             }
 
             if (Input.GetKeyDown(KeyCode.P))

@@ -70,7 +70,7 @@ namespace GameMain
             get => _totalSheepCount;
             set
             {
-                Debug.Log("set total to " + value);
+                // Debug.Log("set total to " + value);
                 _totalSheepCount = value;
                 GameEntry.Event.Fire(this, SheepArriveArgs.Create(_arriveSheepCount, TotalSheepCount));
             }

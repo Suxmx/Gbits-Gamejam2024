@@ -9,8 +9,10 @@ namespace GameMain
         // public static string MainSceneName = "Main";
         public static string SplashSceneName = "Splash";
         public static string DialogueSceneName = "Dialogue";
+        public static string EndSceneName = "End";
 
         public static string ResRootPath = "Assets/Game/Res";
+        public static int LevelCount = 10;
 
         public static string GetConfigAsset(string assetName, bool fromBytes)
         {
