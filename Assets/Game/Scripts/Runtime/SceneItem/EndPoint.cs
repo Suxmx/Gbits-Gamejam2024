@@ -6,8 +6,10 @@ namespace GameMain
 {
     public class EndPoint : GameEntityBase
     {
+        public Transform UITransform;
         [SerializeField] private Color _doorLightBaseColor;
         private Material _doorLightMaterial;
+
         protected override void OnInit()
         {
             _doorLightMaterial = transform.Find("Graphics/DOOR/DoorLight").GetComponent<MeshRenderer>().material;
@@ -33,6 +35,11 @@ namespace GameMain
             s.Append(_doorLightMaterial.DOColor(color1, "_EmissionColor", 0.2f));
             s.Append(_doorLightMaterial.DOColor(color2, "_EmissionColor", 0.2f));
             s.Play();
+        }
+
+        public string GetUIString()
+        {
+            return $"{GameManager.Instance.ArriveSheepCount}/{GameManager.Instance.TotalSheepCount}";
         }
     }
 }
