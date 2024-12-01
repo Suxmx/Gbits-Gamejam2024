@@ -6,7 +6,7 @@ namespace GameMain
     {
         public void OnAnimEnd()
         {
-            GameEntry.UI.CloseUIForm(UIFormId.SettleUIForm);
+            GameEntry.UI.CloseUIFormById(UIFormId.SettleUIForm);
             (GameEntry.Procedure.CurrentProcedure as ProcedureMain)?.NextLevel();
         }
     }

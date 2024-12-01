@@ -38,7 +38,7 @@ namespace GameMain
         public void EnterGame(int index)
         {
             _procedureOwner.SetData<VarInt32>("LevelIndex", index);
-            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(index));
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(index));
             ChangeState<ProcedureChangeScene>(_procedureOwner);
         }
     }

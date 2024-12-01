@@ -16,10 +16,7 @@ namespace GameMain
 
         public override bool UseNativeDialog
         {
-            get
-            {
-                return true;
-            }
+            get { return true; }
         }
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
@@ -42,7 +39,9 @@ namespace GameMain
                 return;
             }
 
-            ChangeState<ProcedurePreload>(procedureOwner);
+            // 运行一帧即切换到 Splash 展示流程
+            procedureOwner.SetData<VarString>("NextScene", AssetUtility.SplashSceneName);
+            ChangeState<ProcedureChangeScene>(procedureOwner);
         }
 
         private void OnInitResourcesComplete()

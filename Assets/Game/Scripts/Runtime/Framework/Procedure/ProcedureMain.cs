@@ -50,7 +50,7 @@ namespace GameMain
             }
             else if (_restart)
             {
-                procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(_levelIndex));
+                procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
                 ChangeState<ProcedureChangeScene>(procedureOwner);
             }
         }
@@ -76,7 +76,7 @@ namespace GameMain
         {
             _levelIndex++;
             _procedureOwner.SetData<VarInt32>("LevelIndex", _levelIndex);
-            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneAsset(_levelIndex));
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
             ChangeState<ProcedureChangeScene>(_procedureOwner);
         }
     }

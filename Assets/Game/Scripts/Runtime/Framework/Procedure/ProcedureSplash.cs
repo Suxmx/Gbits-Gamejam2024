@@ -43,18 +43,7 @@ namespace GameMain
 
         private void DoChangeState()
         {
-            if (GameEntry.Base.EditorResourceMode)
-            {
-                // 编辑器模式
-                Log.Info("Editor resource mode detected.");
-                ChangeState<ProcedurePreload>(_procedureOwner);
-            }
-            else if (GameEntry.Resource.ResourceMode == ResourceMode.Package)
-            {
-                // 单机模式
-                Log.Info("Package resource mode detected.");
-                ChangeState<ProcedureInitResources>(_procedureOwner);
-            }
+            ChangeState<ProcedurePreload>(_procedureOwner);
         }
 
         public void SplashPlayEnd()
