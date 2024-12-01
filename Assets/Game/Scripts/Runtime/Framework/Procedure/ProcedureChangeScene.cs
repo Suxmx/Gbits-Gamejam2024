@@ -206,9 +206,16 @@ namespace GameMain
 
             // Debug.Log("Cutscene enter");
             DoChangeScene(_loadSceneName);
-            if (GameEntry.UI.GetUIFormById(UIFormId.MenuForm) && GameEntry.UI.GetUIFormById(UIFormId.MenuForm).gameObject.activeInHierarchy)
+            if (GameEntry.UI.GetUIFormById(UIFormId.MenuForm) &&
+                GameEntry.UI.GetUIFormById(UIFormId.MenuForm).gameObject.activeInHierarchy)
             {
                 GameEntry.UI.CloseUIFormById(UIFormId.MenuForm);
+            }
+
+            if (GameEntry.UI.GetUIFormById(UIFormId.LevelChooseForm) &&
+                GameEntry.UI.GetUIFormById(UIFormId.LevelChooseForm).gameObject.activeInHierarchy)
+            {
+                GameEntry.UI.CloseUIFormById(UIFormId.LevelChooseForm);
             }
         }
     }

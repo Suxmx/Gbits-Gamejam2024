@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ResourceRuleEditor
   m_EditorClassIdentifier: 
   rules:
-  - valid: 0
+  - valid: 1
     name: Config
     variant: 
     fileSystem: GameData
@@ -53,7 +53,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Animation
     variant: 
     fileSystem: 
@@ -63,7 +63,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Audio
     variant: 
     fileSystem: 
@@ -73,7 +73,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Fonts
     variant: 
     fileSystem: 
@@ -83,7 +83,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Images
     variant: 
     fileSystem: 
@@ -93,7 +93,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Materials
     variant: 
     fileSystem: 
@@ -103,7 +103,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Models
     variant: 
     fileSystem: 
@@ -133,7 +133,7 @@ MonoBehaviour:
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 1
+  - valid: 0
     name: Tex
     variant: 
     fileSystem: 

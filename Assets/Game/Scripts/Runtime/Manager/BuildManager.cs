@@ -60,31 +60,17 @@ namespace GameMain
             Inited = true;
         }
 
-        private Task LoadBuildItemPrefabs()
+        private async Task LoadBuildItemPrefabs()
         {
             var buildItems = (EBuildItem[])System.Enum.GetValues(typeof(EBuildItem));
-            var tasks = new List<Task>();
             foreach (EBuildItem item in buildItems)
             {
                 // 创建一个任务并添加到列表
-                var loadTask = GameEntry.Resource
-                    .LoadAssetAsync<GameObject>(AssetUtility.GetBuildItemPrefab(item))
-                    .ContinueWith(task =>
-                    {
-                        if (task.Status == TaskStatus.RanToCompletion)
-                        {
-                            _prefabMap[item] = task.Result;
-                        }
-                        else if (task.Status == TaskStatus.Faulted)
-                        {
-                            Debug.LogError($"Failed to load build item for {item}: {task.Exception?.Message}");
-                        }
-                    });
-
-                tasks.Add(loadTask);
+                Debug.Log("load prefab for " + item);
+                _prefabMap[item] = await GameEntry.Resource
+                    .LoadAssetAsync<GameObject>(AssetUtility.GetBuildItemPrefab(item));
+                Debug.Log("load prefab for " + item + " done");
             }
-
-            return Task.WhenAll(tasks);
         }
 
         public override void OnInitEnd()
