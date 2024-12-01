@@ -2,373 +2,74 @@
 <UnityGameFramework>
   <ResourceCollection>
     <Resources>
-      <Resource Name="Animation" LoadType="0" Packed="True" />
-      <Resource Name="Audio" LoadType="0" Packed="True" />
+      <Resource Name="Config" FileSystem="GameData" LoadType="0" Packed="True" />
       <Resource Name="DataTable" FileSystem="GameData" LoadType="0" Packed="True" />
-      <Resource Name="Fonts" LoadType="0" Packed="True" />
-      <Resource Name="Images" LoadType="0" Packed="True" />
-      <Resource Name="Materials" LoadType="0" Packed="True" />
-      <Resource Name="Models" LoadType="0" Packed="True" />
       <Resource Name="Prefabs" LoadType="0" Packed="True" />
       <Resource Name="Scene" LoadType="0" Packed="True" />
       <Resource Name="SO" LoadType="0" Packed="True" />
-      <Resource Name="Tex" LoadType="0" Packed="True" />
       <Resource Name="UI" LoadType="0" Packed="True" />
     </Resources>
     <Assets>
-      <Asset Guid="00bd4daf50d018e4b87a89da70e730d0" ResourceName="Models" />
-      <Asset Guid="0132570602d31f0489f5ba4f2b23f861" ResourceName="Images" />
-      <Asset Guid="01d98b635ca31b948a29a58892d19dc6" ResourceName="Materials" />
-      <Asset Guid="022d4b9f2c88f6a43a32b912f55736d0" ResourceName="Images" />
-      <Asset Guid="02644938d6ece8b4485f5f64890f83fb" ResourceName="Images" />
       <Asset Guid="02a766aa7c3699b49a5f89d41b25ba71" ResourceName="UI" />
-      <Asset Guid="03d72bf826641f04badcecd77bb09094" ResourceName="Tex" />
-      <Asset Guid="043b0506dff4921458143e76387fa7c1" ResourceName="Images" />
-      <Asset Guid="08860da2587a31e449e194639e2362bb" ResourceName="Animation" />
-      <Asset Guid="08c7190365ccd4c4580e3be9647572d2" ResourceName="Tex" />
       <Asset Guid="097446c3914566f4f8304ffb41153905" ResourceName="Prefabs" />
       <Asset Guid="09e889593fb9df445bbad59c9a81450c" ResourceName="UI" />
-      <Asset Guid="0a9e9f961adf6ef468058b2c1eed0c6e" ResourceName="Images" />
-      <Asset Guid="0adf7e6248cab314496f20db5b4950ef" ResourceName="Images" />
-      <Asset Guid="0c24b833f90da6541a1d4b875703afc3" ResourceName="Models" />
-      <Asset Guid="0dd32230117a47c459e018445c165b8c" ResourceName="Images" />
-      <Asset Guid="0e2679008e0040f4b854186d9f68594d" ResourceName="Images" />
-      <Asset Guid="0e2fcbdc7b0ceef42a2d894cc07f61f4" ResourceName="Images" />
-      <Asset Guid="0ecbd23d89d498749b259c05fe571d5a" ResourceName="Materials" />
-      <Asset Guid="110d423414af33c4f847f779ffa0d609" ResourceName="Images" />
-      <Asset Guid="11ba9fc010ef46848ad12c3dccb1cf2e" ResourceName="Materials" />
-      <Asset Guid="1534189abeb01b74b92cd7b002d17081" ResourceName="Images" />
-      <Asset Guid="16dce76219681904cbc7fc8df942bc64" ResourceName="Materials" />
-      <Asset Guid="16e3fbcac718b444c85fa6eb403406c0" ResourceName="Images" />
-      <Asset Guid="16efdc9029ad3874aa9782f1fcd555b7" ResourceName="Images" />
-      <Asset Guid="1705668343168394797a478ed32c6ffa" ResourceName="Materials" />
-      <Asset Guid="180061a715509ef48ba4d8c1106ef3ad" ResourceName="Models" />
-      <Asset Guid="1826389663dbc3d469f66077cd671633" ResourceName="Images" />
-      <Asset Guid="193da7e26bee99644b17e91071544a04" ResourceName="Images" />
-      <Asset Guid="19d3f79fd23348b4c9f14afa4b0dd933" ResourceName="Materials" />
-      <Asset Guid="19ebd7c4d9346964cb43d3c51523f61f" ResourceName="Images" />
-      <Asset Guid="1c1d497c0e3cc32499dd18b545a7453b" ResourceName="Animation" />
       <Asset Guid="1c2294722715a8d4ba57bbbb0880dc46" ResourceName="Prefabs" />
-      <Asset Guid="1c2381850616bb0489a619e666825747" ResourceName="Images" />
-      <Asset Guid="1c9373a622bc3714385c3335b0815ea9" ResourceName="Images" />
-      <Asset Guid="1cb5b530ba084584d92660faf1df2edc" ResourceName="Materials" />
-      <Asset Guid="1cc176cfe50ac4647aabd3cf6080e072" ResourceName="Images" />
-      <Asset Guid="1cd3a0be7da69a84682aa3e0236ad78c" ResourceName="Materials" />
-      <Asset Guid="1d48e94e3687a53468ca8d0612d98914" ResourceName="Animation" />
-      <Asset Guid="1dedc42a9b9e7f54e9dacaf30e60961b" ResourceName="Animation" />
-      <Asset Guid="1e4c5f6ed31cd2f48b31bfad8e01ddab" ResourceName="Images" />
-      <Asset Guid="1ea11e3c9b7f9ce408fa637095308e2e" ResourceName="Scene" />
-      <Asset Guid="2018203edd2fd9f42a6f1fe014dcdd88" ResourceName="Images" />
-      <Asset Guid="20195f6bdd70cbe4794ef1a57900e8bb" ResourceName="Animation" />
-      <Asset Guid="206091a26205f2342be4849ac6aef577" ResourceName="Images" />
-      <Asset Guid="20978b0b92223c249a0a1cf842e2a9c4" ResourceName="Materials" />
-      <Asset Guid="235245c1873707a46aced96f09601a02" ResourceName="Materials" />
-      <Asset Guid="23e2c6f057ccdfc4e9b844c51a073437" ResourceName="Images" />
-      <Asset Guid="2442c68741133de4ca04d69e1fccd766" ResourceName="Images" />
-      <Asset Guid="24c165c0f4af3f34f940172bc951d033" ResourceName="Images" />
-      <Asset Guid="2504dc21bc7c79b4f8d7daf9f6461abc" ResourceName="Models" />
-      <Asset Guid="260f3f81e2ce6e34c80735bbe23814cd" ResourceName="Images" />
-      <Asset Guid="27990fd21c36f084bb0a858a3a81ce6f" ResourceName="Materials" />
-      <Asset Guid="285f0512a6c224f45a0fd1574cef92ef" ResourceName="Materials" />
-      <Asset Guid="2ca3d3dbca7b6c74a97c00463f58b00d" ResourceName="Images" />
-      <Asset Guid="2d06e53ae896f294ba32a9c83c7c78db" ResourceName="Images" />
-      <Asset Guid="2d2ec7eb05d7bea448c4d54309e1e517" ResourceName="Materials" />
       <Asset Guid="2da77cebcee8b46418d72ae0de4c9d62" ResourceName="Prefabs" />
       <Asset Guid="2de5b8aa175d49646af49fc2a7b4a4c1" ResourceName="Scene" />
       <Asset Guid="2e71fcbd54c738b459ce4418296ec1a7" ResourceName="UI" />
-      <Asset Guid="2f25cbe255446084e802bc21f6cd35fc" ResourceName="Materials" />
-      <Asset Guid="2f9b231e00b4bd541b678e6ab7c59fe3" ResourceName="Materials" />
-      <Asset Guid="2f9e3feaf0425f54b996a3dc90f1e4a6" ResourceName="Materials" />
-      <Asset Guid="302b2eb477da83d4291759b6774ad46c" ResourceName="Images" />
       <Asset Guid="30f5815e8104542489044cda8dbdfbfa" ResourceName="Prefabs" />
       <Asset Guid="33dbf349c430ab44b86a70c115193cf3" ResourceName="UI" />
-      <Asset Guid="35467347f5bd6514ea0a4e806e9780fa" ResourceName="Images" />
-      <Asset Guid="379ef15aadee6414c861c4328e80a002" ResourceName="Models" />
-      <Asset Guid="39d5c098d5861174ca2302ed7564020f" ResourceName="Materials" />
-      <Asset Guid="3a1ac74c821bbfc4cbd0e4497907a83e" ResourceName="Images" />
-      <Asset Guid="3a564d6c8b5939c4b9d4c53d61154c90" ResourceName="Materials" />
-      <Asset Guid="3ae68624b2930c047941f16ff2a93024" ResourceName="Animation" />
       <Asset Guid="3b5e94dcc551bb04e97113f91d380631" ResourceName="Prefabs" />
-      <Asset Guid="3c1632b5a9b14d5418363c1975fb0693" ResourceName="Materials" />
-      <Asset Guid="3d1eef7343865784d9058c562d7f07ef" ResourceName="Images" />
-      <Asset Guid="3dfb91ccb60c0684e8d440a0d88d3286" ResourceName="Animation" />
-      <Asset Guid="3f6e43633c239c7439309a5ff922c74e" ResourceName="Materials" />
-      <Asset Guid="41ccf97ff71dec648b34294959ce8383" ResourceName="Images" />
       <Asset Guid="41dd5733ad733a845a5e8e24b8ce309b" ResourceName="Prefabs" />
-      <Asset Guid="43b2e5f5013bb99408612faf3edc8ec9" ResourceName="Images" />
-      <Asset Guid="4437f56fc5e88554ebae6a3fb62cebb4" ResourceName="Materials" />
-      <Asset Guid="44975a1c07d31fc4695a425f24768d6b" ResourceName="Images" />
-      <Asset Guid="44b1aef1c2674874cb9f7b312bbabea2" ResourceName="Materials" />
       <Asset Guid="44d4d52404457324abf9ddb05b3fdfd2" ResourceName="UI" />
-      <Asset Guid="45960050bfb9e0e459437566b948a20a" ResourceName="Models" />
-      <Asset Guid="4698f1d1d8dbeb24db62d6f11abfaa25" ResourceName="Materials" />
-      <Asset Guid="478d865f399a5ba469ce357846ef5deb" ResourceName="Images" />
-      <Asset Guid="4bb4c0fb231e6b340a962ef0ab3a5c4b" ResourceName="Materials" />
-      <Asset Guid="4e56b8c9b2b229a4f978f67103a0c4bd" ResourceName="Materials" />
-      <Asset Guid="4fabbd7592b4ef040ae21acaebe00914" ResourceName="Images" />
-      <Asset Guid="4fe0bd220fb8d8440bd51e172c021bc5" ResourceName="Images" />
-      <Asset Guid="523db16f520dcc040ab46c12e1c1b88f" ResourceName="Models" />
+      <Asset Guid="496e5973ae39dc845a6d7efa14c08122" ResourceName="Config" />
       <Asset Guid="5272ebb5350141442b7334dee5dc099f" ResourceName="Prefabs" />
-      <Asset Guid="527bd18e1faefc94f84458bc75220e1e" ResourceName="Audio" />
-      <Asset Guid="527d1ec89ddc5c6438cf0041b2e15599" ResourceName="Models" />
-      <Asset Guid="52e4f9f69d255ed42a2b15a6071af6f3" ResourceName="Materials" />
       <Asset Guid="52fbd9ad2b3fedf42bbcf70b5ef2e852" ResourceName="UI" />
       <Asset Guid="534f7ebfaf2448e44adbfb704c730799" ResourceName="SO" />
-      <Asset Guid="5359479cfd0cf2e4ca6f9c6b9b3be0f4" ResourceName="Animation" />
-      <Asset Guid="546066dc75bd9cb4ea3e9835c71a9af6" ResourceName="Animation" />
-      <Asset Guid="549b200b910277741bb0305dcf6d6c6e" ResourceName="Animation" />
-      <Asset Guid="54a8d3a314014094ea25cd174ed60435" ResourceName="Materials" />
-      <Asset Guid="54ac702a428881743b0b1fbc5a09f92b" ResourceName="Images" />
-      <Asset Guid="54fa8fc76c62bd94aafe89a4747c4f37" ResourceName="Images" />
-      <Asset Guid="5530bd9bdf2586f41a5ef3b570bdd7ba" ResourceName="Materials" />
-      <Asset Guid="564c5107ccf17074fa8623e04a40a5d1" ResourceName="Materials" />
-      <Asset Guid="56d2e61832f37d445b90be55136d7d1e" ResourceName="Scene" />
-      <Asset Guid="576697905a7e9e6418c3f77f538d4315" ResourceName="Images" />
-      <Asset Guid="577784cf23df72044a468bce97d07a9e" ResourceName="Images" />
       <Asset Guid="57dd1796e03ca4b459aca6c556e8048f" ResourceName="UI" />
       <Asset Guid="5b84e50fecee7be499e5654f16294a43" ResourceName="Prefabs" />
-      <Asset Guid="5b907f2389995c0418c152b0a8219445" ResourceName="Tex" />
-      <Asset Guid="5bb12bd0f4de4d3459ce7ed03797b4f4" ResourceName="Images" />
-      <Asset Guid="5bd9f67916b561945b6ae539672ef00c" ResourceName="Images" />
-      <Asset Guid="5c035506e1865d34a9ce310caf9e1744" ResourceName="Materials" />
-      <Asset Guid="5c22a5b83f45b604bbd0d901a0b7668a" ResourceName="Models" />
-      <Asset Guid="5e536db19d8c8974fb1678391bf18f7a" ResourceName="Animation" />
-      <Asset Guid="5e8e81844b51446479f8ac802dc8eb47" ResourceName="Models" />
-      <Asset Guid="5f8dd6aaa80dec740b3ac9a46cc68353" ResourceName="Materials" />
       <Asset Guid="604ec51b2d3515e46bf0ee4f082fbe4c" ResourceName="Prefabs" />
-      <Asset Guid="604f99feaace41c4897d394d4e25f7c8" ResourceName="Images" />
-      <Asset Guid="60fa0f9109872e142b4a46611887da57" ResourceName="Materials" />
-      <Asset Guid="61f196d6bc9e1614c995ae3e71c69bdd" ResourceName="Animation" />
-      <Asset Guid="649b19e028197a5428380eee746d1c70" ResourceName="Scene" />
-      <Asset Guid="64dbdf12911fbbb40ba76df985a74ce3" ResourceName="Images" />
-      <Asset Guid="6502956471f4048449f7588e73af288c" ResourceName="Images" />
-      <Asset Guid="662d00f92d5755a4fb729c79fcfdae03" ResourceName="Images" />
       <Asset Guid="671e1d78aeefdc8408174db0fdb999a4" ResourceName="UI" />
       <Asset Guid="678ebee929128534fbf7af7d45b15c89" ResourceName="Scene" />
-      <Asset Guid="68469d7961b210e40ab47852bf9bbfc4" ResourceName="Images" />
       <Asset Guid="68c64871fbf183744893f57c5fbbe6f7" ResourceName="Prefabs" />
-      <Asset Guid="691ce92747b8bae409adbc27c31e28e7" ResourceName="Materials" />
-      <Asset Guid="69b7487b8760a01468664580b203fbc1" ResourceName="Materials" />
-      <Asset Guid="69ecc36380f359a419db4fcd1761b484" ResourceName="Images" />
-      <Asset Guid="69f7231d8bd7a6943b1890c8c079eb68" ResourceName="Images" />
-      <Asset Guid="6a340593dc00c404b97f0a60996c9c8f" ResourceName="Images" />
-      <Asset Guid="6b13f70c0431c6241861dec3b12781d5" ResourceName="Models" />
       <Asset Guid="6b169105477e6e34f91d13dcaa534a5f" ResourceName="Scene" />
-      <Asset Guid="6bd8186f382337c4b80d2421cf8f1431" ResourceName="Models" />
-      <Asset Guid="6c7f9b33dcac810449bebd9347c6fd59" ResourceName="Images" />
-      <Asset Guid="6e2cee545c90c5444a1e48ba704d46ba" ResourceName="Materials" />
-      <Asset Guid="6e5ea4a1966a60a4ca5f3294071adc7a" ResourceName="Tex" />
-      <Asset Guid="6fb797874a414a247adbdf8877b5a1a9" ResourceName="Images" />
       <Asset Guid="6fe79a511b4511146a9d5210310a9a09" ResourceName="Prefabs" />
-      <Asset Guid="70ba14cf45443eb43845b42900a74277" ResourceName="Images" />
-      <Asset Guid="7164968740305fd4b8bf9ae5bfdf371f" ResourceName="Images" />
       <Asset Guid="718dec7637b60f049beb4d1ea153bbbb" ResourceName="Prefabs" />
-      <Asset Guid="71bda588a7bdf2c4b954c77162f3b096" ResourceName="Materials" />
-      <Asset Guid="72c39001b2924144a8be8538a23bd13c" ResourceName="Images" />
-      <Asset Guid="72eff4cc6d89dc9418f6394976b06fad" ResourceName="Images" />
-      <Asset Guid="7312aba902058de45a5e258be3665f51" ResourceName="Animation" />
       <Asset Guid="733564042096192478b840416fce57a6" ResourceName="Prefabs" />
       <Asset Guid="744ce7e9da0b1c544a3ee48cfc56215f" ResourceName="Prefabs" />
-      <Asset Guid="75d4cc88cee2d0c4f8c32fbecad4b33e" ResourceName="Fonts" />
-      <Asset Guid="76003205a66316546b574a66b5a9871d" ResourceName="Images" />
-      <Asset Guid="76a7871d2518d1f4bbd05aad37f55eb3" ResourceName="Models" />
-      <Asset Guid="79e6f6bfdaab93241929177f4d2dd242" ResourceName="Images" />
-      <Asset Guid="79e864125dd53e04b94a6a143aec0c9d" ResourceName="Scene" />
-      <Asset Guid="79ead3bd0aea3964da7faf390a692da8" ResourceName="Images" />
-      <Asset Guid="7a4d712a611cfd746a51c6bfa5338b07" ResourceName="Images" />
-      <Asset Guid="7b128ed9776983d428a41cb405ffe9c7" ResourceName="Materials" />
-      <Asset Guid="7bd28765a9717864bb69af70f60d5610" ResourceName="Scene" />
-      <Asset Guid="7c3e588913d810b45912570ab1b5acbf" ResourceName="Materials" />
       <Asset Guid="7c6c8cc92ff2c73498530720b580492c" ResourceName="UI" />
-      <Asset Guid="7da90702ce45b864781bcb842e1be7dd" ResourceName="Images" />
-      <Asset Guid="7e0f0f7670c067e419a2b4017ffda79e" ResourceName="Materials" />
-      <Asset Guid="7f27238b94fd3ff4d9c7a6573f8e68a9" ResourceName="Images" />
-      <Asset Guid="80602166bdf47864cb2ce9f8a8f7d22c" ResourceName="Images" />
-      <Asset Guid="8066bb6747b376a40a727e201741996f" ResourceName="Images" />
-      <Asset Guid="8212612a732eef44693de7772f3205ec" ResourceName="Materials" />
-      <Asset Guid="826e8a25a13743a41a1f228b8b0ce1c0" ResourceName="Animation" />
-      <Asset Guid="83e8d41d44ae96c42bf8c7883edb341b" ResourceName="Animation" />
-      <Asset Guid="83efda77d2c1ebe42834f0719576c4e2" ResourceName="Animation" />
-      <Asset Guid="842c76027be20e14997b3c706d20870b" ResourceName="Models" />
-      <Asset Guid="855f7fe6e2dd4e94aa7c09c06f100388" ResourceName="Images" />
-      <Asset Guid="859587adc96551242a32ab7691c3147f" ResourceName="Images" />
-      <Asset Guid="85e640c91664eca44874fbf14c719012" ResourceName="Images" />
-      <Asset Guid="860b093989f88ca4fa8d729e6b2e9c0c" ResourceName="Images" />
-      <Asset Guid="86117809864a5c548a404bf7d49346ea" ResourceName="Models" />
-      <Asset Guid="8617df37663748848bac4af9e4cca237" ResourceName="Materials" />
-      <Asset Guid="865451fe1b6600544aa3968870730185" ResourceName="Images" />
-      <Asset Guid="870790705861c0e4a8d43e0a5ee8ffac" ResourceName="Images" />
-      <Asset Guid="875a2686d26e5be479401a98ce96c6ea" ResourceName="Materials" />
-      <Asset Guid="8844a2cafce36094996d3e81f886fba2" ResourceName="Images" />
-      <Asset Guid="8862df12382413d4689b7be89fc71fe0" ResourceName="Animation" />
-      <Asset Guid="88e669e16d4f3234780185d1c5ce4e27" ResourceName="Images" />
-      <Asset Guid="8a1c077d77b5af94aa186e667b4b1396" ResourceName="Images" />
       <Asset Guid="8afcf2e8a9aee3446aa9e19a85fd9679" ResourceName="Prefabs" />
-      <Asset Guid="8b389867eb0e4f44cb77056e4df3623c" ResourceName="Images" />
       <Asset Guid="8b3b9eacecc194f49ad4293c58ec6922" ResourceName="Prefabs" />
       <Asset Guid="8c9cfa26abfee488c85f1582747f6a02" ResourceName="Scene" />
       <Asset Guid="8d3febad303c95c4cb1f58b43c16f772" ResourceName="Prefabs" />
       <Asset Guid="8e50ef05efb033f48aadfffe09353a8f" ResourceName="Prefabs" />
-      <Asset Guid="8ef29ecdac3103645ba717b5682d101e" ResourceName="Materials" />
-      <Asset Guid="8f000a8974b8e2e49b9f2e48e3eb4787" ResourceName="Images" />
       <Asset Guid="8f7d961cc4181584098276478a582f44" ResourceName="UI" />
       <Asset Guid="904e2c1a868f0074391d836a77dd075c" ResourceName="Prefabs" />
       <Asset Guid="90982dadb1868a1439f69edb32835ca8" ResourceName="Prefabs" />
-      <Asset Guid="9155339b6cf5e9047a0f8858cf2ec676" ResourceName="Images" />
-      <Asset Guid="916b80f456d886a40942728375b563fb" ResourceName="Images" />
-      <Asset Guid="9183b97ec25fe6f4ebba68af5fb8ae90" ResourceName="Materials" />
-      <Asset Guid="9185077e064fb3748ac25a9f1815647e" ResourceName="Images" />
-      <Asset Guid="91da5e00c115da54fb7ef02b2a69c650" ResourceName="Materials" />
-      <Asset Guid="9241ff79c8958f84bbbe8fa65aa31369" ResourceName="Materials" />
-      <Asset Guid="92dc8cddda4d3604083f0feb5fc6a712" ResourceName="Images" />
-      <Asset Guid="935940751f8b82944b01d9db37db6074" ResourceName="Models" />
       <Asset Guid="93a338e95424de9489db6ae101c68c15" ResourceName="Prefabs" />
-      <Asset Guid="950210451ea0c2748ae643b550193173" ResourceName="Images" />
-      <Asset Guid="975ba32c022d7834985723b53ef18a50" ResourceName="Images" />
-      <Asset Guid="977685744df4d69458e3e24588eb7006" ResourceName="Materials" />
-      <Asset Guid="979d21fd7a21b87489051d2c0a363bc1" ResourceName="Images" />
-      <Asset Guid="987b39aa6aa613c42a923ed55402ccfe" ResourceName="Materials" />
-      <Asset Guid="98d03672f09f327438aa44c3cec2d8f1" ResourceName="Images" />
-      <Asset Guid="99bb9b2b02cf78440a246ac0037477c7" ResourceName="Materials" />
       <Asset Guid="9a1f706214af5954fa5c1d12b0969b21" ResourceName="SO" />
-      <Asset Guid="9b7ea488df3eb0840bf846bd036e4ed2" ResourceName="Scene" />
-      <Asset Guid="9c6d5b81e00d090419f34faba6c1af13" ResourceName="Images" />
-      <Asset Guid="9c938db85f939bc4eaf47d56a86f5aaa" ResourceName="Materials" />
-      <Asset Guid="9d3b1582c761bd9409c4f902fe4e67d4" ResourceName="Tex" />
       <Asset Guid="9dc13691f47fd9d48a1613d9bcc5e5f1" ResourceName="Scene" />
       <Asset Guid="9e05ddc99f8ab5b48b34ef62faeb2ac5" ResourceName="Prefabs" />
-      <Asset Guid="9e55f41b5bf83344a85469bdfb4ed2a4" ResourceName="Images" />
-      <Asset Guid="9ed75641ed56b32409c98bfc5bf2a90e" ResourceName="Scene" />
-      <Asset Guid="9f03a4b84b2adb441b79b36e3ceb4ee6" ResourceName="Fonts" />
-      <Asset Guid="9f6bb26015719f5428f24098a0c51320" ResourceName="Materials" />
-      <Asset Guid="9f9a4dae56faf10489947a791ffca45f" ResourceName="Fonts" />
-      <Asset Guid="9fadbe6d5ce0d344a8ae648470afc927" ResourceName="Tex" />
-      <Asset Guid="a081ad7a5d5aeba46a4580d24a3ae4f7" ResourceName="Images" />
-      <Asset Guid="a1215da62cebf3c4985abb5fd5a87d11" ResourceName="Models" />
-      <Asset Guid="a13fb1533256f1c49b41b252f2bf5754" ResourceName="Tex" />
+      <Asset Guid="a138c7ae9d242f049b9a971c11f72f30" ResourceName="UI" />
       <Asset Guid="a1d203f5c0a79e343892bcf723056009" ResourceName="Prefabs" />
-      <Asset Guid="a2fecdb85fd3a13488c6bb29d77e45de" ResourceName="Models" />
-      <Asset Guid="a3486fef2f2ddb2488b0dfcf4c301204" ResourceName="Images" />
-      <Asset Guid="a3b736a8ea6997946afbd93dda0f7877" ResourceName="Materials" />
-      <Asset Guid="a45d50a4ea44edb4d913b665ed27fbdf" ResourceName="Images" />
-      <Asset Guid="a51163ff0ab77364fa0e715e66c1c1e4" ResourceName="Models" />
-      <Asset Guid="a54e838d94af9dc41b946574da64a2f9" ResourceName="Animation" />
-      <Asset Guid="a596dc5706ba84a41a797c96d3f94510" ResourceName="Images" />
-      <Asset Guid="a60696e5023553a44836acca420ec350" ResourceName="Materials" />
-      <Asset Guid="a66fcac612952484bab6afc1601fef39" ResourceName="Images" />
-      <Asset Guid="a6b262980e340c240a9c2108eed19d89" ResourceName="Fonts" />
       <Asset Guid="a6e97a2c5e5c8c34eb337955101090f3" ResourceName="Prefabs" />
-      <Asset Guid="a758eda31684c96499b02e4ff2db6a22" ResourceName="Animation" />
-      <Asset Guid="a812526df3249e84f88840e98f7ba1fd" ResourceName="Audio" />
-      <Asset Guid="a849e68b66a7a394096695e61204d63c" ResourceName="Images" />
-      <Asset Guid="a86ac7df60fd2744aa7df440f8107d6e" ResourceName="Images" />
-      <Asset Guid="aa823cb5003c72843b01849ce65ff5c4" ResourceName="Scene" />
-      <Asset Guid="aad578cfd0f3bff43895f0a4015603cc" ResourceName="Images" />
-      <Asset Guid="ab38035223e45f04ea3c518d4401230b" ResourceName="Materials" />
-      <Asset Guid="acb3af433d21c574e9fa43bb4e7ff2fc" ResourceName="Images" />
       <Asset Guid="ad054f8a76dd2bc469bc26afee93c588" ResourceName="Scene" />
-      <Asset Guid="ad5a666bd5c3b884d99faabcba57f5c1" ResourceName="Images" />
-      <Asset Guid="ade47e98d1439a74b950ee6f257bf8f1" ResourceName="Materials" />
-      <Asset Guid="ae8924ef7f4d62d489b9dd3dde06dd21" ResourceName="Models" />
-      <Asset Guid="b04b31c32827157488d4c2287c56d950" ResourceName="Materials" />
-      <Asset Guid="b15d2d91a7be6154e9c1d118fc0c7bff" ResourceName="Images" />
-      <Asset Guid="b23c03e37496f1941b913094059c739d" ResourceName="Models" />
-      <Asset Guid="b3d94fc0beb59ab419c674634d75b7d5" ResourceName="Materials" />
       <Asset Guid="b406dc69b15b4d5468d1c89f834a5e8a" ResourceName="Prefabs" />
-      <Asset Guid="b4bba5426fe6e8f409c5641ab52a7f28" ResourceName="Images" />
-      <Asset Guid="b5340b4f88420614cbfe7f29b36f2484" ResourceName="Images" />
-      <Asset Guid="b5e0cc37c5ff9d547966dfc38161e8f9" ResourceName="Materials" />
-      <Asset Guid="b7c9e7565b4032a418ca7c4054e15cff" ResourceName="Images" />
-      <Asset Guid="b7d8afcc89a353548a69c8c3cd5efbd0" ResourceName="Images" />
-      <Asset Guid="b7e5f118f0c458846a806be750836615" ResourceName="Images" />
-      <Asset Guid="b8a6099b9eced1b4bb1c3e1d1b815ace" ResourceName="Images" />
-      <Asset Guid="b8edd91e0ac95fc43ac3ae5900c43c8c" ResourceName="Images" />
       <Asset Guid="bb20f9a8ed417f046ac3c3bb6cc3b862" ResourceName="Scene" />
-      <Asset Guid="bb3806ed2f784b0499df8315eb9e8f82" ResourceName="Images" />
       <Asset Guid="bb7fd88e6086b654a9afffbba2c31abd" ResourceName="Prefabs" />
-      <Asset Guid="bb8411f48f17797428a357b5f5c2be64" ResourceName="Images" />
-      <Asset Guid="bd289ee061a1405418e43686e51efe4d" ResourceName="Images" />
-      <Asset Guid="bd683dd19cb87fb469dbde5492a4fa33" ResourceName="Images" />
-      <Asset Guid="bebdb144e2b4dca4f9290e455f1e57a2" ResourceName="Materials" />
-      <Asset Guid="bfe69146dfdc7a245ae3fcdaf7e6de9e" ResourceName="Tex" />
-      <Asset Guid="c058c5d6d6aeead47b02d147bbad1283" ResourceName="Audio" />
       <Asset Guid="c07b88c9dbb63d248ba0fafde7485644" ResourceName="Prefabs" />
-      <Asset Guid="c0876900a1f3aa04e988b501ce3d0799" ResourceName="Images" />
-      <Asset Guid="c0dd5d83b2a025948bc255b458fb2ecb" ResourceName="Fonts" />
       <Asset Guid="c1c35827c302b8a4ca07090bdca95a3f" ResourceName="Prefabs" />
       <Asset Guid="c22e58d6890ff624092d69af3f932fc7" ResourceName="UI" />
-      <Asset Guid="c2d6cc765bcabd54985f3fedfe31bef9" ResourceName="Materials" />
       <Asset Guid="c331ce2b49a30cd4680268b0c494aa39" ResourceName="Prefabs" />
-      <Asset Guid="c508126cdde1cbe4093587c52a2d6316" ResourceName="Images" />
       <Asset Guid="c5cdc4aa0dc51f24bafa97b2e40214c7" ResourceName="SO" />
       <Asset Guid="c76c9f3ab9368b4438c90defcaff22d7" ResourceName="DataTable" />
-      <Asset Guid="cb3ec9a424fa0cd4ebc8f50f194cd9a4" ResourceName="Materials" />
-      <Asset Guid="cb5eccb904adadb4d97526e81af8d182" ResourceName="Images" />
-      <Asset Guid="ccef818071b579d4f8262e5f6dded8e4" ResourceName="Images" />
-      <Asset Guid="cd804d4b9f7a2ec42bea9159bb96a336" ResourceName="Scene" />
-      <Asset Guid="cd83251b4dc7921458813c25f0e48d7e" ResourceName="Materials" />
-      <Asset Guid="ce2ee9d67a1483148b3a1d7932ea6341" ResourceName="Materials" />
-      <Asset Guid="ceda426db28d23248bf6f24ea08dbede" ResourceName="Images" />
-      <Asset Guid="d272dbe71c657074480b16156ff9dffe" ResourceName="Materials" />
-      <Asset Guid="d42654f68fe02ce4494479d4845ac4c9" ResourceName="Materials" />
-      <Asset Guid="d4b6633c0ccb10445b6c153a456cca33" ResourceName="Models" />
-      <Asset Guid="d5cc3113235301041807c153a3fdf6b5" ResourceName="Scene" />
-      <Asset Guid="d69b3d02149e5ad4eaed89ad4822f3e2" ResourceName="Materials" />
-      <Asset Guid="d785f390865aafd4d843087de7cba64f" ResourceName="Materials" />
-      <Asset Guid="d825a766e91aa7e4685cfd5d2ef005e4" ResourceName="Animation" />
-      <Asset Guid="d8703c8c11fbf9e4193dfddba957f0c7" ResourceName="Fonts" />
-      <Asset Guid="d87d3d55e7059f844b961b0ea05a4c6b" ResourceName="Materials" />
-      <Asset Guid="d8b49b8b076ee0c4d9cc65b95906ca93" ResourceName="Tex" />
-      <Asset Guid="d98ea4dbcaca2d144be5f250ca51d6da" ResourceName="Materials" />
-      <Asset Guid="d9ca86c4e10cfda418563c621f169504" ResourceName="Images" />
-      <Asset Guid="db2cc5c531af1d449957718067ff3c35" ResourceName="Images" />
-      <Asset Guid="dce11cc9ffb553e4a9ef09c5942014af" ResourceName="Images" />
-      <Asset Guid="dd50f1a0ed53fc94598c5a66cb12d3b6" ResourceName="Images" />
-      <Asset Guid="df1b33ad96aa771489367ef46356c7de" ResourceName="Images" />
-      <Asset Guid="df246cbd7a08fe643a954f9e6f8d4ee4" ResourceName="Images" />
-      <Asset Guid="df2b9844488057c4d92d8ae6923d195d" ResourceName="Images" />
-      <Asset Guid="df70955dd0cc61044aa9b17376485c88" ResourceName="Models" />
-      <Asset Guid="dfc53a545536bbb4e93b7cf3e58e84d6" ResourceName="Materials" />
-      <Asset Guid="e061a366a5b791c4ea735f85b897d7a3" ResourceName="Images" />
-      <Asset Guid="e0dbd12fc06144046bfc3081c9cf6c84" ResourceName="Images" />
-      <Asset Guid="e0e1c50a0d070c04b92275afc8065f13" ResourceName="Images" />
-      <Asset Guid="e16b68d4ae2b75d41972db0dba81bb1f" ResourceName="Models" />
-      <Asset Guid="e29cca814d7873e4ba2fbfc2c2e9b6e4" ResourceName="Images" />
-      <Asset Guid="e4b2a567377f3694f8102449ec42387e" ResourceName="Fonts" />
-      <Asset Guid="e57129e12f5fab74db01f90c3d01c1e5" ResourceName="Images" />
-      <Asset Guid="e583549bfcba7fd41ae411448d110633" ResourceName="Images" />
-      <Asset Guid="e583bbea1e811574fb77e5df8547c765" ResourceName="Materials" />
-      <Asset Guid="e5ae225b33ac484489df54234949da3e" ResourceName="Images" />
-      <Asset Guid="e67da9e0992f3274e951bd15078dce0e" ResourceName="Images" />
-      <Asset Guid="e8b92002d56f2f24da0297b7f7f1c917" ResourceName="Materials" />
-      <Asset Guid="e8f8157d6bd72604588e5b00447e3be2" ResourceName="Images" />
-      <Asset Guid="e91617f197890a048a2faee36105b13a" ResourceName="Materials" />
-      <Asset Guid="eb1706e25e18d4943b1661fc175ee4ad" ResourceName="Images" />
-      <Asset Guid="ec8511003d8209845aec1bccb21e4c1c" ResourceName="Materials" />
-      <Asset Guid="ed12cb81b8c38ab46905ffdb027e1cea" ResourceName="Materials" />
-      <Asset Guid="ed12ea421f62bf3428aee029d0000821" ResourceName="Images" />
+      <Asset Guid="e5df58eec8f62494b99d38c1a84024d2" ResourceName="UI" />
       <Asset Guid="edf8e2302525c1547994bfd86b639559" ResourceName="Scene" />
-      <Asset Guid="ee60125194a718041b5dc7bf333de021" ResourceName="Tex" />
-      <Asset Guid="efc18a8452d335a4f890918701c2e4c0" ResourceName="Images" />
-      <Asset Guid="f0ff9403eeba5cd4391bd8ebc93941c1" ResourceName="Materials" />
-      <Asset Guid="f1e67e02139d1c548b786809390a74ec" ResourceName="Images" />
-      <Asset Guid="f289976d19a6b6f43ad0c1b02cc7c374" ResourceName="Materials" />
       <Asset Guid="f2fbd62894081fa49894e785b7bbfe20" ResourceName="Prefabs" />
-      <Asset Guid="f3e3cb7cd34bab949b22e005021f8936" ResourceName="Materials" />
-      <Asset Guid="f471d99719b26684da4ac793bec06922" ResourceName="Models" />
-      <Asset Guid="f589485691561194a9b106ac6adc243d" ResourceName="Models" />
-      <Asset Guid="f5e0c5b692aabf0409faa9b9e7200a92" ResourceName="Materials" />
-      <Asset Guid="f65571a6276940c4fb9a3e487d96e815" ResourceName="Images" />
-      <Asset Guid="f7916d41a5368cf4e8635856151ddb5d" ResourceName="Tex" />
-      <Asset Guid="f83b5b77e34c52a4d8c9d531c2f99b8e" ResourceName="Animation" />
       <Asset Guid="f84bca6f0a5957f4ba1fae7cba962a9e" ResourceName="Prefabs" />
-      <Asset Guid="f97cce7f103a79d45bb9e34d2cd0b850" ResourceName="Images" />
-      <Asset Guid="fa79e07150261a448a3b8b66a3779376" ResourceName="Models" />
       <Asset Guid="fb236cc400e849e4fb7792b9513c58d6" ResourceName="Prefabs" />
       <Asset Guid="fbb25c73ab36ca546bbd19df34706628" ResourceName="Prefabs" />
-      <Asset Guid="fbf01f8bef92aba46ad2802af75bc9e5" ResourceName="Images" />
       <Asset Guid="fe3d86ab4e71a6640bc60a2164c3d2b5" ResourceName="SO" />
-      <Asset Guid="ff5ff7bc5d36cd9469c6f084b109b621" ResourceName="Images" />
     </Assets>
   </ResourceCollection>
 </UnityGameFramework>

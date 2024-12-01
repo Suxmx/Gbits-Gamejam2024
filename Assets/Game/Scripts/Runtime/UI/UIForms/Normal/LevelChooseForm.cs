@@ -118,7 +118,7 @@ namespace GameMain
         private void OnChooseLevel(object sender, GameEventArgs e)
         {
             ChooseLevelArgs args = (ChooseLevelArgs)e;
-            GameEntry.UI.CloseUIForm(this);
+            // GameEntry.UI.CloseUIForm(this);
             (GameEntry.Procedure.CurrentProcedure as ProcedureMenu)?.EnterGame(_curChooseIndex + 1);
         }
 

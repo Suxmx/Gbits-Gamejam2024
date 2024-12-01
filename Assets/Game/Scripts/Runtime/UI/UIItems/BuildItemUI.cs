@@ -37,6 +37,7 @@ namespace GameMain
 
         private void OnClick()
         {
+            Debug.Log($"start build {_buildItem}");
             GameManager.Build.StartBuild(_buildItem);
         }
         

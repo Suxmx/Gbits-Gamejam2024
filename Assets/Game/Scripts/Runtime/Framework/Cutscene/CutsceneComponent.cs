@@ -21,15 +21,17 @@ namespace Game.Scripts.Runtime.Cutscene
 
         private void Start()
         {
-            GameEntry.Event.Subscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
+            UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>()
+                .Subscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
         }
 
         private void OnDisable()
         {
-            GameEntry.Event.Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
+            UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>()
+                .Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
         }
 
-        public void PlayCutscene(float speed=1)
+        public void PlayCutscene(float speed = 1)
         {
             _graphics.gameObject.SetActive(true);
             _animator.speed = speed;
@@ -46,6 +48,5 @@ namespace Game.Scripts.Runtime.Cutscene
         {
             _graphics.gameObject.SetActive(false);
         }
-        
     }
 }
