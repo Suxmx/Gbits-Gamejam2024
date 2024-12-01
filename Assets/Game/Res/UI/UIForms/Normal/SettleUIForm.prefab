@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6009770715827318207}
   - component: {fileID: 5761083911205150701}
   - component: {fileID: 5004067887539893582}
-  - component: {fileID: 2144819793945426131}
+  - component: {fileID: 1895238916420028145}
   m_Layer: 0
   m_Name: m_rect_Circle
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2144819793945426131
+--- !u!114 &1895238916420028145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

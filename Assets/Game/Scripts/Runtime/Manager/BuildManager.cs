@@ -285,6 +285,12 @@ namespace GameMain
 
         public void SaveBuildItemStates()
         {
+            if (_currentBuildItem)
+            {
+                Destroy(_currentBuildItem.gameObject);
+                bIsBuilding = false;
+            }
+
             _buildItemSaveDatas.Clear();
             var items = FindObjectsByType<BuildItemBase>(FindObjectsSortMode.None);
             foreach (var item in items)

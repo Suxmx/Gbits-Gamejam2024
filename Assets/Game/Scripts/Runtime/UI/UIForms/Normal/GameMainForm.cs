@@ -167,6 +167,7 @@ namespace GameMain
             m_btn_Restart.onClick.AddListener(OnClickRestart);
             m_btn_Start.onClick.AddListener(OnClickStart);
             m_btn_Undo.onClick.AddListener(OnClickUndo);
+            m_btn_ShowPasueMenu.onClick.AddListener(OnClickPause);
             //pause menu
             m_btn_ReturnMenu.onClick.AddListener(OnClickReturnMenu);
             m_btn_ResumeGame.onClick.AddListener(OnClickResumeGame);
@@ -185,6 +186,7 @@ namespace GameMain
             m_btn_Restart.onClick.RemoveListener(OnClickRestart);
             m_btn_Start.onClick.RemoveListener(OnClickStart);
             m_btn_Undo.onClick.RemoveListener(OnClickUndo);
+            m_btn_ShowPasueMenu.onClick.RemoveListener(OnClickPause);
             //pause menu
             m_btn_ReturnMenu.onClick.RemoveListener(OnClickReturnMenu);
             m_btn_ResumeGame.onClick.RemoveListener(OnClickResumeGame);
@@ -196,9 +198,8 @@ namespace GameMain
 
         private void OnClickPause()
         {
-            var enable = m_rect_PauseMenu.gameObject.activeSelf;
-            m_rect_PauseMenu.gameObject.SetActive(!enable);
-            GameManager.Instance.Pause = !enable;
+            GameManager.Instance.Pause = true;
+            GameEntry.UI.OpenUIForm(UIFormId.PauseForm);
         }
 
         private void OnClickResumeGame()

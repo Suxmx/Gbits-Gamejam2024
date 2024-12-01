@@ -154,11 +154,11 @@ MonoBehaviour:
     LevelName: "\u68A6\u4E0E\u7F8A\u7FA4"
     AvailableBuildItems:
     - Item: 0
-      Count: 10
+      Count: 5
     - Item: 1
-      Count: 10
+      Count: 5
     - Item: 6
-      Count: 10
+      Count: 5
     - Item: 4
       Count: 5
     - Item: 7

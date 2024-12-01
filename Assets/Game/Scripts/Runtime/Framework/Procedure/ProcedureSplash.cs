@@ -25,6 +25,7 @@ namespace GameMain
         {
             base.OnEnter(procedureOwner);
             _procedureOwner = procedureOwner;
+            GameEntry.Audio.PlayMusic(EMusic.MainMusic, true);
             if (!GameEntry.Procedure.IfPlaySplash)
             {
                 DoChangeState();
