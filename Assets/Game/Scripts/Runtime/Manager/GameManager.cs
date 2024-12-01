@@ -17,7 +17,7 @@ namespace GameMain
         #region Static
 
         public static GameManager Instance { get; private set; }
-        public static Plane BuildPlane = new Plane(Vector3.forward, new Vector3(0, 0, 34.8f));
+        public static Plane BuildPlane = new Plane(Vector3.forward, new Vector3(0, 0, 0));
 
         public static BuildManager Build { get; private set; }
         public static bool IsInited => Instance != null && Instance.Inited;
@@ -58,6 +58,10 @@ namespace GameMain
             {
                 _arriveSheepCount = value;
                 GameEntry.Event.Fire(this, SheepArriveArgs.Create(_arriveSheepCount, TotalSheepCount));
+                if (ArriveSheepCount == TotalSheepCount)
+                {
+                    OnGameSettle();
+                }
             }
         }
 
@@ -66,6 +70,7 @@ namespace GameMain
             get => _totalSheepCount;
             set
             {
+                Debug.Log("set total to " + value);
                 _totalSheepCount = value;
                 GameEntry.Event.Fire(this, SheepArriveArgs.Create(_arriveSheepCount, TotalSheepCount));
             }
@@ -189,6 +194,11 @@ namespace GameMain
             }
         }
 
+        private void OnGameSettle()
+        {
+            GameEntry.UI.OpenUIForm(UIFormId.SettleUIForm);
+        }
+
         public static Vector3 MousePosToWorldPlanePos()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -208,11 +218,11 @@ namespace GameMain
             GameState = state;
             if (GameState == EGameState.Runtime)
             {
+                Build.ChangeBuildState(EBuildState.Build);
                 Build.SaveBuildItemStates();
             }
             else
             {
-                TotalSheepCount = 0;
                 ArriveSheepCount = 0;
                 Build.ResumeBuildItemStates();
                 var sheep = FindObjectsByType<Sheep>(FindObjectsSortMode.None);

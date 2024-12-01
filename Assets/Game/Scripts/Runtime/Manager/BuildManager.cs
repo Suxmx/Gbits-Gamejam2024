@@ -156,6 +156,13 @@ namespace GameMain
                         }
                     }
                 }
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                    bIsBuilding = false;
+                    Destroy(_currentBuildItem.gameObject);
+                    _currentBuildItem = null;
+                }
             }
             else if (BuildState == EBuildState.Remove)
             {

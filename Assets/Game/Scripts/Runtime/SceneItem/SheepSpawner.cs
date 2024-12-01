@@ -1,11 +1,13 @@
 using DG.Tweening;
 using GameFramework.Event;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameMain
 {
     public class SheepSpawner : GameEntityBase
     {
+        public Transform UITransform;
         [SerializeField] private GameObject _sheepPrefab;
         [SerializeField] private int _sheepCount = 10;
         [SerializeField] private float _spawnInterval = 1;
@@ -43,7 +45,9 @@ namespace GameMain
         private void SpawnSheep()
         {
             _currentSheepCount--;
-            Sheep sheep = Instantiate(_sheepPrefab, transform.position, Quaternion.identity).GetComponent<Sheep>();
+            Sheep sheep = Instantiate(_sheepPrefab, transform.position + Vector3.up * 0.2f, Quaternion.identity)
+                .GetComponent<Sheep>();
+            GameEntry.Event.Fire(this, SheepSpawnArgs.Create());
             sheep.gameObject.SetActive(true);
             sheep.AddForce(new Vector3(1, 1).normalized * 10, ForceMode.Impulse);
             var color1 = _doorLightBaseColor * Mathf.Pow(2, 4);
@@ -66,7 +70,13 @@ namespace GameMain
                 _start = false;
                 _currentSheepCount = _sheepCount;
                 _timer = 0;
+                GameEntry.Event.Fire(this, SheepSpawnArgs.Create());
             }
+        }
+
+        public string GetUIString()
+        {
+            return $"{_currentSheepCount}/{_sheepCount}";
         }
     }
 }

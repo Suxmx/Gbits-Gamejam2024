@@ -9,35 +9,17 @@ EditorBuildSettings:
     path: Assets/Game/Res/Scenes/Launcher.unity
     guid: edf8e2302525c1547994bfd86b639559
   - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/ArtTest/Icon.unity
-    guid: 649b19e028197a5428380eee746d1c70
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/ArtTest/Item.unity
-    guid: aa823cb5003c72843b01849ce65ff5c4
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/ArtTest/Jungle.unity
-    guid: 56d2e61832f37d445b90be55136d7d1e
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/ArtTest/Start.unity
-    guid: cd804d4b9f7a2ec42bea9159bb96a336
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/ArtTest/StylizedEffect.unity
-    guid: 1ea11e3c9b7f9ce408fa637095308e2e
-  - enabled: 1
     path: Assets/Game/Res/Scenes/Levels/Level1.unity
     guid: ad054f8a76dd2bc469bc26afee93c588
   - enabled: 1
     path: Assets/Game/Res/Scenes/Levels/Level2.unity
-    guid: 9dc13691f47fd9d48a1613d9bcc5e5f1
+    guid: 6b169105477e6e34f91d13dcaa534a5f
   - enabled: 1
     path: Assets/Game/Res/Scenes/Levels/Level3.unity
-    guid: 6b169105477e6e34f91d13dcaa534a5f
+    guid: 9dc13691f47fd9d48a1613d9bcc5e5f1
   - enabled: 1
     path: Assets/Game/Res/Scenes/Levels/Level4.unity
     guid: bb20f9a8ed417f046ac3c3bb6cc3b862
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/Template.unity
-    guid: d5cc3113235301041807c153a3fdf6b5
   - enabled: 1
     path: Assets/Game/Res/Scenes/Main.unity
     guid: 678ebee929128534fbf7af7d45b15c89
@@ -45,20 +27,8 @@ EditorBuildSettings:
     path: Assets/Game/Res/Scenes/Menu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/PlayGround.unity
-    guid: 79e864125dd53e04b94a6a143aec0c9d
-  - enabled: 1
     path: Assets/Game/Res/Scenes/Splash.unity
     guid: 2de5b8aa175d49646af49fc2a7b4a4c1
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/Standard.unity
-    guid: 9b7ea488df3eb0840bf846bd036e4ed2
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/Test/UIEnv.unity
-    guid: 9ed75641ed56b32409c98bfc5bf2a90e
-  - enabled: 1
-    path: Assets/Game/Res/UnpackScenes/Tilemap.unity
-    guid: 7bd28765a9717864bb69af70f60d5610
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ec97e1de7028317478c6db100920527e, type: 3}
   m_UseUCBPForAssetBundles: 0

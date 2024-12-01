@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameMain
@@ -5,6 +6,7 @@ namespace GameMain
     public class Sawtooth : GameEntityBase
     {
         private Transform _graphics;
+
         protected override void OnInit()
         {
             _graphics = transform.Find("Graphics");
@@ -15,9 +17,9 @@ namespace GameMain
             _graphics.Rotate(Vector3.forward, -360 * Time.deltaTime);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
         {
-            Sheep sheep = other.GetComponentInParent<Sheep>();
+            Sheep sheep = other.collider.GetComponentInParent<Sheep>();
             if (sheep)
             {
                 sheep.Die();

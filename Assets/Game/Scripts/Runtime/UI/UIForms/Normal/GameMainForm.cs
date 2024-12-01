@@ -7,17 +7,22 @@ using System.Collections.Generic;
 using GameFramework.Event;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace GameMain
 {
     public partial class GameMainForm : UGuiForm
     {
+        [SerializeField] private GameObject _spawnerDoorUIPrefab;
+        [SerializeField] private GameObject _endDoorUIPrefab;
         [SerializeField] private Texture2D _removeCursor;
         [SerializeField] private Texture2D _normalCursor;
         [SerializeField] private Sprite _editModeSprite;
         [SerializeField] private Sprite _playModeSprite;
         [SerializeField] private Dictionary<EBuildItem, GameObject> _buildItemPrefabMap = new();
+
+        private List<DoorUIItem> _doorUIs = new();
 
         protected override void OnInit(object userData)
         {
@@ -40,6 +45,13 @@ namespace GameMain
             {
                 Destroy(m_rect_BuildItem.GetChild(i).gameObject);
             }
+
+            for (int i = _doorUIs.Count - 1; i >= 0; i--)
+            {
+                Destroy(_doorUIs[i].gameObject);
+            }
+
+            _doorUIs.Clear();
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -49,6 +61,7 @@ namespace GameMain
             {
                 OnClickPause();
             }
+
             if (Input.GetKeyDown(KeyCode.P))
             {
                 GameEntry.UI.OpenUIForm(UIFormId.SettleUIForm);
@@ -77,6 +90,23 @@ namespace GameMain
                 $"到达羊数量：{GameManager.Instance.ArriveSheepCount}/{GameManager.Instance.TotalSheepCount}";
 
             m_img_Mode.sprite = GameManager.Instance.GameState == EGameState.Editor ? _editModeSprite : _playModeSprite;
+            //生成doorUI
+            _doorUIs.Clear();
+            var doors = FindObjectsByType<SheepSpawner>(FindObjectsSortMode.None);
+            foreach (var door in doors)
+            {
+                var doorUI = Instantiate(_spawnerDoorUIPrefab, transform).GetComponent<DoorUIItem>();
+                doorUI.InitSpawnerUI(door);
+                _doorUIs.Add(doorUI);
+            }
+
+            var ends = FindObjectsByType<EndPoint>(FindObjectsSortMode.None);
+            foreach (var end in ends)
+            {
+                var doorUI = Instantiate(_endDoorUIPrefab, transform).GetComponent<DoorUIItem>();
+                doorUI.InitEndPointUI(end);
+                _doorUIs.Add(doorUI);
+            }
         }
 
         #region Events
@@ -194,11 +224,11 @@ namespace GameMain
         {
             if (state == EBuildState.Remove)
             {
-                Cursor.SetCursor(_removeCursor, new Vector2(16, 16), CursorMode.Auto);
+                Cursor.SetCursor(_removeCursor, new Vector2(53, 53), CursorMode.Auto);
             }
             else
             {
-                Cursor.SetCursor(_normalCursor, new Vector2(16, 16), CursorMode.Auto);
+                Cursor.SetCursor(_normalCursor, new Vector2(2, 2), CursorMode.Auto);
             }
         }
     }
