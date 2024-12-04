@@ -134,32 +134,38 @@ namespace GameMain
             }
 
             GameState = EGameState.Editor;
-            //打开主界面
+            //退出cutscene
+            if (GameEntry.Cutscene.IsPlayingCutscene)
+            {
+                GameEntry.Cutscene.FadeCutscene(OnCutsceneFade);
+            }
+            else
+            {
+                OnCutsceneFade();
+            }
+        }
+
+        private void OnCutsceneFade()
+        {
             if (Level == 1)
             {
-                GameEntry.Event.Subscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFade);
+                var animHelper = FindAnyObjectByType<Level1AnimHelper>();
+                if (animHelper)
+                {
+                    animHelper.Play();
+                }
+                else
+                {
+                    ShowUIFormAndInitEnd();
+                }
             }
             else
             {
-                _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
-                GameEntry.Event.FireNow(this, OnGameManagerInitArg.Create());
+                ShowUIFormAndInitEnd();
             }
         }
 
-        private void OnCutsceneFade(object sender, GameEventArgs e)
-        {
-            var animHelper = FindAnyObjectByType<Level1AnimHelper>();
-            if (animHelper)
-            {
-                animHelper.Play();
-            }
-            else
-            {
-                Level1Start();
-            }
-        }
-
-        public void Level1Start()
+        public void ShowUIFormAndInitEnd()
         {
             _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
             GameEntry.Event.FireNow(this, OnGameManagerInitArg.Create());
@@ -215,11 +221,6 @@ namespace GameMain
 
         public void OnExit()
         {
-            if (Level == 1 && GameEntry.Event.Check(OnCutsceneFadeArgs.EventId, OnCutsceneFade))
-            {
-                GameEntry.Event.Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFade);
-            }
-
             GameEntry.UI.CloseUIForm(_gameMainFormId);
             foreach (var mgr in _managers)
             {

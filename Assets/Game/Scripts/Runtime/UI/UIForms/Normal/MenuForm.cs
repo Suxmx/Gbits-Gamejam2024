@@ -16,9 +16,6 @@ namespace GameMain
         [SerializeField] private Color _chosenFontColor;
         private int _curBtnIndex = 0;
 
-        private bool _pendingOpenLevelChooseForm = false;
-        private bool _pendingOpenStuffForm = false;
-
         private List<Button> _btns = new();
 
         protected override void OnInit(object userData)
@@ -138,18 +135,17 @@ namespace GameMain
 
         private void OnClickStartGame()
         {
-            // GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
             (GameEntry.Procedure.CurrentProcedure as ProcedureMenu)?.EnterGame(1);
         }
 
         private void OnClickLevelSelect()
         {
-            if (!_pendingOpenStuffForm && !_pendingOpenLevelChooseForm)
-            {
-                _pendingOpenLevelChooseForm = true;
-                GameEntry.Cutscene.PlayCutscene(2);
-                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            }
+            GameEntry.Cutscene.PlayCutscene(OnLevelSelectCutsceneEnter, 2);
+        }
+
+        private void OnClickStuff()
+        {
+            GameEntry.Cutscene.PlayCutscene(OnStuffCutsceneEnter, 2);
         }
 
         private void OnClickExitGame()
@@ -169,32 +165,17 @@ namespace GameMain
             PreSelectButton(_curBtnIndex);
         }
 
-        private void OnClickStuff()
+
+        private void OnStuffCutsceneEnter()
         {
-            if (!_pendingOpenStuffForm && !_pendingOpenLevelChooseForm)
-            {
-                _pendingOpenStuffForm = true;
-                GameEntry.Cutscene.PlayCutscene(2);
-                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            }
+            GameEntry.UI.OpenUIForm(UIFormId.StuffForm);
+            GameEntry.Cutscene.FadeCutscene(null);
         }
 
-        private void OnCutsceneEnter(object sender, GameEventArgs e)
+        private void OnLevelSelectCutsceneEnter()
         {
-            // if ((MenuForm)sender != this) return;
-            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            if (_pendingOpenStuffForm)
-            {
-                _pendingOpenStuffForm = false;
-                GameEntry.UI.OpenUIForm(UIFormId.StuffForm);
-                GameEntry.Cutscene.FadeCutscene();
-            }
-            else if (_pendingOpenLevelChooseForm)
-            {
-                _pendingOpenLevelChooseForm = false;
-                GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
-                GameEntry.Cutscene.FadeCutscene();
-            }
+            GameEntry.UI.OpenUIForm(UIFormId.LevelChooseForm);
+            GameEntry.Cutscene.FadeCutscene(null);
         }
 
         #endregion

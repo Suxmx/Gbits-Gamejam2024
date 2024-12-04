@@ -9,8 +9,21 @@ namespace Game.Scripts.Runtime.Cutscene
 {
     public class CutsceneComponent : UnityGameFramework.Runtime.GameFrameworkComponent
     {
+        public bool IsPlayingCutscene => _isPlayingCutscene;
         private Animator _animator;
         private GameObject _graphics;
+
+        /// <summary>
+        /// 若有其他回调不便在PlayCutscene中传入，可在此添加
+        /// </summary>
+        public Action OnEnterEnd;
+
+        /// <summary>
+        /// 若有其他回调不便在FadeCutscene中传入，可在此添加
+        /// </summary>
+        public Action OnFadeEnd;
+
+        private bool _isPlayingCutscene = false;
 
         protected override void Awake()
         {
@@ -19,33 +32,35 @@ namespace Game.Scripts.Runtime.Cutscene
             _animator = _graphics.GetComponent<Animator>();
         }
 
-        private void Start()
+        public void PlayCutscene(Action onEnterEnd, float speed = 1)
         {
-            UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>()
-                .Subscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
-        }
-
-        private void OnDisable()
-        {
-            UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>()
-                .Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFadeEnd);
-        }
-
-        public void PlayCutscene(float speed = 1)
-        {
+            if (_isPlayingCutscene) return;
+            OnEnterEnd += onEnterEnd;
+            _isPlayingCutscene = true;
             _graphics.gameObject.SetActive(true);
             _animator.speed = speed;
             _animator.Play("Enter", 0, 0);
-            _animator.Update(0);
         }
 
-        public void FadeCutscene()
+        public void FadeCutscene(Action onFadeEnd, float speed = 1)
         {
+            if (!_isPlayingCutscene) return;
+            OnFadeEnd += onFadeEnd;
+            _animator.speed = speed;
             _animator.Play("Fade", 0, 0);
         }
 
-        private void OnCutsceneFadeEnd(object sender, GameEventArgs e)
+        public void AnimEnterEnd()
         {
+            OnEnterEnd?.Invoke();
+        }
+
+        public void AnimFadeEnd()
+        {
+            _isPlayingCutscene = false;
+            OnFadeEnd?.Invoke();
+            OnFadeEnd = null;
+            OnEnterEnd = null;
             _graphics.gameObject.SetActive(false);
         }
     }

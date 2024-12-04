@@ -145,7 +145,11 @@ namespace GameMain
                     //找到了
                     if (found)
                     {
-                        _preRemoveItem.SetOutliner(false);
+                        if (_preRemoveItem)
+                        {
+                            _preRemoveItem.SetOutliner(false);
+                        }
+
                         _preRemoveItem = buildItem;
                         // if(!buildItem) continue;
                         buildItem.SetOutliner(true);
@@ -235,7 +239,27 @@ namespace GameMain
         public void ChangeBuildState(EBuildState state)
         {
             if (BuildState == state) return;
+            if (BuildState == EBuildState.Build)
+            {
+                if (bIsBuilding && _currentBuildItem)
+                {
+                    Destroy(_currentBuildItem.gameObject);
+                    bIsBuilding = false;
+                    _currentBuildItem = null;
+                }
+            }
+            else if (BuildState == EBuildState.Remove)
+            {
+                if (_preRemoveItem)
+                {
+                    _preRemoveItem.SetOutliner(false);
+                    _preRemoveItem = null;
+                }
+            }
+
             BuildState = state;
+
+
             GameEntry.Event.Fire(this, OnBuildStateChangeArgs.Create(state));
         }
 

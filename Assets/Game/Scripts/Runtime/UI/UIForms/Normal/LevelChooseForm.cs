@@ -22,8 +22,6 @@ namespace GameMain
 
         private Tween _chooseTween;
 
-        private bool _pendingClose = false;
-
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -59,11 +57,16 @@ namespace GameMain
                 ChooseIndex(_curChooseIndex);
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape) && !_pendingClose)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _pendingClose = true;
-                GameEntry.Cutscene.PlayCutscene(2);
-                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+                if (GameEntry.Procedure.CurrentProcedure is ProcedureMenu)
+                {
+                    GameEntry.Cutscene.PlayCutscene(OnReturnMenuCutsceneEnter, 2);
+                }
+                else
+                {
+                    GameEntry.UI.TryCloseUIForm(this);
+                }
             }
         }
 
@@ -106,45 +109,26 @@ namespace GameMain
             if (_chooseTween.IsActivePlaying()) _chooseTween.Kill();
             _chooseTween = DOTween.To(() => m_rect_LevelGroup.anchoredPosition.x, x => m_rect_LevelGroup.SetPosX(x),
                 end, 0.5f).SetUpdate(true);
-            // _chooseTween.onUpdate += () => Debug.Log(m_rect_LevelGroup.anchoredPosition.x);
-            _chooseTween.onComplete += DeactivateInvisibleLevelItems;
-        }
-
-        private void DeactivateInvisibleLevelItems()
-        {
         }
 
         #region Events
 
         private void OnClickReturnMenu()
         {
-            if (!_pendingClose)
-            {
-                _pendingClose = true;
-                GameEntry.Cutscene.PlayCutscene(2);
-                GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            }
+            GameEntry.Cutscene.PlayCutscene(OnReturnMenuCutsceneEnter, 2);
         }
 
         private void OnChooseLevel(object sender, GameEventArgs e)
         {
             ChooseLevelArgs args = (ChooseLevelArgs)e;
-            // GameEntry.UI.CloseUIForm(this);
-            if (GameEntry.Procedure.CurrentProcedure is ProcedureMain)
-            {
-                GameEntry.UI.CloseUIFormById(UIFormId.PauseForm);
-            }
-
             (GameEntry.Procedure.CurrentProcedure as ProcedureMenu)?.EnterGame(_curChooseIndex + 1);
             (GameEntry.Procedure.CurrentProcedure as ProcedureMain)?.ChooseLevel(_curChooseIndex + 1);
         }
 
-        private void OnCutsceneEnter(object sender, GameEventArgs e)
+        private void OnReturnMenuCutsceneEnter()
         {
-            _pendingClose = false;
-            GameEntry.UI.CloseUIForm(this);
-            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            GameEntry.Cutscene.FadeCutscene();
+            GameEntry.Cutscene.FadeCutscene(null);
+            GameEntry.UI.TryCloseUIForm(this);
         }
 
         #endregion

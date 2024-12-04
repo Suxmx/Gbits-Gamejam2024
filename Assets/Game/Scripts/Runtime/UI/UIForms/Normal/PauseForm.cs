@@ -141,7 +141,7 @@ namespace GameMain
 
         private void OnClickResume()
         {
-            GameEntry.UI.CloseUIForm(this);
+            GameEntry.UI.TryCloseUIForm(this);
             GameManager.Instance.Pause = false;
         }
 
@@ -152,7 +152,7 @@ namespace GameMain
 
         private void OnClickReturnMenu()
         {
-            GameMain.GameEntry.UI.CloseUIForm(this);
+            GameMain.GameEntry.UI.TryCloseUIForm(this);
             (GameEntry.Procedure.CurrentProcedure as ProcedureMain)?.ReturnMenu();
         }
     }

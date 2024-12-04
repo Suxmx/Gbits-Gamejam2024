@@ -25,7 +25,6 @@ namespace GameMain
         private bool m_IsChangeSceneComplete = false;
         private bool _pendingLoadScene;
         private string _loadSceneName;
-        private bool _hasCutscene = false;
 
         public override bool UseNativeDialog
         {
@@ -38,32 +37,19 @@ namespace GameMain
             //初始化场景切换状态
             m_IsChangeSceneComplete = false;
             _pendingLoadScene = false;
-            _hasCutscene = procedureOwner.HasData("PlayCutscene") && procedureOwner.GetData<VarBoolean>("PlayCutscene");
 
             GameEntry.Event.Subscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Subscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
             GameEntry.Event.Subscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Subscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
-            GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
 
             // 还原游戏速度
             GameEntry.Base.ResetNormalGameSpeed();
 
             string sceneName = procedureOwner.GetData<VarString>("NextScene");
             _loadSceneName = sceneName;
-            if (!_hasCutscene)
-            {
-                DoChangeScene(sceneName);
-            }
-            else
-            {
-                GameEntry.Cutscene.PlayCutscene();
-            }
-        }
 
-        private void DoChangeScene(string sceneName)
-        {
             // 停止所有声音
             GameEntry.Audio.StopAllSounds();
 
@@ -77,7 +63,6 @@ namespace GameMain
             {
                 GameEntry.Scene.UnloadScene(loadedSceneAssetNames[i]);
             }
-
 
             _changeToMenu = sceneName == AssetUtility.MenuSceneName;
             _changeToMain = sceneName.Contains("Level");
@@ -97,17 +82,11 @@ namespace GameMain
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            if (_hasCutscene)
-            {
-                GameEntry.Cutscene.FadeCutscene();
-            }
-
             GameEntry.Event.Unsubscribe(LoadSceneSuccessEventArgs.EventId, OnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneFailureEventArgs.EventId, OnLoadSceneFailure);
             GameEntry.Event.Unsubscribe(LoadSceneUpdateEventArgs.EventId, OnLoadSceneUpdate);
             GameEntry.Event.Unsubscribe(UnloadSceneSuccessEventArgs.EventId, OnUnLoadSceneSuccess);
             GameEntry.Event.Unsubscribe(LoadSceneDependencyAssetEventArgs.EventId, OnLoadSceneDependencyAsset);
-            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
 
             base.OnLeave(procedureOwner, isShutdown);
         }
@@ -204,25 +183,6 @@ namespace GameMain
 
             Log.Info("Load scene '{0}' dependency asset '{1}', count '{2}/{3}'.", ne.SceneAssetName,
                 ne.DependencyAssetName, ne.LoadedCount.ToString(), ne.TotalCount.ToString());
-        }
-
-        private void OnCutsceneEnter(object sender, GameEventArgs e)
-        {
-            if (!_hasCutscene) return;
-
-            // Debug.Log("Cutscene enter");
-            DoChangeScene(_loadSceneName);
-            if (GameEntry.UI.GetUIFormById(UIFormId.MenuForm) &&
-                GameEntry.UI.GetUIFormById(UIFormId.MenuForm).gameObject.activeInHierarchy)
-            {
-                GameEntry.UI.CloseUIFormById(UIFormId.MenuForm);
-            }
-
-            if (GameEntry.UI.GetUIFormById(UIFormId.LevelChooseForm) &&
-                GameEntry.UI.GetUIFormById(UIFormId.LevelChooseForm).gameObject.activeInHierarchy)
-            {
-                GameEntry.UI.CloseUIFormById(UIFormId.LevelChooseForm);
-            }
         }
     }
 }

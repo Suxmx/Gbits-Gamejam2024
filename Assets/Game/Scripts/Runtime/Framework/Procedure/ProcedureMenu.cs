@@ -24,6 +24,7 @@ namespace GameMain
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
+            if (GameEntry.Cutscene.IsPlayingCutscene) GameEntry.Cutscene.FadeCutscene(null);
             _procedureOwner = procedureOwner;
             _menuSerialId = (int)GameEntry.UI.OpenUIForm(UIFormId.MenuForm);
         }
@@ -31,14 +32,19 @@ namespace GameMain
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-
-            procedureOwner.SetData<VarBoolean>("PlayCutscene", true);
+            GameEntry.UI.CloseUIForm(_menuSerialId);
+            GameEntry.UI.TryCloseUIFormById(UIFormId.LevelChooseForm);
         }
 
         public void EnterGame(int index)
         {
             _procedureOwner.SetData<VarInt32>("LevelIndex", index);
             _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(index));
+            GameEntry.Cutscene.PlayCutscene(DoChangeState);
+        }
+
+        private void DoChangeState()
+        {
             ChangeState<ProcedureChangeScene>(_procedureOwner);
         }
     }

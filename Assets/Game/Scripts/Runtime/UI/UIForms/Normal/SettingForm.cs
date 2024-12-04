@@ -32,7 +32,7 @@ namespace GameMain
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameEntry.UI.CloseUIForm(this);
+                GameEntry.UI.TryCloseUIForm(this);
             }
         }
 

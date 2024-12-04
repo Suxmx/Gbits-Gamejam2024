@@ -14,8 +14,6 @@ namespace GameMain
 {
     public partial class StuffForm : UGuiForm
     {
-        private bool _pendingClose = false;
-
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -55,18 +53,14 @@ namespace GameMain
 
         private void DoClose()
         {
-            if (_pendingClose) return;
-            _pendingClose = true;
-            GameEntry.Cutscene.PlayCutscene(2);
-            GameEntry.Event.Subscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
+            GameEntry.Cutscene.PlayCutscene(OnCutsceneEnter, 2);
         }
 
-        private void OnCutsceneEnter(object sender, GameEventArgs e)
+
+        private void OnCutsceneEnter()
         {
-            _pendingClose = false;
-            GameEntry.UI.CloseUIForm(this);
-            GameEntry.Event.Unsubscribe(OnCutsceneEnterArgs.EventId, OnCutsceneEnter);
-            GameEntry.Cutscene.FadeCutscene();
+            GameEntry.UI.TryCloseUIForm(this);
+            GameEntry.Cutscene.FadeCutscene(null, 2);
         }
     }
 }

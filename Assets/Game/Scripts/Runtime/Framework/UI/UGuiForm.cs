@@ -48,7 +48,7 @@ namespace GameMain
 
             if (ignoreFade)
             {
-                GameEntry.UI.CloseUIForm(this);
+                GameEntry.UI.TryCloseUIForm(this);
             }
             else
             {

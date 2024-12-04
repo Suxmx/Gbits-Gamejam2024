@@ -34,7 +34,7 @@ namespace GameMain
         public void TipAnim2End()
         {
             gameObject.SetActive(false);
-            GameManager.Instance.Level1Start();
+            GameManager.Instance.ShowUIFormAndInitEnd();
         }
 
         private void Update()

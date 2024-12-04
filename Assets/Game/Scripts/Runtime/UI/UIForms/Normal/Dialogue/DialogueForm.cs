@@ -128,7 +128,7 @@ namespace GameMain
 
         void OnDialogueFinished(DialogueTree dlg)
         {
-            GameEntry.UI.CloseUIForm(this);
+            GameEntry.UI.TryCloseUIForm(this);
         }
 
         void OnSubtitlesRequest(SubtitlesRequestInfo info)

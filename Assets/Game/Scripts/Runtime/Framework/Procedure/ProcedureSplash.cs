@@ -39,7 +39,6 @@ namespace GameMain
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
-            procedureOwner.SetData<VarBoolean>("PlayCutscene", false);
         }
 
         private void DoChangeState()

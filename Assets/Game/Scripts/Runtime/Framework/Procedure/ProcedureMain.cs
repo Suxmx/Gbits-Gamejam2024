@@ -16,8 +16,6 @@ namespace GameMain
     {
         public float CurrentFps => _fpsCounter.CurrentFps;
 
-        private bool _returnMenu = false;
-        private bool _restart = false;
         private FpsCounter _fpsCounter;
         private ProcedureOwner _procedureOwner;
         private int _levelIndex = 0;
@@ -31,9 +29,11 @@ namespace GameMain
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            _levelIndex = procedureOwner.GetData<VarInt32>("LevelIndex");
-            _returnMenu = false;
-            _restart = false;
+            if (procedureOwner.HasData("LevelIndex"))
+            {
+                _levelIndex = procedureOwner.GetData<VarInt32>("LevelIndex");
+            }
+            else _levelIndex = 1;
             _fpsCounter = new FpsCounter(0.5f);
             _procedureOwner = procedureOwner;
 
@@ -43,34 +43,27 @@ namespace GameMain
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            _fpsCounter.Update(elapseSeconds, realElapseSeconds);
-            if (_returnMenu)
-            {
-                procedureOwner.SetData<VarString>("NextScene", AssetUtility.MenuSceneName);
-                ChangeState<ProcedureChangeScene>(procedureOwner);
-            }
-            else if (_restart)
-            {
-                procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
-                ChangeState<ProcedureChangeScene>(procedureOwner);
-            }
+            _fpsCounter?.Update(elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
             GameManager.Instance.OnExit();
+            GameEntry.UI.TryCloseUIFormById(UIFormId.PauseForm);
+            GameEntry.UI.TryCloseUIFormById(UIFormId.LevelChooseForm);
         }
 
         public void ReturnMenu()
         {
-            _returnMenu = true;
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.MenuSceneName);
+            GameEntry.Cutscene.PlayCutscene(DoChangeState);
         }
 
         public void Restart()
         {
-            _procedureOwner.SetData<VarBoolean>("PlayCutscene", true);
-            _restart = true;
+            _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
+            GameEntry.Cutscene.PlayCutscene(DoChangeState);
         }
 
         public void NextLevel()
@@ -87,7 +80,7 @@ namespace GameMain
 
             _procedureOwner.SetData<VarInt32>("LevelIndex", _levelIndex);
             _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
-            ChangeState<ProcedureChangeScene>(_procedureOwner);
+            GameEntry.Cutscene.PlayCutscene(DoChangeState);
         }
 
         public void ChooseLevel(int index)
@@ -95,6 +88,11 @@ namespace GameMain
             _levelIndex = index;
             _procedureOwner.SetData<VarInt32>("LevelIndex", _levelIndex);
             _procedureOwner.SetData<VarString>("NextScene", AssetUtility.GetLevelSceneSubName(_levelIndex));
+            GameEntry.Cutscene.PlayCutscene(DoChangeState);
+        }
+
+        private void DoChangeState()
+        {
             ChangeState<ProcedureChangeScene>(_procedureOwner);
         }
     }
