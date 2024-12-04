@@ -131,6 +131,7 @@ namespace GameMain
                 {
                     var hit = _tmpHits[i];
                     BuildItemBase buildItem = null;
+                    //从碰撞体或者父物体中获取BuildItem
                     if (hit.collider.TryGetComponent(out buildItem))
                     {
                         found = true;
@@ -141,8 +142,10 @@ namespace GameMain
                         if (buildItem is not null) found = true;
                     }
 
+                    //找到了
                     if (found)
                     {
+                        _preRemoveItem.SetOutliner(false);
                         _preRemoveItem = buildItem;
                         // if(!buildItem) continue;
                         buildItem.SetOutliner(true);
@@ -161,6 +164,8 @@ namespace GameMain
                                 _countMap[type]));
                             _preRemoveItem = null;
                         }
+
+                        break;
                     }
                 }
 

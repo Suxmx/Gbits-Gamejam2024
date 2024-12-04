@@ -58,7 +58,7 @@ namespace EPOOutline
         public override void SetRenderTarget(RTHandle color, int slice)
         {
             var target = new RenderTargetIdentifier(ConvertToRTI(color), 0, CubemapFace.Unknown, slice);
-            buffer.SetRenderTarget(target);
+            buffer?.SetRenderTarget(target);
         }
 
         public override void SetRenderTarget(RTHandle color, RTHandle depth, int slice)

@@ -7,7 +7,7 @@ namespace GameMain
     {
         [SerializeField] private Vector3 _boxSize;
         [SerializeField] private Vector3 _offset;
-        [SerializeField] private float _bounceSpeed=15;
+        [SerializeField] private float _bounceSpeed = 15;
         private Vector3 _direction => transform.rotation * Vector3.up;
         private bool _bdontChange => Mathf.Abs(_direction.x) < 1e-2f;
         private bool _bFacingRight => _direction.x > 0;
@@ -23,10 +23,10 @@ namespace GameMain
 
         public override void EnableLogic()
         {
-            _boxCollider??=GetComponent<Collider>();
+            _boxCollider ??= GetComponent<Collider>();
             _boxCollider.enabled = true;
             Rigid.linearVelocity = Vector3.zero;
-            
+
             if (!_bIsStatic)
                 Rigid.useGravity = true;
             _bEnableLogic = true;
@@ -34,7 +34,7 @@ namespace GameMain
 
         public override void DisableLogicWhenBuilding()
         {
-            _boxCollider??=GetComponent<Collider>();
+            _boxCollider ??= GetComponent<Collider>();
             _boxCollider.enabled = false;
             Rigid.useGravity = false;
             _bEnableLogic = false;
@@ -43,12 +43,8 @@ namespace GameMain
 
         public override bool DetectBuildable()
         {
-            var boxSize = _boxSize;
-            boxSize.x *= transform.localScale.x;
-            boxSize.y *= transform.localScale.y;
-            boxSize.z *= transform.localScale.z;
-            var size = Physics.OverlapBoxNonAlloc(transform.position + _offset, boxSize / 2, _tmpColliders,
-                transform.rotation, _cantBuildLayer,QueryTriggerInteraction.Ignore);
+            var size = Physics.OverlapBoxNonAlloc(transform.position + _offset, _boxSize / 2, _tmpColliders,
+                transform.rotation, _cantBuildLayer, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < Mathf.Min(size, 10); i++)
             {
                 if (_tmpColliders[i].transform != transform && !_tmpColliders[i].transform.IsChildOf(transform))
