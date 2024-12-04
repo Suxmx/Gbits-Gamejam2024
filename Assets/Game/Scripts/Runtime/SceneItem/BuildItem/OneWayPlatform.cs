@@ -41,7 +41,7 @@ namespace GameMain
                     continue;
                 }
 
-                if (sheep.transform.position.y > transform.position.y + 0.2f)
+                if (sheep.transform.position.y > transform.position.y )
                 {
                     Physics.IgnoreCollision(sheep.Collider, _collider, false);
                 }

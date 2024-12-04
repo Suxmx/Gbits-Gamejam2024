@@ -34,6 +34,7 @@ namespace GameMain
             { typeof(Dasher), EBuildItem.Dasher },
             { typeof(Portal), EBuildItem.Portal },
             { typeof(OneWayPlatform), EBuildItem.OneWayPlatform },
+            { typeof(DasherUp), EBuildItem.DasherUp }
         };
 
         public EBuildState BuildState { get; private set; } = EBuildState.Build;
@@ -45,10 +46,6 @@ namespace GameMain
 
         private BuildItemBase _currentBuildItem;
         private BuildItemBase _preRemoveItem;
-
-        private bool _isBuildingPortal;
-        private Portal _portalA;
-        private Portal _portalB;
 
         public override async Task OnEnter()
         {
@@ -89,6 +86,16 @@ namespace GameMain
             if (BuildState == EBuildState.Build && bIsBuilding && _currentBuildItem != null)
             {
                 _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
+
+                //取消建造
+                if (Input.GetMouseButtonDown(1))
+                {
+                    bIsBuilding = false;
+                    Destroy(_currentBuildItem.gameObject);
+                    _currentBuildItem = null;
+                    return;
+                }
+
                 if (_currentBuildItem.DetectBuildable())
                 {
                     _currentBuildItem.SetOutlinerColor(new Color(0, 160 / 255f, 0));
@@ -101,54 +108,16 @@ namespace GameMain
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (!_isBuildingPortal)
-                    {
-                        var type = _type2EnumMap[_currentBuildItem.GetType()];
-                        bIsBuilding = false;
-                        _currentBuildItem.SetOutliner(false);
-                        _currentBuildItem.EnableLogic();
-                        //加入快速删除队列
-                        _buildItemQueue.Push(_currentBuildItem);
-                        _currentBuildItem = null;
-                        _countMap[type]--;
-                        GameEntry.Event.Fire(this, OnBuildItemCountChangeArgs.Create(type,
-                            _countMap[type]));
-                    }
-                    else
-                    {
-                        if (_portalB is null)
-                        {
-                            _portalA.SetOutliner(false);
-                            var prefab = _prefabMap[EBuildItem.Portal];
-                            _currentBuildItem = Instantiate(prefab).GetComponent<BuildItemBase>();
-                            _currentBuildItem.DisableLogicWhenBuilding();
-                            _currentBuildItem.SetOutliner(true);
-                            _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
-                            _portalB = _currentBuildItem as Portal;
-                        }
-                        else
-                        {
-                            _portalB.SetOutliner(false);
-                            _portalA.EnableLogic();
-                            _portalB.EnableLogic();
-                            _portalA.AttachToPortal(_portalB);
-                            _portalB.AttachToPortal(_portalA);
-
-                            _buildItemQueue.Push(_portalA);
-                            _buildItemQueue.Push(_portalB);
-                            _currentBuildItem = null;
-                            _portalA = null;
-                            _portalB = null;
-                            bIsBuilding = false;
-                        }
-                    }
-                }
-
-                if (Input.GetMouseButtonDown(1))
-                {
+                    var type = _type2EnumMap[_currentBuildItem.GetType()];
                     bIsBuilding = false;
-                    Destroy(_currentBuildItem.gameObject);
+                    _currentBuildItem.SetOutliner(false);
+                    _currentBuildItem.EnableLogic();
+                    //加入快速删除队列
+                    _buildItemQueue.Push(_currentBuildItem);
                     _currentBuildItem = null;
+                    _countMap[type]--;
+                    GameEntry.Event.Fire(this, OnBuildItemCountChangeArgs.Create(type,
+                        _countMap[type]));
                 }
             }
             else if (BuildState == EBuildState.Remove)
@@ -205,13 +174,7 @@ namespace GameMain
 
         public void StartBuild(EBuildItem item)
         {
-            if (!(_countMap.ContainsKey(item) && _countMap[item] > 0))
-            {
-                return;
-            }
-
             ChangeBuildState(EBuildState.Build);
-            _isBuildingPortal = false;
             if (bIsBuilding)
             {
                 if (_currentBuildItem)
@@ -219,7 +182,10 @@ namespace GameMain
                     Destroy(_currentBuildItem.gameObject);
                     _currentBuildItem = null;
                 }
+            }
 
+            if (!(_countMap.ContainsKey(item) && _countMap[item] > 0))
+            {
                 return;
             }
 
@@ -230,12 +196,6 @@ namespace GameMain
                 _currentBuildItem.DisableLogicWhenBuilding();
                 _currentBuildItem.SetOutliner(true);
                 _currentBuildItem.transform.position = GameManager.MousePosToWorldPlanePos();
-
-                if (item == EBuildItem.Portal)
-                {
-                    _isBuildingPortal = true;
-                    _portalA = _currentBuildItem as Portal;
-                }
             }
             else
             {

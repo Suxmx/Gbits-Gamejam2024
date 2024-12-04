@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Echo;
+using GameFramework.Event;
 using UnityEngine;
 
 namespace GameMain
@@ -88,6 +89,7 @@ namespace GameMain
         private bool Inited = false;
         private int _gameMainFormId;
 
+
         private T CreateManager<T>(string name) where T : ManagerBase
         {
             var obj = new GameObject(name);
@@ -133,6 +135,32 @@ namespace GameMain
 
             GameState = EGameState.Editor;
             //打开主界面
+            if (Level == 1)
+            {
+                GameEntry.Event.Subscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFade);
+            }
+            else
+            {
+                _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
+                GameEntry.Event.FireNow(this, OnGameManagerInitArg.Create());
+            }
+        }
+
+        private void OnCutsceneFade(object sender, GameEventArgs e)
+        {
+            var animHelper = FindAnyObjectByType<Level1AnimHelper>();
+            if (animHelper)
+            {
+                animHelper.Play();
+            }
+            else
+            {
+                Level1Start();
+            }
+        }
+
+        public void Level1Start()
+        {
             _gameMainFormId = (int)GameEntry.UI.OpenUIForm(UIFormId.GameMainForm);
             GameEntry.Event.FireNow(this, OnGameManagerInitArg.Create());
         }
@@ -187,6 +215,11 @@ namespace GameMain
 
         public void OnExit()
         {
+            if (Level == 1 && GameEntry.Event.Check(OnCutsceneFadeArgs.EventId, OnCutsceneFade))
+            {
+                GameEntry.Event.Unsubscribe(OnCutsceneFadeArgs.EventId, OnCutsceneFade);
+            }
+
             GameEntry.UI.CloseUIForm(_gameMainFormId);
             foreach (var mgr in _managers)
             {

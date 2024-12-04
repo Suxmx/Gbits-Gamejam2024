@@ -62,10 +62,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5678292277210392090}
-  - component: {fileID: 6729106430553914373}
   - component: {fileID: 6114421641357491809}
   - component: {fileID: 3531628885993592424}
   - component: {fileID: 7249977337971040930}
+  - component: {fileID: -8233400837469369051}
   m_Layer: 10
   m_Name: DasherUp
   m_TagString: Untagged
@@ -90,22 +90,6 @@ Transform:
   - {fileID: 8062535195173480171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &6729106430553914373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464819289350727876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4174e2a03e43a69662ccc3817154f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bIsStatic: 0
-  _boxSize: {x: 3, y: 3, z: 3}
-  _offset: {x: 0, y: 0, z: 0}
-  _force: 20
 --- !u!54 &6114421641357491809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -245,6 +229,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8233400837469369051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464819289350727876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5807d5ed8154fbf918123cf296be06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bIsStatic: 0
+  _boxSize: {x: 3, y: 3, z: 3}
+  _offset: {x: 0, y: 0, z: 0}
+  _force: 20
 --- !u!1 &6688188215636212658
 GameObject:
   m_ObjectHideFlags: 0
