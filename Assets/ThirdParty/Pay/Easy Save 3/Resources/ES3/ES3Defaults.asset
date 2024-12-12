@@ -51,7 +51,6 @@ MonoBehaviour:
     - NodeCanvas
     - ParadoxNotion
     - ParticleImage
-    - ProPixelizer
     - SingularityGroup.HotReload.Runtime
     - SingularityGroup.HotReload.Runtime.Public
     - UnityGameFramework.Runtime
