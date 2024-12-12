@@ -1,0 +1,5 @@
+E:/UnityProject/Gbits-Gamejam2024/.utmp/Debug/j681e202/armeabi-v7a/CMakeFiles/edit_cache.dir
+E:/UnityProject/Gbits-Gamejam2024/.utmp/Debug/j681e202/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+E:/UnityProject/Gbits-Gamejam2024/.utmp/Debug/j681e202/armeabi-v7a/GameActivity/CMakeFiles/game.dir
+E:/UnityProject/Gbits-Gamejam2024/.utmp/Debug/j681e202/armeabi-v7a/GameActivity/CMakeFiles/edit_cache.dir
+E:/UnityProject/Gbits-Gamejam2024/.utmp/Debug/j681e202/armeabi-v7a/GameActivity/CMakeFiles/rebuild_cache.dir

@@ -26341,10 +26341,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4629296146509809153, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7839483780016129971, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 904e2c1a868f0074391d836a77dd075c, type: 3}
 --- !u!1001 &680648019
 PrefabInstance:
@@ -70439,7 +70436,6 @@ GameObject:
   - component: {fileID: 1700084776}
   - component: {fileID: 1700084775}
   - component: {fileID: 1700084774}
-  - component: {fileID: 1700084773}
   - component: {fileID: 1700084772}
   - component: {fileID: 1700084778}
   m_Layer: 8
@@ -70474,19 +70470,6 @@ MonoBehaviour:
   dilateQuality: 1
   blurIterations: 0
   blurType: 1
---- !u!114 &1700084773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700084771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d70c9ba36a8bebe4697e8f8a9da58409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pipelineAsset: {fileID: 11400000, guid: ecbd363870e07455ea237f5753668d30, type: 2}
 --- !u!114 &1700084774
 MonoBehaviour:
   m_ObjectHideFlags: 0

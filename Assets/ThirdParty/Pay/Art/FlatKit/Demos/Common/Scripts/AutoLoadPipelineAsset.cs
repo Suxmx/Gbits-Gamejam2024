@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -57,3 +58,4 @@ public class AutoLoadPipelineAsset : MonoBehaviour {
     }
 }
 }
+#endif

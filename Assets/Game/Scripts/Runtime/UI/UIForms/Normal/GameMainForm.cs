@@ -4,6 +4,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GameFramework.Event;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -110,14 +111,23 @@ namespace GameMain
             }
         }
 
-        private void RefreshStateOnOpen()
+        private async Task RefreshStateOnOpen()
         {
             m_rect_PauseMenu.gameObject.SetActive(false);
 
             foreach (var config in GameManager.Instance.LevelConfig.AvailableBuildItems)
             {
-                var buildItem = Instantiate(_buildItemPrefabMap[config.Item], m_rect_BuildItem)
-                    .GetComponent<BuildItemUI>();
+                string path = config.Item switch
+                {
+                    EBuildItem.Bouncer => "Assets/Game/Res/UI/UIItems/BouncerUIItem.prefab",
+                    EBuildItem.OneWayPlatform => "Assets/Game/Res/UI/UIItems/OneWayPlatformUIItem.prefab",
+                    EBuildItem.Dasher => "Assets/Game/Res/UI/UIItems/DasherUIItem.prefab",
+                    EBuildItem.Cube => "Assets/Game/Res/UI/UIItems/CubeUIItem.prefab",
+                    EBuildItem.DasherUp => "Assets/Game/Res/UI/UIItems/DasherUpUIItem.prefab",
+                };
+                var prefab = await GameEntry.Resource.LoadAssetAsync<GameObject>(path);
+                var buildItem =
+                    Instantiate(prefab, m_rect_BuildItem).GetComponent<BuildItemUI>();
                 buildItem.Init(config.Item, config.Count);
             }
 

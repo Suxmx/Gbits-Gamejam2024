@@ -36,7 +36,7 @@ MonoBehaviour:
   - valid: 1
     name: Scene
     variant: 
-    fileSystem: 
+    fileSystem: GameData
     groups: 
     assetsDirectoryPath: Assets/Game/Res/Scenes
     loadType: 0
@@ -46,69 +46,9 @@ MonoBehaviour:
   - valid: 1
     name: UI
     variant: 
-    fileSystem: 
+    fileSystem: GameData
     groups: 
     assetsDirectoryPath: Assets/Game/Res/UI
-    loadType: 0
-    packed: 1
-    filterType: 0
-    searchPatterns: '*.*'
-  - valid: 0
-    name: Animation
-    variant: 
-    fileSystem: 
-    groups: 
-    assetsDirectoryPath: Assets/Game/Res/Animation
-    loadType: 0
-    packed: 1
-    filterType: 0
-    searchPatterns: '*.*'
-  - valid: 0
-    name: Audio
-    variant: 
-    fileSystem: 
-    groups: 
-    assetsDirectoryPath: Assets/Game/Res/Audio
-    loadType: 0
-    packed: 1
-    filterType: 0
-    searchPatterns: '*.*'
-  - valid: 0
-    name: Fonts
-    variant: 
-    fileSystem: 
-    groups: 
-    assetsDirectoryPath: Assets/Game/Res/Fonts
-    loadType: 0
-    packed: 1
-    filterType: 0
-    searchPatterns: '*.*'
-  - valid: 0
-    name: Images
-    variant: 
-    fileSystem: 
-    groups: 
-    assetsDirectoryPath: Assets/Game/Res/Images
-    loadType: 0
-    packed: 1
-    filterType: 0
-    searchPatterns: '*.*'
-  - valid: 0
-    name: Materials
-    variant: 
-    fileSystem: 
-    groups: 
-    assetsDirectoryPath: Assets/Game/Res/Materials
-    loadType: 0
-    packed: 1
-    filterType: 0
-    searchPatterns: '*.*'
-  - valid: 0
-    name: Models
-    variant: 
-    fileSystem: 
-    groups: 
-    assetsDirectoryPath: Assets/Game/Res/Models
     loadType: 0
     packed: 1
     filterType: 0
@@ -116,29 +56,29 @@ MonoBehaviour:
   - valid: 1
     name: Prefabs
     variant: 
-    fileSystem: 
+    fileSystem: GameData
     groups: 
     assetsDirectoryPath: Assets/Game/Res/Prefabs
     loadType: 0
     packed: 1
-    filterType: 0
+    filterType: 1
     searchPatterns: '*.*'
   - valid: 1
     name: SO
     variant: 
-    fileSystem: 
+    fileSystem: GameData
     groups: 
     assetsDirectoryPath: Assets/Game/Res/SO
     loadType: 0
     packed: 1
     filterType: 0
     searchPatterns: '*.*'
-  - valid: 0
-    name: Tex
+  - valid: 1
+    name: Mat
     variant: 
-    fileSystem: 
+    fileSystem: GameData
     groups: 
-    assetsDirectoryPath: Assets/Game/Res/Textures
+    assetsDirectoryPath: Assets/Game/Res/Materials
     loadType: 0
     packed: 1
     filterType: 0
