@@ -49,7 +49,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeSystem.cmake"
+			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeSystem.cmake"
 		},
 		{
 			"isExternal" : true,
@@ -324,7 +324,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCCompiler.cmake"
+			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -558,7 +558,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCXXCompiler.cmake"
+			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -722,7 +722,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCCompiler.cmake"
+			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -816,21 +816,21 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCXXCompiler.cmake"
+			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/armeabi-v7a/CMakeFiles/3.22.1-g37088a8-dirty/CMakeCXXCompiler.cmake"
 		},
 		{
 			"path" : "GameActivity/CMakeLists.txt"
 		},
 		{
 			"isExternal" : true,
-			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/prefab/armeabi-v7a/prefab/lib/arm-linux-androideabi/cmake/game-activity/game-activityConfig.cmake"
+			"path" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/prefab/armeabi-v7a/prefab/lib/arm-linux-androideabi/cmake/game-activity/game-activityConfig.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a",
-		"source" : "E:/UnityProject/Gbits-Gamejam2024/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
+		"build" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/g5r6s5f4/armeabi-v7a",
+		"source" : "E:/UnityProject/Gbits-Gamejam2024/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/cpp"
 	},
 	"version" : 
 	{

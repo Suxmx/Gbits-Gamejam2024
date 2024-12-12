@@ -42,7 +42,7 @@ rule CXX_SHARED_LIBRARY_LINKER__game_RelWithDebInfo
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\Unity\Hub\Editor\6000.0.28f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\cmake\3.22.1\bin\cmake.exe" --regenerate-during-build -SE:\UnityProject\Gbits-Gamejam2024\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp -BE:\UnityProject\Gbits-Gamejam2024\.utmp\RelWithDebInfo\2942e351\armeabi-v7a
+  command = "C:\Program Files\Unity\Hub\Editor\6000.0.28f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\cmake\3.22.1\bin\cmake.exe" --regenerate-during-build -SE:\UnityProject\Gbits-Gamejam2024\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\src\main\cpp -BE:\UnityProject\Gbits-Gamejam2024\.utmp\RelWithDebInfo\2942e351\armeabi-v7a
   description = Re-running CMake...
   generator = 1
 

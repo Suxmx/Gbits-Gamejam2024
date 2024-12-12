@@ -8,46 +8,46 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Res/Scenes/Launcher.unity
     guid: edf8e2302525c1547994bfd86b639559
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/End.unity
     guid: d23049b1324f80e4dbd879eb79980be7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level1.unity
     guid: ad054f8a76dd2bc469bc26afee93c588
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level2.unity
     guid: 62dd9a2f6f93c7c4eb49c33f7e0d142e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level3.unity
     guid: 6bd3c93231b3ae442b600e44369f3f4b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level4.unity
     guid: 94438e48bb432a640b195d7b234c27cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level5.unity
     guid: bd00dd4c779485c40b06508b50d538a4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level6.unity
     guid: 45f67409240e3e54da4f7bab4cd12bb4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level7.unity
     guid: 5ae227828040f734cb43ede1883b575c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level8.unity
     guid: 1137da3fad229a645aabadfbbc06cb6e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level9.unity
     guid: 82994de272f244e40a79708d9564cb84
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Levels/Level10.unity
     guid: 141d7b89290150d4c925fe841801a22c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Main.unity
     guid: 678ebee929128534fbf7af7d45b15c89
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Menu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Res/Scenes/Splash.unity
     guid: 2de5b8aa175d49646af49fc2a7b4a4c1
   m_configObjects:

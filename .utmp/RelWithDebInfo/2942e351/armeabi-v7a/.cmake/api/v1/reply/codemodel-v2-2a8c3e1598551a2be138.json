@@ -66,7 +66,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "game::@d02bb112ea9f9c2ed29f",
-					"jsonFile" : "target-game-RelWithDebInfo-47a10a5971d9222dfdae.json",
+					"jsonFile" : "target-game-RelWithDebInfo-1bcf08d2752759ce91c5.json",
 					"name" : "game",
 					"projectIndex" : 1
 				}
@@ -77,7 +77,7 @@
 	"paths" : 
 	{
 		"build" : "E:/UnityProject/Gbits-Gamejam2024/.utmp/RelWithDebInfo/2942e351/armeabi-v7a",
-		"source" : "E:/UnityProject/Gbits-Gamejam2024/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
+		"source" : "E:/UnityProject/Gbits-Gamejam2024/Library/Bee/Android/Prj/Mono2x/Gradle/unityLibrary/src/main/cpp"
 	},
 	"version" : 
 	{
